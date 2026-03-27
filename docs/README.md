@@ -81,7 +81,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-## 5. Gereenciamento SCC
+## 5. Gerenciamento SCC
 
 Se a app precisar escrever no filesystem:
 
