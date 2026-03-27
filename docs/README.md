@@ -32,14 +32,7 @@
 - ConfigMap / Secret → configuração
 - RBAC → segurança
 
-## 3. Estrutura de namespaces
-
-Sugestão de projetos no OpenShift:
-- enquete-dev
-- enquete-hml
-- enquete-prod
-
-## 4. RBAC (essencial no OpenShift)
+## 3. RBAC (essencial no OpenShift)
 
 OpenShift é restritivo por padrão (SCC — Security Context Constraints)
 
@@ -81,7 +74,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-## 5. Gerenciamento SCC
+## 4. Gerenciamento SCC
 
 Se a app precisar escrever no filesystem:
 
@@ -93,7 +86,7 @@ Melhor alternativa (mais seguro):
 - usar filesystem read-only, e
 - usar /tmp ou volume
 
-## 6.Boas práticas específicas do OpenShift
+## 5. Boas práticas específicas do OpenShift
 
 **Segurança:**
 - não usar root (OpenShift bloqueia),
