@@ -103,3 +103,16 @@ Melhor alternativa (mais seguro):
 **Deploy:**
 - usar OpenShift GitOps (Argo CD), ou
 - usar OpenShift Pipelines (Tekton).
+
+## 6. Ordem de deploy
+
+Use essa ordem:
+
+```bash
+oc apply -f k8s/base/
+oc apply -f k8s/openshift/
+oc apply -f k8s/database/postgres-pvc.yaml
+oc apply -f k8s/database/postgres-deployment.yaml
+oc apply -f k8s/backend/
+oc apply -f k8s/frontend/
+```
