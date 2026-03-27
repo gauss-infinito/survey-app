@@ -4,7 +4,7 @@
 
 [Histórias de Usuários](requisitos.md)
 
-## 2. Arquitetura recomendada
+## 2. Arquitetura
 
 **Frontend (React / Next.js)**
 
@@ -32,9 +32,9 @@
 - ConfigMap / Secret → configuração
 - RBAC → segurança
 
-## 3. Estrutura de namespaces (projeto OpenShift)
+## 3. Estrutura de namespaces
 
-Sugestão:
+Sugestão de projetos no OpenShift:
 - enquete-dev
 - enquete-hml
 - enquete-prod
