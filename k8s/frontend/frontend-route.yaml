@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: survey-frontend
+spec:
+  to:
+    kind: Service
+    name: survey-frontend
+  port:
+    targetPort: 3000
+  tls:
+    termination: edge
