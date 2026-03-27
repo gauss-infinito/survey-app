@@ -1,0 +1,6 @@
+resources:
+  - base/
+  - openshift/
+  - database/
+  - backend/
+  - frontend/
