@@ -90,23 +90,23 @@ oc adm policy add-scc-to-user anyuid -z enquete-api-sa
 ```
 
 Melhor alternativa (mais seguro):
-- usar filesystem read-only
+- usar filesystem read-only, e
 - usar /tmp ou volume
 
 ## 6.Boas práticas específicas do OpenShift
 
 **Segurança:**
-- Não usar root (OpenShift bloqueia)
-- Evitar `anyuid` se possível
-- Usar `SecurityContext`
+- não usar root (OpenShift bloqueia),
+- evitar `anyuid` se possível, e
+- usar `SecurityContext`.
 
 **Imagens8**
-- Base: `ubi8` (Red Hat)
-- Evitar Alpine em ambientes enterprise
+- base: `ubi8` (Red Hat), e
+- evitar Alpine em ambientes enterprise.
 
 **Configuração:**
-- Tudo via env vars (12-factor)
+- tudo via env vars (12-factor).
 
 **Deploy:**
 - usar OpenShift GitOps (Argo CD), ou
-- usar OpenShift Pipelines (Tekton)
+- usar OpenShift Pipelines (Tekton).
