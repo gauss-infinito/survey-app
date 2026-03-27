@@ -1,4 +1,4 @@
-# Requisitos
+# Histórias de Usuário
 
 ## Estrutura geral (visão do produto)
 
