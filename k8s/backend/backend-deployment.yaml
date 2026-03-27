@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survey-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: survey-api
+  template:
+    metadata:
+      labels:
+        app: survey-api
+    spec:
+      containers:
+        - name: survey-api
+          image: image-registry.openshift-image-registry.svc:5000/survey-app/survey-api:latest
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - configMapRef:
+                name: survey-config
+            - secretRef:
+                name: survey-secret
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
