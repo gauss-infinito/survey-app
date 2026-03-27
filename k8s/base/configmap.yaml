@@ -4,5 +4,14 @@ metadata:
   name: survey-config
 data:
   APP_ENV: "dev"
+
+  # Backend
+  PORT: "8080"
+
+  # Database
   DB_HOST: "postgres"
   DB_PORT: "5432"
+  DB_NAME: "survey"
+
+  # Frontend
+  NEXT_PUBLIC_API_URL: "http://survey-api"
