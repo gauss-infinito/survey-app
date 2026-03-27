@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: survey-frontend
-          image: image-registry.openshift-image-registry.svc:5000/survey-app/survey-frontend:latest
+          image: survey-frontend
           ports:
             - containerPort: 3000
 
