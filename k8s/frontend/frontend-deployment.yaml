@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survey-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: survey-frontend
+  template:
+    metadata:
+      labels:
+        app: survey-frontend
+    spec:
+      containers:
+        - name: survey-frontend
+          image: image-registry.openshift-image-registry.svc:5000/survey-app/survey-frontend:latest
+          ports:
+            - containerPort: 3000
+
+          envFrom:
+            - configMapRef:
+                name: survey-config
+
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
