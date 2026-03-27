@@ -1,6 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: <namespace>
+
 resources:
   - base/
   - openshift/
   - database/
   - backend/
   - frontend/
+
+images:
+  - name: survey-api
+    newName: image-registry.openshift-image-registry.svc:5000/<namespace>/survey-api
+    newTag: latest
+
+  - name: survey-frontend
+    newName: image-registry.openshift-image-registry.svc:5000/<namespace>/survey-frontend
+    newTag: latest
