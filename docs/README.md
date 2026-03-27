@@ -41,7 +41,7 @@ Sugestão de projetos no OpenShift:
 
 ## 4. RBAC (essencial no OpenShift)
 
-OpenShift é restritivo por padrão (SCC) — isso pega muita gente.
+OpenShift é restritivo por padrão (SCC — Security Context Constraints)
 
 Service Account:
 
@@ -80,4 +80,16 @@ roleRef:
   name: enquete-api-role
   apiGroup: rbac.authorization.k8s.io
 ```
+
+## 5. Gereenciamento SCC
+
+Se a app precisar escrever no filesystem:
+
+```bash
+oc adm policy add-scc-to-user anyuid -z enquete-api-sa
+```
+
+Melhor alternativa (mais seguro):
+- usar filesystem read-only
+- usar /tmp ou volume
 
