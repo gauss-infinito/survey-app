@@ -93,3 +93,20 @@ Melhor alternativa (mais seguro):
 - usar filesystem read-only
 - usar /tmp ou volume
 
+## 6.Boas práticas específicas do OpenShift
+
+**Segurança:**
+- Não usar root (OpenShift bloqueia)
+- Evitar `anyuid` se possível
+- Usar `SecurityContext`
+
+**Imagens8**
+- Base: `ubi8` (Red Hat)
+- Evitar Alpine em ambientes enterprise
+
+**Configuração:**
+- Tudo via env vars (12-factor)
+
+**Deploy:**
+- usar OpenShift GitOps (Argo CD), ou
+- usar OpenShift Pipelines (Tekton)
