@@ -1,0 +1,22 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  email TEXT UNIQUE,
+  password TEXT,
+  role TEXT,
+  active BOOLEAN DEFAULT true
+);
+
+CREATE TABLE surveys (
+  id SERIAL PRIMARY KEY,
+  title TEXT,
+  description TEXT,
+  status TEXT,
+  public_id TEXT
+);
+
+CREATE TABLE responses (
+  id SERIAL PRIMARY KEY,
+  survey_public_id TEXT,
+  answers JSONB
+);
