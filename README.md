@@ -1,5 +1,7 @@
 # Survey App
 
+**Repositório em construção.**
+
 Aplicação de pesquisa de opinião (enquetes) desenvolvida para execução em ambientes Kubernetes/OpenShift, seguindo princípios cloud-native.
 
 ## Visão Geral
