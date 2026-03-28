@@ -75,7 +75,7 @@ export default function Register() {
         <input id="gender5" name="gender" type="radio" value="no" onChange={(e) => handleGenderChange(e.target.value)} /> Não-binário<br />
       </div>
 
-      <button onClick={register} style={{ marginTop: "28px" }}>
+      <button onClick={register} style={{ textAlign: "center", marginTop: "28px" }}>
         Salvar
       </button>
     </div>
