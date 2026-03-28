@@ -11,17 +11,14 @@ O **Survey App** permite criar, publicar e analisar pesquisas de opinião de for
 A aplicação é baseada em três perfis de usuário:
 
 * **Admin**
-
   * Gerencia usuários (admins e pesquisadores)
 
 * **Pesquisador**
-
   * Cria e configura pesquisas
   * Publica pesquisas e gera links de acesso
   * Visualiza resultados
 
 * **Respondente**
-
   * Registrar-se na plataforma
   * Responde pesquisas através de links compartilhados
 
@@ -30,8 +27,7 @@ A aplicação é baseada em três perfis de usuário:
 A aplicação segue princípios de arquitetura cloud-native e é projetada para rodar em Kubernetes/OpenShift.
 
 Componentes principais:
-
-* **Frontend**: Interface web
+* **Frontend**: Interface web (React / Next.js)
 * **Backend**: API responsável pelas regras de negócio
 * **Banco de Dados**: PostgreSQL
   ```
