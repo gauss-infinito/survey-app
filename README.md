@@ -13,7 +13,6 @@ A aplicação é baseada em três perfis de usuário:
 * **Admin**
 
   * Gerencia usuários (admins e pesquisadores)
-  * Cria e administra pesquisas
 
 * **Pesquisador**
 
@@ -23,7 +22,6 @@ A aplicação é baseada em três perfis de usuário:
 
 * **Respondente**
 
-  * Realiza cadastro na plataforma
   * Responde pesquisas através de links compartilhados
 
 ## Arquitetura
