@@ -6,6 +6,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
 
   async function register() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
