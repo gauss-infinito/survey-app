@@ -11,6 +11,7 @@ data:
       age TEXT,
       gender TEXT,
       role INTEGER,
+      active BOOLEAN DEFAULT true,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
