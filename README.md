@@ -2,7 +2,7 @@
 
 **Repositório em construção.**
 
-Aplicação de pesquisa de opinião (enquetes) desenvolvida para execução em ambientes Kubernetes/OpenShift, seguindo princípios cloud-native.
+Aplicação de pesquisa de opinião rápida e direta (enquete) desenvolvida para execução em ambientes Kubernetes/OpenShift, seguindo princípios cloud-native.
 
 ## Visão Geral
 
