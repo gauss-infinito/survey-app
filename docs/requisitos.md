@@ -39,30 +39,6 @@
 * Permitir ativar/desativar
 * Permitir reset de senha
 
-### Gestão de pesquisas
-
-**US-ADM-04 — Criar pesquisa**
-
-> Como admin, quero criar pesquisas para coleta de dados.
-
-**Critérios:**
-
-* Nome, descrição, status (rascunho/publicada)
-* Definir prazo de validade
-
-**US-ADM-05 — Criar perguntas da pesquisa**
-
-> Como admin, quero adicionar perguntas à pesquisa.
-
-**Critérios:**
-
-* Tipos: múltipla escolha, texto, escala
-* Ordem das perguntas configurável
-
-**US-ADM-06 — Responder pesquisa**
-
-> Como admin, quero responder pesquisas como um usuário comum.
-
 ## 2. Histórias do **Pesquisador**
 
 ### Criação e gestão de pesquisas
