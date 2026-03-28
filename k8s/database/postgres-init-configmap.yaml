@@ -20,6 +20,7 @@ data:
       title TEXT NOT NULL,
       description TEXT,
       status TEXT,
+      user_id INTEGER NOT NULL REFERENCES users(id);
       public_id TEXT UNIQUE
     );
 
@@ -98,3 +99,48 @@ data:
       RETURN TRUE;
     END;
     $$ LANGUAGE plpgsql;    
+
+    CREATE OR REPLACE FUNCTION check_user_role_for_survey()
+    RETURNS TRIGGER AS $$
+    DECLARE
+      user_role INTEGER;
+    BEGIN
+      SELECT role INTO user_role
+      FROM users
+      WHERE id = NEW.user_id;
+    
+      IF user_role NOT IN (2, 3) THEN
+        RAISE EXCEPTION 'Usuário não autorizado a criar pesquisa (role deve ser 2 ou 3)';
+      END IF;
+    
+      RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
+
+    CREATE TRIGGER trg_check_user_role
+    BEFORE INSERT ON surveys
+    FOR EACH ROW
+    EXECUTE FUNCTION check_user_role_for_survey();
+
+
+    CREATE OR REPLACE FUNCTION check_user_role_for_survey()
+    RETURNS TRIGGER AS $$
+    DECLARE
+      user_role INTEGER;
+      user_active BOOLEAN;
+    BEGIN
+      SELECT role, active INTO user_role, user_active
+      FROM users
+      WHERE id = NEW.user_id;
+    
+      IF user_active IS NOT TRUE THEN
+        RAISE EXCEPTION 'Usuário inativo não pode criar pesquisa';
+      END IF;
+    
+      IF user_role NOT IN (2, 3) THEN
+        RAISE EXCEPTION 'Usuário não autorizado (role deve ser 2 ou 3)';
+      END IF;
+    
+      RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
