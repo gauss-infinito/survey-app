@@ -49,33 +49,33 @@ export default function Register() {
       <h2>Registre-se</h2>
 
       <div>
-        <label>E-mail:</label><br />
-        <input onChange={(e) => setEmail(e.target.value)} type="email" />
+        <label htmlFor="email">E-mail:</label><br />
+        <input id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="email" x-moz-errormessage="Por favor, especifique um endereço de e-mail." placeholder="email" />
       </div>
 
       {/* código agora automático */}
       <div style={{ marginTop: "10px" }}>
-        <label>Código gerado:</label><br />
-        <input value={code} readOnly />
+        <label htmlFor="code">Código gerado:</label><br />
+        <input id="code" name="code" value={code} readOnly />
       </div>
 
       <div style={{ marginTop: "10px" }}>
-        <p>Idade:</p>
-        <input type="radio" value="jovem" onChange={(e) => setAge(e.target.value)} /> Jovem<br />
-        <input type="radio" value="adulto" onChange={(e) => setAge(e.target.value)} /> Adulto<br />
-        <input type="radio" value="idoso" onChange={(e) => setAge(e.target.value)} /> Idoso<br />
+        <label htmlFor="age">Idade:</label><br />
+        <input id="age1" name="age" type="radio" value="jovem" onChange={(e) => setAge(e.target.value)} /> Jovem - indivíduo de até 19 anos<br />
+        <input id="age2" name="age" type="radio" value="adulto" onChange={(e) => setAge(e.target.value)} /> Adulto - indivíduo entre 20 e 59 anos<br />
+        <input id="age3" name="age" type="radio" value="idoso" onChange={(e) => setAge(e.target.value)} /> Idoso - indivíduo de 60 anos em diante<br />
       </div>
 
       <div style={{ marginTop: "10px" }}>
-        <p>Gênero:</p>
-        <input type="checkbox" value="wcis" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher cis<br />
-        <input type="checkbox" value="wtrans" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher trans<br />
-        <input type="checkbox" value="mcis" onChange={(e) => handleGenderChange(e.target.value)} /> Homem cis<br />
-        <input type="checkbox" value="mtrans" onChange={(e) => handleGenderChange(e.target.value)} /> Homem trans<br />
-        <input type="checkbox" value="no" onChange={(e) => handleGenderChange(e.target.value)} /> Não-binário<br />
+        <label htmlFor="gender">Gênero:</label><br />
+        <input id="gender1" name="gender" type="radio" value="wcis" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher cis<br />
+        <input id="gender2" name="gender" type="radio" value="wtrans" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher trans<br />
+        <input id="gender3" name="gender" type="radio" value="mcis" onChange={(e) => handleGenderChange(e.target.value)} /> Homem cis<br />
+        <input id="gender4" name="gender" type="radio" value="mtrans" onChange={(e) => handleGenderChange(e.target.value)} /> Homem trans<br />
+        <input id="gender5" name="gender" type="radio" value="no" onChange={(e) => handleGenderChange(e.target.value)} /> Não-binário<br />
       </div>
 
-      <button onClick={register} style={{ marginTop: "20px" }}>
+      <button onClick={register} style={{ marginTop: "28px" }}>
         Salvar
       </button>
     </div>
