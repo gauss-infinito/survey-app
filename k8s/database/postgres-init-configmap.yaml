@@ -51,9 +51,9 @@ data:
 
     CREATE TABLE IF NOT EXISTS responses (
       id SERIAL PRIMARY KEY,
-      survey_id INTEGER REFERENCES surveys(id)
-      age TEXT,
-      gender TEXT,
+      survey_id INTEGER REFERENCES surveys(id),
+      age age_type,
+      gender gender_type,
       answers JSONB
     );
 
