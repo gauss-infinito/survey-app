@@ -60,4 +60,41 @@ data:
     CREATE TRIGGER trg_max_questions
     BEFORE INSERT ON questions
     FOR EACH ROW
-    EXECUTE FUNCTION check_max_questions();    
+    EXECUTE FUNCTION check_max_questions();  
+
+    CREATE OR REPLACE FUNCTION check_items_limit()
+    RETURNS TRIGGER AS $$
+    DECLARE
+      total INTEGER;
+    BEGIN
+      SELECT COUNT(*) INTO total
+      FROM items
+      WHERE question_id = NEW.question_id;
+    
+      IF total >= 5 THEN
+        RAISE EXCEPTION 'Máximo de 5 opções por pergunta';
+      END IF;
+    
+      RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
+    
+    CREATE TRIGGER trg_max_items
+    BEFORE INSERT ON items
+    FOR EACH ROW
+    EXECUTE FUNCTION check_items_limit();   
+
+    CREATE OR REPLACE FUNCTION validate_min_items(q_id INTEGER)
+    RETURNS BOOLEAN AS $$
+    DECLARE
+      total INTEGER;
+    BEGIN
+      SELECT COUNT(*) INTO total FROM items WHERE question_id = q_id;
+    
+      IF total < 2 THEN
+        RAISE EXCEPTION 'Pergunta deve ter pelo menos 2 opções';
+      END IF;
+    
+      RETURN TRUE;
+    END;
+    $$ LANGUAGE plpgsql;    
