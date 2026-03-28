@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import QuestionForm from "./QuestionForm";
 import { createSurvey } from "../services/api";
@@ -12,10 +14,7 @@ export default function SurveyForm() {
   const addQuestion = () => {
     setSurvey({
       ...survey,
-      questions: [
-        ...survey.questions,
-        { text: "", options: [] },
-      ],
+      questions: [...survey.questions, { text: "", options: [] }],
     });
   };
 
@@ -26,8 +25,10 @@ export default function SurveyForm() {
   };
 
   const removeQuestion = (index) => {
-    const updated = survey.questions.filter((_, i) => i !== index);
-    setSurvey({ ...survey, questions: updated });
+    setSurvey({
+      ...survey,
+      questions: survey.questions.filter((_, i) => i !== index),
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -35,8 +36,7 @@ export default function SurveyForm() {
 
     try {
       await createSurvey(survey);
-      alert("Pesquisa criada com sucesso!");
-      setSurvey({ title: "", description: "", questions: [] });
+      alert("Pesquisa criada!");
     } catch (err) {
       alert(err.message);
     }
@@ -47,13 +47,11 @@ export default function SurveyForm() {
       <h2>Criar Pesquisa</h2>
 
       <input
-        type="text"
         placeholder="Título"
         value={survey.title}
         onChange={(e) =>
           setSurvey({ ...survey, title: e.target.value })
         }
-        style={{ width: "100%", marginBottom: 10 }}
       />
 
       <textarea
@@ -62,10 +60,7 @@ export default function SurveyForm() {
         onChange={(e) =>
           setSurvey({ ...survey, description: e.target.value })
         }
-        style={{ width: "100%", marginBottom: 10 }}
       />
-
-      <h3>Questões</h3>
 
       {survey.questions.map((q, i) => (
         <QuestionForm
@@ -77,12 +72,12 @@ export default function SurveyForm() {
       ))}
 
       <button type="button" onClick={addQuestion}>
-        + Adicionar questão
+        + Questão
       </button>
 
       <br /><br />
 
-      <button type="submit">Salvar Pesquisa</button>
+      <button type="submit">Salvar</button>
     </form>
   );
 }
