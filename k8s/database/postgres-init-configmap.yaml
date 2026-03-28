@@ -130,8 +130,8 @@ data:
         RAISE EXCEPTION 'Usuário inativo não pode criar pesquisa';
       END IF;
 
-      IF user_role NOT IN (2, 3) THEN
-        RAISE EXCEPTION 'Usuário não autorizado (role deve ser 2 ou 3)';
+      IF user_role NOT IN ('administrator', 'researcher') THEN
+        RAISE EXCEPTION 'Usuário não autorizado (role deve ser administrator ou researcher)';
       END IF;
 
       RETURN NEW;
