@@ -23,9 +23,9 @@ export default function Login() {
     <div>
       <h2>Login</h2>
       <label for="email">E-mail</label><br>
-      <input onChange={(e) => setEmail(e.target.value)} placeholder="email" id="email" name="email" required />
+      <input onChange={(e) => setEmail(e.target.value)} placeholder="email" id="email" name="email" required /><br>
       <label for="password">Senha</label><br>
-      <input onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" id="password" name="password" required />
+      <input onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" id="password" name="password" required /><br>
       <button onClick={login}>Entrar</button>
     </div>
   );
