@@ -22,11 +22,17 @@ export default function Login() {
   return (
     <div>
       <h2>Login</h2>
-      <label htmlFor="email">E-mail</label><br />
-      <input id="email" name="email" required onChange={(e) => setEmail(e.target.value)} placeholder="email" /><br />
-      <label htmlFor="password">Senha</label><br />
-      <input id="password" name="password" required onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" /><br />
-      <button onClick={login}>Entrar</button>
+      <p>
+        <label htmlFor="email">E-mail</label><br />
+        <input id="email" name="email" required onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+      </p>
+      <p>
+        <label htmlFor="password">Senha</label><br />
+        <input id="password" name="password" required onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" /><br />
+      </p>
+      <p align="center">
+        <button onClick={login}>Entrar</button>
+      </p>
     </div>
   );
 }
