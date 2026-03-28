@@ -39,7 +39,7 @@ data:
 
     CREATE TABLE IF NOT EXISTS responses (
       id SERIAL PRIMARY KEY,
-      survey_public_id TEXT,
+      survey_id INTEGER REFERENCES surveys(id)
       age TEXT,
       gender TEXT,
       answers JSONB
@@ -130,3 +130,6 @@ data:
     BEFORE INSERT ON surveys
     FOR EACH ROW
     EXECUTE FUNCTION check_user_role_for_survey();
+
+    CREATE INDEX idx_questions_survey ON questions(survey_id);
+    CREATE INDEX idx_items_question ON items(question_id);
