@@ -4,6 +4,10 @@ metadata:
   name: postgres-init
 data:
   init.sql: |
+    CREATE TYPE role_type AS ENUM (
+      'administrator', 'researcher', 'respondent'
+    );
+  
     CREATE TYPE age_type AS ENUM (
       'young', 'adult', 'elderly'
     );
@@ -16,9 +20,9 @@ data:
       id SERIAL PRIMARY KEY,
       email TEXT UNIQUE NOT NULL,
       code VARCHAR(16) NOT NULL,
-      age TEXT,
+      age age_type,
       gender gender_type,
-      role INTEGER,
+      role role_type,
       active BOOLEAN DEFAULT true,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
