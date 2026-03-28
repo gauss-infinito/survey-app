@@ -9,7 +9,7 @@ data:
       email TEXT UNIQUE NOT NULL,
       code VARCHAR(16) NOT NULL,
       age TEXT,
-      gender JSONB,
+      gender TEXT,
       role INTEGER,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
