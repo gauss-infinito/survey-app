@@ -44,7 +44,7 @@ export default function SurveyForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Criar Pesquisa</h2>
+      <h2>Crie Pesquisa</h2>
 
       <input
         placeholder="Título"
