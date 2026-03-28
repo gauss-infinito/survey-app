@@ -23,14 +23,8 @@ export default function QuestionForm({ question, onChange, onRemove }) {
 
   return (
     <div style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
-      <input
-        type="text"
-        placeholder="Pergunta"
-        value={question.text}
-        onChange={(e) =>
-          onChange({ ...question, text: e.target.value })
-        }
-      />
+      
+      <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
 
       {question.options.map((opt, i) => (
         <OptionForm
