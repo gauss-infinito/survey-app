@@ -31,9 +31,7 @@ export default function SurveyForm() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     try {
       await createSurvey(survey);
       alert("Pesquisa criada!");
@@ -43,24 +41,12 @@ export default function SurveyForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <h2>Crie Pesquisa</h2>
 
-      <input
-        placeholder="Título"
-        value={survey.title}
-        onChange={(e) =>
-          setSurvey({ ...survey, title: e.target.value })
-        }
-      />
+      <input id="title" name="title" placeholder="Título" value={survey.title} onChange={(e) => setSurvey({ ...survey, title: e.target.value })} />
 
-      <textarea
-        placeholder="Descrição"
-        value={survey.description}
-        onChange={(e) =>
-          setSurvey({ ...survey, description: e.target.value })
-        }
-      />
+      <textarea id="description" name="description" placeholder="Descrição" value={survey.description} onChange={(e) => setSurvey({ ...survey, description: e.target.value })} />
 
       {survey.questions.map((q, i) => (
         <QuestionForm
@@ -77,7 +63,9 @@ export default function SurveyForm() {
 
       <br /><br />
 
-      <button type="submit">Salvar</button>
-    </form>
+      <button onClick={handleSubmit}>
+        Salvar
+      </button>
+    </div>
   );
 }
