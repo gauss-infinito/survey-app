@@ -103,11 +103,3 @@ Melhor alternativa (mais seguro):
 **Deploy:**
 - usar OpenShift GitOps (Argo CD), ou
 - usar OpenShift Pipelines (Tekton).
-
-## 6. Deploy
-
-Com kustomize:
-
-```bash
-oc apply -k k8s/
-```
