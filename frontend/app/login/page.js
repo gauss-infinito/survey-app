@@ -22,10 +22,10 @@ export default function Login() {
   return (
     <div>
       <h2>Login</h2>
-      <label for="email">E-mail</label><br>
-      <input onChange={(e) => setEmail(e.target.value)} placeholder="email" id="email" name="email" required /><br>
-      <label for="password">Senha</label><br>
-      <input onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" id="password" name="password" required /><br>
+      <label htmlFor="email">E-mail</label><br />
+      <input id="email" name="email" required onChange={(e) => setEmail(e.target.value)} placeholder="email" /><br />
+      <label htmlFor="password">Senha</label><br />
+      <input id="password" name="password" required onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" /><br />
       <button onClick={login}>Entrar</button>
     </div>
   );
