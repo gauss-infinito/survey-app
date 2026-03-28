@@ -4,12 +4,20 @@ metadata:
   name: postgres-init
 data:
   init.sql: |
+    CREATE TYPE age_type AS ENUM (
+      'young', 'adult', 'elderly'
+    );
+    
+    CREATE TYPE gender_type AS ENUM (
+      'wcis', 'wtrans', 'mcis', 'mtrans', 'no'
+    );
+  
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
       email TEXT UNIQUE NOT NULL,
       code VARCHAR(16) NOT NULL,
       age TEXT,
-      gender TEXT,
+      gender gender_type,
       role INTEGER,
       active BOOLEAN DEFAULT true,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
