@@ -20,7 +20,7 @@ export default function Login() {
   }
 
   return (
-    <div style={{ width: "186px" }}>
+    <div style={{ width: "177px" }}>
       <h2>Login</h2>
       <div>
         <div>
