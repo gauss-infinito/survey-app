@@ -22,6 +22,7 @@ A aplicação é baseada em três perfis de usuário:
 
 * **Respondente**
 
+  * Registrar-se na plataforma
   * Responde pesquisas através de links compartilhados
 
 ## Arquitetura
