@@ -22,7 +22,7 @@ data:
       code VARCHAR(16) NOT NULL,
       age age_type,
       gender gender_type,
-      role role_type,
+      role role_type DEFAULT 'respondent',
       active BOOLEAN DEFAULT true,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
