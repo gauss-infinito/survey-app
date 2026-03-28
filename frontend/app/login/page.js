@@ -20,18 +20,20 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div style={{ width: "400px" }}>
       <h2>Login</h2>
       <div>
-        <label htmlFor="email">E-mail</label><br />
-        <input id="email" name="email" required onChange={(e) => setEmail(e.target.value)} placeholder="email" />
-      </div>
-      <div style={{ marginTop: "10px" }}>
-        <label htmlFor="password">Senha</label><br />
-        <input id="password" name="password" required onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" /><br />
-      </div>
-      <div style={{ textAlign: "center", marginTop: "10px" }}>
-        <button onClick={login}>Entrar</button>
+        <div>
+          <label htmlFor="email">E-mail:</label><br />
+          <input id="email" name="email" required onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+        </div>
+        <div style={{ marginTop: "10px" }}>
+          <label htmlFor="password">Senha:</label><br />
+          <input id="password" name="password" required onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" /><br />
+        </div>
+        <div style={{ textAlign: "center", marginTop: "10px" }}>
+          <button onClick={login}>Entrar</button>
+        </div>
       </div>
     </div>
   );
