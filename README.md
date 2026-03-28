@@ -34,6 +34,15 @@ Componentes principais:
 * **Frontend**: Interface web
 * **Backend**: API responsável pelas regras de negócio
 * **Banco de Dados**: PostgreSQL
+  ```
+  users (role, active)
+     ↓
+  surveys (user_id)
+     ↓
+  questions (max 3)
+     ↓
+  items (2 a 5)
+  ```
 * **Infraestrutura OpenShift/K8s**:
 
   * Deployment
