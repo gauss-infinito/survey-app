@@ -29,10 +29,14 @@ export default function Login() {
         </div>
         <div style={{ marginTop: "10px" }}>
           <label htmlFor="code">Código:</label><br />
-          <input id="code" name="code" required onChange={(e) => setcode(e.target.value)} placeholder="código" type="code" /><br />
+          <input id="code" name="code" required onChange={(e) => setcode(e.target.value)} placeholder="código" /><br />
         </div>
         <div style={{ textAlign: "center", marginTop: "28px" }}>
           <button onClick={login}>Entrar</button>
+        </div>
+        <div style={{ textAlign: "center", marginTop: "28px" }}>
+          <a href="#">Obter novo código</a>
+          <a href="#">Registrar-se</a>
         </div>
       </div>
     </div>
