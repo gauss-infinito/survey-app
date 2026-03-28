@@ -7,6 +7,7 @@ export default function Register() {
   const [code, setCode] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const [role, setRole] = useState("");  
 
   async function register() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
@@ -57,10 +58,7 @@ export default function Register() {
         </div>
         <div style={{ textAlign: "center", marginTop: "28px" }}>
           <button onClick={register}>Salvar</button>
-        </div>
-        <div style={{ textAlign: "center", marginTop: "28px" }}>
-          <a href="#">Obter código</a><br />
-          <a href="#">Registrar-se</a>
+          <input id="role" name="role" value="1" required onChange={(e) => setRole(e.target.value)} type="hidden" />
         </div>
       </div>
     </div>
