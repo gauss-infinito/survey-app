@@ -22,9 +22,10 @@ export default function QuestionForm({ question, onChange, onRemove }) {
   };
 
   return (
-    <div style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
-      
-      <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
+    <div style={{ border: "1px solid #ccc" }}>
+
+      <label htmlFor="question">Pergunta:</label><br />
+      <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} /><bt />
 
       {question.options.map((opt, i) => (
         <OptionForm
