@@ -15,7 +15,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [age, setAge] = useState("");
-  const [gender, setGender] = useState([]);
+  const [gender, setGender] = useState("");
   const [role, setRole] = useState("respondent");
 
   // gera o código automaticamente ao carregar
