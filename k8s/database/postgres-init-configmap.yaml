@@ -13,7 +13,7 @@ data:
     );
     
     CREATE TYPE gender_type AS ENUM (
-      'wcis', 'wtrans', 'mcis', 'mtrans', 'no'
+      'cis-woman', 'trans-woman', 'cis-man', 'trans-man', 'non-binary'
     );
   
     CREATE TABLE IF NOT EXISTS users (
