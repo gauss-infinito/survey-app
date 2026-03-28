@@ -34,7 +34,7 @@ export default function Login() {
         <div style={{ textAlign: "center", marginTop: "28px" }}>
           <button onClick={login}>Entrar</button>
         </div>
-        <div style={{ textAlign: "center", marginTop: "28px" }}>
+        <div style={{ textAlign: "center", marginTop: "26px" }}>
           <a href="#">Recuperar código</a><br />
           <a href="#">Registrar-se</a>
         </div>
