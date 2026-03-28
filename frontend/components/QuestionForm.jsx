@@ -22,22 +22,26 @@ export default function QuestionForm({ question, onChange, onRemove }) {
   };
 
   return (
-    <div style={{ border: "1px solid #ccc" }}>
+    <div style={{ width: "177px" }}>
+      <div style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
+  
+        <label htmlFor="question">Pergunta:</label><br />
+        <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} /><br />
+  
+        {question.options.map((opt, i) => (
+          <OptionForm
+            key={i}
+            option={opt}
+            onChange={(newOpt) => updateOption(i, newOpt)}
+            onRemove={() => removeOption(i)}
+          />
+        ))}
 
-      <label htmlFor="question">Pergunta:</label><br />
-      <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} /><bt />
-
-      {question.options.map((opt, i) => (
-        <OptionForm
-          key={i}
-          option={opt}
-          onChange={(newOpt) => updateOption(i, newOpt)}
-          onRemove={() => removeOption(i)}
-        />
-      ))}
-
-      <button onClick={addOption}>+ Opção</button>
-      <button onClick={onRemove}>Remover questão</button>
+        <div style={{ textAlign: "center", marginTop: "28px" }}>
+          <button onClick={addOption}>+ Opção</button> &ensp;
+          <button onClick={onRemove}>Remover questão</button>
+        </div>
+      </div>
     </div>
   );
 }
