@@ -104,15 +104,10 @@ Melhor alternativa (mais seguro):
 - usar OpenShift GitOps (Argo CD), ou
 - usar OpenShift Pipelines (Tekton).
 
-## 6. Ordem de deploy
+## 6. Deploy
 
-Use essa ordem:
+Com kustomize:
 
 ```bash
-oc apply -f k8s/base/
-oc apply -f k8s/openshift/
-oc apply -f k8s/database/postgres-pvc.yaml
-oc apply -f k8s/database/postgres-deployment.yaml
-oc apply -f k8s/backend/
-oc apply -f k8s/frontend/
+oc apply -k k8s/
 ```
