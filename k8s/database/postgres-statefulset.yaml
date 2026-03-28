@@ -13,28 +13,24 @@ spec:
       labels:
         app: postgres
     spec:
-      securityContext:
-        fsGroup: 999
       containers:
         - name: postgres
-          image: postgres:15
-          securityContext:
-            runAsUser: 999
+          image: registry.redhat.io/rhel8/postgresql-15
           ports:
             - containerPort: 5432
 
           env:
-            - name: POSTGRES_DB
+            - name: POSTGRESQL_DATABASE
               valueFrom:
                 configMapKeyRef:
                   name: survey-config
                   key: DB_NAME
-            - name: POSTGRES_USER
+            - name: POSTGRESQL_USER
               valueFrom:
                 secretKeyRef:
                   name: survey-secret
                   key: DB_USER
-            - name: POSTGRES_PASSWORD
+            - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: survey-secret
