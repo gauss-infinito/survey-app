@@ -1,3 +1,5 @@
+"use client";
+
 export default function OptionForm({ option, onChange, onRemove }) {
   return (
     <div style={{ display: "flex", gap: "8px", marginBottom: "5px" }}>
