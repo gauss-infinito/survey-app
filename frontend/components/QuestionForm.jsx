@@ -1,5 +1,6 @@
+"use client";
+
 import OptionForm from "./OptionForm";
-import { useState } from "react";
 
 export default function QuestionForm({ question, onChange, onRemove }) {
   const addOption = () => {
@@ -29,24 +30,19 @@ export default function QuestionForm({ question, onChange, onRemove }) {
         onChange={(e) =>
           onChange({ ...question, text: e.target.value })
         }
-        style={{ width: "100%", marginBottom: 10 }}
       />
 
-      <div>
-        {question.options.map((opt, i) => (
-          <OptionForm
-            key={i}
-            option={opt}
-            onChange={(newOpt) => updateOption(i, newOpt)}
-            onRemove={() => removeOption(i)}
-          />
-        ))}
-      </div>
+      {question.options.map((opt, i) => (
+        <OptionForm
+          key={i}
+          option={opt}
+          onChange={(newOpt) => updateOption(i, newOpt)}
+          onRemove={() => removeOption(i)}
+        />
+      ))}
 
-      <button onClick={addOption}>+ Adicionar opção</button>
-      <button onClick={onRemove} style={{ marginLeft: 10 }}>
-        Remover questão
-      </button>
+      <button onClick={addOption}>+ Opção</button>
+      <button onClick={onRemove}>Remover questão</button>
     </div>
   );
 }
