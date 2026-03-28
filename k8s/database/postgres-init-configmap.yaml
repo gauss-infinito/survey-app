@@ -4,13 +4,14 @@ metadata:
   name: postgres-init
 data:
   init.sql: |
-    CREATE TABLE users (
+    CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
-      name TEXT,
-      email TEXT UNIQUE,
-      password TEXT,
-      role TEXT,
-      active BOOLEAN DEFAULT true
+      email TEXT UNIQUE NOT NULL,
+      code VARCHAR(16) NOT NULL,
+      age TEXT,
+      gender JSONB,
+      role INTEGER,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
     CREATE TABLE surveys (
