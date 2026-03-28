@@ -4,7 +4,7 @@ metadata:
   name: postgres-init
 data:
   init.sql: |
-    CREATE TABLE IF NOT EXISTS users (
+    CREATE TABLE users (
       id SERIAL PRIMARY KEY,
       email TEXT UNIQUE NOT NULL,
       code VARCHAR(16) NOT NULL,
@@ -17,14 +17,47 @@ data:
 
     CREATE TABLE surveys (
       id SERIAL PRIMARY KEY,
-      title TEXT,
+      title TEXT NOT NULL,
       description TEXT,
       status TEXT,
-      public_id TEXT
+      public_id TEXT UNIQUE
+    );
+
+    CREATE TABLE questions (
+      id SERIAL PRIMARY KEY,
+      survey_id INTEGER NOT NULL REFERENCES surveys(id) ON DELETE CASCADE,
+      text TEXT NOT NULL,
+      type TEXT NOT NULL CHECK (type IN ('single', 'multiple'))
+    );
+
+    CREATE TABLE items (
+      id SERIAL PRIMARY KEY,
+      question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE,
+      text TEXT NOT NULL
     );
 
     CREATE TABLE responses (
       id SERIAL PRIMARY KEY,
       survey_public_id TEXT,
+      age TEXT,
+      gender TEXT,
       answers JSONB
     );
+
+    CREATE OR REPLACE FUNCTION check_max_questions()
+    RETURNS TRIGGER AS $$
+    BEGIN
+      IF (
+        SELECT COUNT(*) FROM questions WHERE survey_id = NEW.survey_id
+      ) >= 3 THEN
+        RAISE EXCEPTION 'Uma pesquisa não pode ter mais que 3 perguntas';
+      END IF;
+    
+      RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
+    
+    CREATE TRIGGER trg_max_questions
+    BEFORE INSERT ON questions
+    FOR EACH ROW
+    EXECUTE FUNCTION check_max_questions();    
