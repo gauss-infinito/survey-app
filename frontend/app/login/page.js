@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [code, setcode] = useState("");
+  const [code, setCode] = useState("");
 
   async function login() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
@@ -29,7 +29,7 @@ export default function Login() {
         </div>
         <div style={{ marginTop: "10px" }}>
           <label htmlFor="code">Código:</label><br />
-          <input id="code" name="code" required onChange={(e) => setcode(e.target.value)} placeholder="código" /><br />
+          <input id="code" name="code" required onChange={(e) => setCode(e.target.value)} placeholder="código" /><br />
         </div>
         <div style={{ textAlign: "center", marginTop: "28px" }}>
           <button onClick={login}>Entrar</button>
