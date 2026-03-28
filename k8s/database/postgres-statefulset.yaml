@@ -41,7 +41,7 @@ spec:
               mountPath: /var/lib/postgresql/data
 
             - name: init-db
-              mountPath: /docker-entrypoint-initdb.d
+              mountPath: /opt/app-root/src/initdb.d
 
           readinessProbe:
             tcpSocket:
