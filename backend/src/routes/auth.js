@@ -7,16 +7,11 @@ router.post("/register", async (req, res) => {
   try {
     let { email, code, age, gender, role } = req.body;
 
-    // fallback: se frontend não mandar
-    if (!code) {
-      code = generateCode();
-    }
-
     const result = await pool.query(
       `INSERT INTO users (email, code, age, gender, role)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id`,
-      [email, code, age, JSON.stringify(gender), role]
+      [email, code, age, gender, role]
     );
 
     const token = uuidv4();
@@ -48,7 +43,7 @@ router.post("/login", async (req, res) => {
   const user = result.rows[0];
   if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
-  const valid = await bcrypt.compare(password, user.password);
+  const valid = await bcrypt.compare(code, user.code);
   if (!valid) return res.status(401).json({ error: "Invalid credentials" });
 
   const token = jwt.sign(
