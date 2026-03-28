@@ -31,7 +31,7 @@ export default function Login() {
           <label htmlFor="password">Senha:</label><br />
           <input id="password" name="password" required onChange={(e) => setPassword(e.target.value)} placeholder="senha" type="password" /><br />
         </div>
-        <div style={{ textAlign: "center", marginTop: "10px" }}>
+        <div style={{ textAlign: "center", marginTop: "12px" }}>
           <button onClick={login}>Entrar</button>
         </div>
       </div>
