@@ -68,11 +68,11 @@ export default function Register() {
 
       <div style={{ marginTop: "10px" }}>
         <label htmlFor="gender">Gênero:</label><br />
-        <input id="gender1" name="gender" type="radio" value="wcis" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher cis<br />
-        <input id="gender2" name="gender" type="radio" value="wtrans" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher trans<br />
-        <input id="gender3" name="gender" type="radio" value="mcis" onChange={(e) => handleGenderChange(e.target.value)} /> Homem cis<br />
-        <input id="gender4" name="gender" type="radio" value="mtrans" onChange={(e) => handleGenderChange(e.target.value)} /> Homem trans<br />
-        <input id="gender5" name="gender" type="radio" value="no" onChange={(e) => handleGenderChange(e.target.value)} /> Não-binário<br />
+        <input id="gender1" name="gender" type="radio" value="cis-woman" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher cis<br />
+        <input id="gender2" name="gender" type="radio" value="trans-woman" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher trans<br />
+        <input id="gender3" name="gender" type="radio" value="cis-man" onChange={(e) => handleGenderChange(e.target.value)} /> Homem cis<br />
+        <input id="gender4" name="gender" type="radio" value="trans-man" onChange={(e) => handleGenderChange(e.target.value)} /> Homem trans<br />
+        <input id="gender5" name="gender" type="radio" value="non-binary" onChange={(e) => handleGenderChange(e.target.value)} /> Não-binário<br />
       </div>
 
       <button onClick={register} style={{ textAlign: "center", marginTop: "28px" }}>
