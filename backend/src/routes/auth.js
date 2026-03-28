@@ -12,22 +12,24 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ error: "Email e código são obrigatórios" });
     }
 
+    const userRole = role || "respondent";
+
     const result = await pool.query(
       `INSERT INTO users (email, code, age, gender, role)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id`,
-      [email, code, age, gender, role || 1]
+      [email, code, age, gender, userRole]
     );
 
     const token = jwt.sign(
-      { id: result.rows[0].id, role: role || 1 },
+      { id: result.rows[0].id, role: userRole },
       process.env.JWT_SECRET || "secret"
     );
 
     res.status(201).json({
       token,
       userId: result.rows[0].id,
-      code, // ok no seu modelo
+      code,
     });
   } catch (err) {
     console.error(err);
