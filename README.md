@@ -52,8 +52,7 @@ Componentes principais:
 Deploy inicial utilizando OpenShift CLI:
 
 ```bash
-oc new-app <url-do-repositorio>
-oc expose svc/survey-api
+oc apply -k k8s/
 ```
 
 Os manifests Kubernetes/OpenShift estão disponíveis no diretório `/k8s`.
