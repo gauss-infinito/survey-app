@@ -2,24 +2,32 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const { v4: uuidv4 } = require("uuid");
+const jwt = require("jsonwebtoken");
 
 router.post("/register", async (req, res) => {
   try {
     let { email, code, age, gender, role } = req.body;
 
+    if (!email || !code) {
+      return res.status(400).json({ error: "Email e código são obrigatórios" });
+    }
+
     const result = await pool.query(
       `INSERT INTO users (email, code, age, gender, role)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id`,
-      [email, code, age, gender, role]
+      [email, code, age, gender, role || 1]
     );
 
-    const token = uuidv4();
+    const token = jwt.sign(
+      { id: result.rows[0].id, role: role || 1 },
+      process.env.JWT_SECRET || "secret"
+    );
 
     res.status(201).json({
       token,
       userId: result.rows[0].id,
-      code,
+      code, // ok no seu modelo
     });
   } catch (err) {
     console.error(err);
@@ -33,25 +41,34 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { email, code } = req.body;
+  try {
+    const { email, code } = req.body;
 
-  const result = await pool.query(
-    "SELECT * FROM users WHERE email = $1 AND code = $2 AND active = true",
-    [email]
-  );
+    if (!email || !code) {
+      return res.status(400).json({ error: "Email e código são obrigatórios" });
+    }
 
-  const user = result.rows[0];
-  if (!user) return res.status(401).json({ error: "Invalid credentials" });
+    const result = await pool.query(
+      "SELECT * FROM users WHERE email = $1 AND code = $2 AND active = true",
+      [email, code]
+    );
 
-  const valid = await bcrypt.compare(code, user.code);
-  if (!valid) return res.status(401).json({ error: "Invalid credentials" });
+    const user = result.rows[0];
 
-  const token = jwt.sign(
-    { id: user.id, role: user.role },
-    process.env.JWT_SECRET
-  );
+    if (!user) {
+      return res.status(401).json({ error: "Credenciais inválidas" });
+    }
 
-  res.json({ token });
+    const token = jwt.sign(
+      { id: user.id, role: user.role },
+      process.env.JWT_SECRET || "secret"
+    );
+
+    res.json({ token });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro no login" });
+  }
 });
 
 module.exports = router;
