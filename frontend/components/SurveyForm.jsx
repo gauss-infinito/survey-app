@@ -45,10 +45,10 @@ export default function SurveyForm() {
       <h2>Crie Pesquisa</h2>
 
       <label htmlFor="title">Título:</label><br />
-      <input id="title" name="title" placeholder="Título" value={survey.title} onChange={(e) => setSurvey({ ...survey, title: e.target.value })} /><br />
+      <input id="title" name="title" width="100%" placeholder="Título" value={survey.title} onChange={(e) => setSurvey({ ...survey, title: e.target.value })} /><br />
 
       <label htmlFor="description">Descrição:</label><br />
-      <textarea id="description" name="description" placeholder="Descrição" rows="4" cols="30" value={survey.description} onChange={(e) => setSurvey({ ...survey, description: e.target.value })} /><br />
+      <textarea id="description" name="description" placeholder="Descrição" rows="4" cols="50" width="100%" value={survey.description} onChange={(e) => setSurvey({ ...survey, description: e.target.value })} /><br />
 
       {survey.questions.map((q, i) => (
         <QuestionForm
