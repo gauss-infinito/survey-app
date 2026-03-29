@@ -50,7 +50,7 @@ export default function Recover() {
   }
 
   return (
-    <div style={{ width: "177px", marginLeft: "28px" }}>
+    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Recupere seu código</h2>
 
       <div>
@@ -60,6 +60,7 @@ export default function Recover() {
           name="email"
           type="email"
           placeholder="email"
+          width="100%"
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
