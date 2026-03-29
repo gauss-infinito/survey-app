@@ -35,7 +35,7 @@ export default function Home() {
           refletindo melhor a diversidade da sociedade.
         </p>
 
-        <div style={{ marginTop: "20px" }}>
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
           <Link href="/login">Login</Link> &emsp;
           <Link href="/register">Registre-se</Link>  &emsp;
           <Link href="/recover">Recupere seu código</Link>  &emsp;
