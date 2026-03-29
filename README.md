@@ -12,7 +12,7 @@ O [**Survey App**](requisitos.md) permite criar, publicar e analisar pesquisas d
 A aplicação é baseada em três perfis de usuário:
 
 * **Administrador**
-  * Gerencia usuários (administradores e pesquisadores)
+  * Gerencia usuários
 
 * **Pesquisador**
   * Cria e configura pesquisas
