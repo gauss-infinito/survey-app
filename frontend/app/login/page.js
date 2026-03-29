@@ -57,7 +57,7 @@ export default function Login() {
           type="email"
           required
           placeholder="email"
-          width="100%"
+          style={{ width: "100%" }}
           onChange={(e) => setEmail(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && login()}
         />
@@ -69,7 +69,7 @@ export default function Login() {
           id="code"
           name="code"
           required
-          width="100%"
+          style={{ width: "100%" }}
           placeholder="código"
           onChange={(e) => setCode(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && login()}
