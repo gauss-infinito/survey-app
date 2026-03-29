@@ -43,8 +43,8 @@ export default function Register() {
       <div style={{ marginTop: "10px" }}>
         <label htmlFor="age">Idade:</label><br />
         <input id="age1" name="age" type="radio" value="young" onChange={(e) => setAge(e.target.value)} /> Jovem: 18 a 20 anos<br />
-        <input id="age2" name="age" type="radio" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto: 21 a 59 anos<br />
-        <input id="age3" name="age" type="radio" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso: 60 anos ou mais<br />
+        <input id="age2" name="age" type="radio" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto(a): 21 a 59 anos<br />
+        <input id="age3" name="age" type="radio" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso(a): 60 anos ou mais<br />
       </div>
 
       <div style={{ marginTop: "10px" }}>
