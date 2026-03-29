@@ -2,21 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-function generateCode(length = 16) {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
-}
-
 export default function Register() {
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  const [role, setRole] = useState("respondent");
 
   // gera o código automaticamente ao carregar
   useEffect(() => {
@@ -29,13 +18,16 @@ export default function Register() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, code, age, gender, role }),
+      body: JSON.stringify({ email, age, gender }),
     });
-
+  
     const data = await res.json();
+  
     localStorage.setItem("token", data.token);
+  
+    alert(`Guarde seu código: ${data.code}`);
   }
-
+  
   return (
     <div style={{ width: "177px", marginLeft: "28px" }}>
       <h2>Registre-se</h2>
@@ -43,12 +35,6 @@ export default function Register() {
       <div>
         <label htmlFor="email">E-mail:</label><br />
         <input id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="email" x-moz-errormessage="Por favor, especifique um endereço de e-mail." placeholder="email" />
-      </div>
-
-      {/* código agora automático */}
-      <div style={{ marginTop: "10px" }}>
-        <label htmlFor="code">Código gerado:</label><br />
-        <input id="code" name="code" value={code} readOnly />
       </div>
 
       <div style={{ marginTop: "10px" }}>
@@ -73,3 +59,6 @@ export default function Register() {
     </div>
   );
 }
+
+
+
