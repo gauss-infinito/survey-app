@@ -7,7 +7,7 @@ Aplicação de pesquisa de opinião rápida e direta (enquete) desenvolvida para
 
 ## Visão Geral
 
-O **Survey App** permite criar, publicar e analisar pesquisas de opinião de forma escalável e segura.
+O [**Survey App**](requisitos.md) permite criar, publicar e analisar pesquisas de opinião de forma escalável e segura.
 
 A aplicação é baseada em três perfis de usuário:
 
