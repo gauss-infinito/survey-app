@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <div style={{ maxWidth: "600px", marginLeft: "26px" }}>
+      <div style={{ maxWidth: "600px", marginLeft: "26px", fontFamily: "system-ui" }}>
         
         <h1>Survey App</h1>
 
