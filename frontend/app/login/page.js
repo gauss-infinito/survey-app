@@ -46,7 +46,7 @@ export default function Login() {
   }
 
   return (
-    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }} }}>
+    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Login</h2>
 
       <div>
