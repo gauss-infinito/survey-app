@@ -60,7 +60,7 @@ export default function Recover() {
           name="email"
           type="email"
           placeholder="email"
-          width="100%"
+          style={{ width: "100%" }}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
