@@ -46,7 +46,7 @@ export default function Login() {
   }
 
   return (
-    <div style={{ width: "200px", marginLeft: "28px", , fontFamily: "system-ui" }} }}>
+    <div style={{ width: "285px", marginLeft: "28px", , fontFamily: "system-ui" }} }}>
       <h2>Login</h2>
 
       <div>
@@ -57,6 +57,7 @@ export default function Login() {
           type="email"
           required
           placeholder="email"
+          width="100%"
           onChange={(e) => setEmail(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && login()}
         />
@@ -68,6 +69,7 @@ export default function Login() {
           id="code"
           name="code"
           required
+          width="100%"
           placeholder="código"
           onChange={(e) => setCode(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && login()}
