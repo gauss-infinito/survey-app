@@ -41,7 +41,7 @@ export default function SurveyForm() {
   };
 
   return (
-    <div style={{ width: "285px", marginLeft: "28px" }}>
+    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Crie Pesquisa</h2>
 
       <label htmlFor="title">Título:</label><br />
