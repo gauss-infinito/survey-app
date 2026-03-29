@@ -26,7 +26,7 @@ export default function QuestionForm({ question, onChange, onRemove }) {
       <div style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
         <div>
           <label htmlFor="question">Pergunta:</label><br />
-          <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
+          <input type="text" id="question" name="question" width="100%" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
         </div>   
       
         <div style={{ marginTop: "10px" }}>
