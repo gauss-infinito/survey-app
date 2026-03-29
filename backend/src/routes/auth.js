@@ -17,6 +17,46 @@ function generateCode(length = 16) {
   return result;
 }
 
+router.post("/recover", async (req, res) => {
+  try {
+    const { email, age, gender } = req.body;
+
+    if (!email || !age || !gender) {
+      return res.status(400).json({ error: "Dados obrigatórios" });
+    }
+
+    const result = await pool.query(
+      "SELECT id, active FROM users WHERE email = $1 AND age = $2 AND gender = $3",
+      [email, age, gender]
+    );
+
+    const user = result.rows[0];
+
+    if (!user || user.active !== true) {
+      return res.status(404).json({ error: "Dados inválidos" });
+    }
+
+    const newCode = generateCode();
+
+    await pool.query(
+      "UPDATE users SET code = $1 WHERE id = $2",
+      [newCode, user.id]
+    );
+
+    // pequeno delay (anti brute force)
+    await new Promise((r) => setTimeout(r, 500));
+
+    res.json({
+      message: "Código regenerado",
+      code: newCode,
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro na recuperação" });
+  }
+});
+
 router.post("/register", async (req, res) => {
   try {
     let { email, age, gender } = req.body;
