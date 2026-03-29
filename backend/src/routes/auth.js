@@ -3,13 +3,17 @@ const router = express.Router();
 const pool = require("../db");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
 function generateCode(length = 16) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const bytes = crypto.randomBytes(length);
+
   let result = "";
   for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
+    result += chars[bytes[i] % chars.length];
   }
+
   return result;
 }
 
