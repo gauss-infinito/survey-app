@@ -73,7 +73,12 @@ oc new-build https://github.com/gauss-infinito/survey-app --name=survey-api --co
 oc new-build https://github.com/gauss-infinito/survey-app --name=survey-frontend --context-dir=frontend --strategy=docker
 ```
 
-Verifique as imagens a 
+As imagens ficam disponíveis em **registry interno**:
+
+```
+image-registry.openshift-image-registry.svc:5000/<namespace>/survey-api
+image-registry.openshift-image-registry.svc:5000/<namespace>/survey-frontend
+```
 
 Após gerar novas imagens, reiniciamos os deployments para aplicar as mudanças:
 
