@@ -56,7 +56,7 @@ Componentes principais:
 
 ## Deploy
 
-Deploy inicial utilizando OpenShift CLI:
+Deploy inicial utilizando OpenShift CLI e Kustomize:
 
 ```bash
 oc apply -k k8s/
