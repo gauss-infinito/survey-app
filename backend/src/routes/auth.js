@@ -4,15 +4,26 @@ const pool = require("../db");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 
+function generateCode(length = 16) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
 router.post("/register", async (req, res) => {
   try {
-    let { email, code, age, gender, role } = req.body;
+    let { email, age, gender } = req.body;
 
-    if (!email || !code) {
-      return res.status(400).json({ error: "Email e código são obrigatórios" });
+    if (!email || !age || !! !gender) {
+      return res.status(400).json({ error: "E-mail, idade e gênero são obrigatórios" });
     }
 
-    const userRole = role || "respondent";
+    const code = generateCode();
+
+    const userRole = "respondent";
 
     const result = await pool.query(
       `INSERT INTO users (email, code, age, gender, role)
@@ -48,6 +59,10 @@ router.post("/login", async (req, res) => {
 
     if (!email || !code) {
       return res.status(400).json({ error: "Email e código são obrigatórios" });
+    }
+
+    if (!user.active) {
+      return res.status(403).json({ error: "Usuário inativo" });
     }
 
     const result = await pool.query(
