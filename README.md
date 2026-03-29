@@ -54,6 +54,34 @@ Componentes principais:
 * Uso de **ConfigMaps** e **Secrets** para configuração
 * Compatível com políticas de segurança do OpenShift (SCC)
 
+## Build
+
+Limpeza de recursos existentes:
+
+```bash
+oc delete bc survey-api
+oc delete is survey-api
+oc delete bc survey-frontend
+oc delete is survey-frontend
+oc delete builds --all
+```
+
+Criação de novos builds:
+
+```bash
+oc new-build https://github.com/gauss-infinito/survey-app --name=survey-api --context-dir=backend --strategy=docker
+oc new-build https://github.com/gauss-infinito/survey-app --name=survey-frontend --context-dir=frontend --strategy=docker
+```
+
+Verifique as imagens a 
+
+Após gerar novas imagens, reiniciamos os deployments para aplicar as mudanças:
+
+```bash
+oc rollout restart deployment survey-api
+oc rollout restart deployment survey-frontend
+```
+
 ## Deploy
 
 Deploy inicial utilizando OpenShift CLI e Kustomize:
