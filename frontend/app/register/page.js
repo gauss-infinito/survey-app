@@ -23,14 +23,6 @@ export default function Register() {
     setCode(generateCode());
   }, []);
 
-  function handleGenderChange(value) {
-    setGender((prev) =>
-      prev.includes(value)
-        ? prev.filter((g) => g !== value)
-        : [...prev, value]
-    );
-  }
-
   async function register() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
       method: "POST",
@@ -68,11 +60,11 @@ export default function Register() {
 
       <div style={{ marginTop: "10px" }}>
         <label htmlFor="gender">Gênero:</label><br />
-        <input id="gender1" name="gender" type="radio" value="cis-woman" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher cis<br />
-        <input id="gender2" name="gender" type="radio" value="trans-woman" onChange={(e) => handleGenderChange(e.target.value)} /> Mulher trans<br />
-        <input id="gender3" name="gender" type="radio" value="cis-man" onChange={(e) => handleGenderChange(e.target.value)} /> Homem cis<br />
-        <input id="gender4" name="gender" type="radio" value="trans-man" onChange={(e) => handleGenderChange(e.target.value)} /> Homem trans<br />
-        <input id="gender5" name="gender" type="radio" value="non-binary" onChange={(e) => handleGenderChange(e.target.value)} /> Não-binário<br />
+        <input id="gender1" name="gender" type="radio" value="cis-woman" onChange={(e) => setGender(e.target.value)} /> Mulher cis<br />
+        <input id="gender2" name="gender" type="radio" value="trans-woman" onChange={(e) => setGender(e.target.value)} /> Mulher trans<br />
+        <input id="gender3" name="gender" type="radio" value="cis-man" onChange={(e) => setGender(e.target.value)} /> Homem cis<br />
+        <input id="gender4" name="gender" type="radio" value="trans-man" onChange={(e) => setGender(e.target.value)} /> Homem trans<br />
+        <input id="gender5" name="gender" type="radio" value="non-binary" onChange={(e) => setGender(e.target.value)} /> Não-binário<br />
       </div>
 
       <div style={{ textAlign: "center", marginTop: "28px" }}>
