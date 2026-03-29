@@ -6,6 +6,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const [generatedCode, setGeneratedCode] = useState("");
 
   async function register() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
@@ -19,16 +20,8 @@ export default function Register() {
     const data = await res.json();
   
     localStorage.setItem("token", data.token);
-  
-    // alert(`Guarde seu código: ${data.code}`);
-
+    alert(`Guarde seu código: ${data.code}`);
     setGeneratedCode(data.code);
-
-    {generatedCode && (
-      <div>
-        <strong>Guarde seu código:</strong> {generatedCode}
-      </div>
-    )}    
   }
   
   return (
