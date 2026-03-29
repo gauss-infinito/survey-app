@@ -22,20 +22,23 @@ export default function QuestionForm({ question, onChange, onRemove }) {
   };
 
   return (
-    <div style={{ width: "177px" }}>
+    <div style={{ width: "277px" }}>
       <div style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
-  
-        <label htmlFor="question">Pergunta:</label><br />
-        <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} /><br />
-  
-        {question.options.map((opt, i) => (
-          <OptionForm
-            key={i}
-            option={opt}
-            onChange={(newOpt) => updateOption(i, newOpt)}
-            onRemove={() => removeOption(i)}
-          />
-        ))}
+        <div>
+          <label htmlFor="question">Pergunta:</label><br />
+          <input type="text" id="question" name="question" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
+        </div>   
+      
+        <div style={{ marginTop: "10px" }}>
+          {question.options.map((opt, i) => (
+            <OptionForm
+              key={i}
+              option={opt}
+              onChange={(newOpt) => updateOption(i, newOpt)}
+              onRemove={() => removeOption(i)}
+            />
+          ))}
+        </div>          
 
         <div style={{ textAlign: "center", marginTop: "28px" }}>
           <button onClick={addOption}>+ Opção</button> &ensp;
