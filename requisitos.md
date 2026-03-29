@@ -16,7 +16,7 @@
 
 **Critérios de aceitação:**
 
-* Deve informar nome, e-mail e senha
+* Deve informar e-mail e código
 * Não permitir e-mail duplicado
 * Usuário criado já pode acessar o sistema
 
@@ -37,7 +37,7 @@
 
 * Listagem com filtros (perfil, status)
 * Permitir ativar/desativar
-* Permitir reset de senha
+* Permitir recuperação de código
 
 ## 2. Histórias do **Pesquisador**
 
