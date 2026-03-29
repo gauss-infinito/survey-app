@@ -45,7 +45,7 @@ export default function Register() {
   }
 
   return (
-    <div style={{ width: "177px" }}>
+    <div style={{ width: "177px", marginLeft: "28px" }}>
       <h2>Registre-se</h2>
 
       <div>
