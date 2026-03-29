@@ -32,12 +32,12 @@ export default function Register() {
   }
   
   return (
-    <div style={{ width: "177px", marginLeft: "28px" }}>
+    <div style={{ width: "177px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Registre-se</h2>
 
       <div>
         <label htmlFor="email">E-mail:</label><br />
-        <input id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="email" x-moz-errormessage="Por favor, especifique um endereço de e-mail." placeholder="email" />
+        <input id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="email" width="100%" placeholder="email" />
       </div>
 
       <div style={{ marginTop: "10px" }}>
