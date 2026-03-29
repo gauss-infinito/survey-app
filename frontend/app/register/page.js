@@ -32,12 +32,12 @@ export default function Register() {
   }
   
   return (
-    <div style={{ width: "177px", marginLeft: "28px", fontFamily: "system-ui" }}>
+    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Registre-se</h2>
 
       <div>
         <label htmlFor="email">E-mail:</label><br />
-        <input id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="email" width="100%" placeholder="email" />
+        <input id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" style={{ width: "100%" }} />
       </div>
 
       <div style={{ marginTop: "10px" }}>
