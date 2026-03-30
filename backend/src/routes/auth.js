@@ -61,7 +61,7 @@ router.post("/register", async (req, res) => {
   try {
     let { email, age, gender } = req.body;
 
-    if (!email || !age || !! !gender) {
+    if (!email || !age || !gender) {
       return res.status(400).json({ error: "E-mail, idade e gênero são obrigatórios" });
     }
 
