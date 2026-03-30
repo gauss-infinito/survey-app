@@ -71,14 +71,14 @@ Criação de novos builds:
 ```bash
 oc new-build https://github.com/gauss-infinito/survey-app --name=survey-api --context-dir=backend --strategy=docker
 oc new-build https://github.com/gauss-infinito/survey-app --name=survey-frontend --context-dir=frontend --strategy=docker
-oc set env bc/survey-frontend NEXT_PUBLIC_API_URL=https://survey-api-<namespace>.<apps-domain>.openshiftapps.com
+oc set env bc/survey-frontend NEXT_PUBLIC_API_URL=https://survey-api-<project>.<apps-domain>.openshiftapps.com
 ```
 
 As imagens ficam disponíveis em **registry interno**:
 
 ```
-image-registry.openshift-image-registry.svc:5000/<namespace>/survey-api
-image-registry.openshift-image-registry.svc:5000/<namespace>/survey-frontend
+image-registry.openshift-image-registry.svc:5000/<project>/survey-api
+image-registry.openshift-image-registry.svc:5000/<project>/survey-frontend
 ```
 
 Após gerar novas imagens, reiniciamos os deployments para aplicar as mudanças:
