@@ -92,7 +92,7 @@ oc rollout restart deployment survey-frontend
 Deploy inicial utilizando OpenShift CLI e Kustomize:
 
 ```bash
-oc apply -k k8s/
+oc apply -k https://github.com/gauss-infinito/survey-app/k8s/
 ```
 
 Os manifests Kubernetes/OpenShift estão disponíveis no diretório `/k8s`.
