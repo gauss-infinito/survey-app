@@ -15,21 +15,9 @@ spec:
         app: postgres
 
     spec:
-      initContainers:
-        - name: init-db
-          image: postgres:15
-          command:
-            - sh
-            - -c
-            - |
-              echo "Init container apenas garantindo arquivos disponíveis"
-          volumeMounts:
-            - name: init-db
-              mountPath: /scripts
-
       containers:
         - name: postgres
-          image: registry.redhat.io/rhel8/postgresql-15
+          image: registry.redhat.io/rhel8/postgresql-16:latest
           ports:
             - containerPort: 5432
 
@@ -54,9 +42,6 @@ spec:
             - name: postgres-data
               mountPath: /var/lib/pgsql/data
 
-            - name: init-db
-              mountPath: /opt/app-root/src/initdb.d
-
           readinessProbe:
             tcpSocket:
               port: 5432
@@ -68,11 +53,6 @@ spec:
               port: 5432
             initialDelaySeconds: 30
             periodSeconds: 10
-
-      volumes:
-        - name: init-db
-          configMap:
-            name: postgres-init
 
   volumeClaimTemplates:
     - metadata:
