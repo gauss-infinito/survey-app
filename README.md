@@ -69,9 +69,9 @@ oc delete builds --all
 Criação de novos builds:
 
 ```bash
-oc set env bc/survey-frontend NEXT_PUBLIC_API_URL=https://survey-api-<namespace>.<apps-domain>.openshiftapps.com
 oc new-build https://github.com/gauss-infinito/survey-app --name=survey-api --context-dir=backend --strategy=docker
 oc new-build https://github.com/gauss-infinito/survey-app --name=survey-frontend --context-dir=frontend --strategy=docker
+oc set env bc/survey-frontend NEXT_PUBLIC_API_URL=https://survey-api-<namespace>.<apps-domain>.openshiftapps.com
 ```
 
 As imagens ficam disponíveis em **registry interno**:
