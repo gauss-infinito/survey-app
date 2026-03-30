@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: survey-frontend
-          image: survey-frontend
+          image: survey-frontend:latest
           ports:
             - containerPort: 3000
 
