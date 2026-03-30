@@ -10,9 +10,9 @@ resources:
 
 images:
   - name: survey-api
-    newName: image-registry.openshift-image-registry.svc:5000/<namespace>/survey-api
+    newName: image-registry.openshift-image-registry.svc:5000/flaviacb-dev/survey-api
     newTag: latest
 
   - name: survey-frontend
-    newName: image-registry.openshift-image-registry.svc:5000/<namespace>/survey-frontend
+    newName: image-registry.openshift-image-registry.svc:5000/flaviacb-dev/survey-frontend
     newTag: latest
