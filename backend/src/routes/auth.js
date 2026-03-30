@@ -52,7 +52,7 @@ router.post("/recover", async (req, res) => {
     });
 
   } catch (err) {
-    console.error(err);
+    console.error("DB ERROR:", err.message, err.detail);
     res.status(500).json({ error: "Erro na recuperação" });
   }
 });
@@ -87,7 +87,7 @@ router.post("/register", async (req, res) => {
       code,
     });
   } catch (err) {
-    console.error(err);
+    console.error("DB ERROR:", err.message, err.detail);
 
     if (err.code === "23505") {
       return res.status(400).json({ error: "Email já cadastrado" });
@@ -137,7 +137,7 @@ router.post("/login", async (req, res) => {
 
     res.json({ token });
   } catch (err) {
-    console.error(err);
+    console.error("DB ERROR:", err.message, err.detail);
     res.status(500).json({ error: "Erro no login" });
   }
 });
