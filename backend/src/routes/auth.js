@@ -105,10 +105,20 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ error: "Email e código são obrigatórios" });
     }
 
+    const result = await pool.query(
+      "SELECT active FROM users WHERE email = $1 AND code = $2",
+      [email, code]
+    )
+    const user = result.rows[0]
+    
+    if (!user) {
+      return res.status(401).json({ error: "Credenciais inválidas" });
+    }
+    
     if (!user.active) {
       return res.status(403).json({ error: "Usuário inativo" });
     }
-
+    
     const result = await pool.query(
       "SELECT * FROM users WHERE email = $1 AND code = $2 AND active = true",
       [email, code]
