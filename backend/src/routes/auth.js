@@ -19,8 +19,10 @@ function generateCode(length = 16) {
 
 router.post("/recover", async (req, res) => {
   try {
-    const { email, age, gender } = req.body;
+    let { email, age, gender } = req.body;
 
+    console.log("BODY:", req.body);
+    
     if (!email || !age || !gender) {
       return res.status(400).json({ error: "Dados obrigatórios" });
     }
