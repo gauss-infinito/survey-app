@@ -7,13 +7,19 @@ spec:
     git:
       uri: https://github.com/gauss-infinito/survey-app
     contextDir: frontend
+
   strategy:
     type: Docker
     dockerStrategy:
       env:
         - name: NEXT_PUBLIC_API_URL
           value: "https://survey-api-flaviacb-dev.apps.rm1.0a51.p1.openshiftapps.com"
+
   output:
     to:
       kind: ImageStreamTag
       name: survey-frontend:latest
+
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
