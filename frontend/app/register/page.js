@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { API_URL } from "@/services/api";
+import { API_URL } from "../../services/api";
 
 export default function Register() {
   const [email, setEmail] = useState("");
