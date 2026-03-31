@@ -42,6 +42,9 @@ spec:
             - name: postgres-data
               mountPath: /var/lib/pgsql/data
 
+            - name: init-db
+              mountPath: /opt/app-root/src/initdb.d              
+
           readinessProbe:
             tcpSocket:
               port: 5432
