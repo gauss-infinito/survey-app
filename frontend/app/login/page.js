@@ -5,6 +5,10 @@ import { API_URL } from "@/services/api";
 
 import Link from "next/link";
 
+export const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://survey-api-flaviacb-dev.apps.rm1.0a51.p1.openshiftapps.com";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
@@ -19,12 +23,15 @@ export default function Login() {
     try {
       setLoading(true);
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+      const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, code }),
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       });
 
       const data = await res.json();
