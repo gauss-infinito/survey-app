@@ -15,19 +15,7 @@ spec:
         app: postgres
 
     spec:
-      containers:
-      initContainers:
-        - name: init-db
-          image: postgresql-16:latest
-          command:
-            - sh
-            - -c
-            - |
-              echo "Init container apenas garantindo arquivos disponíveis"
-          volumeMounts:
-            - name: init-db
-              mountPath: /scripts
-      
+      containers:     
         - name: postgres
           image: registry.redhat.io/rhel8/postgresql-16:latest
           ports:
@@ -69,6 +57,11 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 10
 
+      volumes:
+        - name: init-db
+          configMap:
+            name: postgres-init
+            
   volumeClaimTemplates:
     - metadata:
         name: postgres-data
