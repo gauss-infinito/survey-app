@@ -5,9 +5,9 @@
 
 Aplicação fullstack desenvolvida para validar práticas de build, deploy e integração em ambiente Kubernetes/OpenShift utilizando:
 
-- Frontend: Next.js
-- Backend: Node.js + Express
-- Plataforma: OpenShift
+* Frontend: Next.js
+* Backend: Node.js + Express
+* Plataforma: OpenShift
 
 ## Visão Geral
 
@@ -51,6 +51,15 @@ Componentes principais:
   * Service
   * Route (OpenShift)
   * ConfigMap e Secret
+
+## Tecnologias Utilizadas
+
+* Next.js (App Router)
+* Node.js
+* Express
+* PostgreSQL
+* OpenShift (BuildConfig, ImageStream, Route)
+* Kubernetes (Deployment, Service)
 
 ## Segurança
 
