@@ -16,6 +16,18 @@ spec:
 
     spec:
       containers:
+      initContainers:
+        - name: init-db
+          image: registry.redhat.io/rhel8/postgresql-16:latest
+          command:
+            - sh
+            - -c
+            - |
+              echo "Init container apenas garantindo arquivos disponíveis"
+          volumeMounts:
+            - name: init-db
+              mountPath: /scripts
+      
         - name: postgres
           image: registry.redhat.io/rhel8/postgresql-16:latest
           ports:
