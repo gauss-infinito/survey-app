@@ -68,7 +68,29 @@ Componentes principais:
 * Uso de **ConfigMaps** e **Secrets** para configuração
 * Compatível com políticas de segurança do OpenShift (SCC)
 
+## Configuração de Ambiente
+
+Variável crítica (Frontend)
+```bash
+NEXT_PUBLIC_API_URL=https://<route-da-api>
+```
+
+Importante:
+* O Next.js embute variáveis no build
+* Qualquer alteração exige novo build
+
 ## Build
+
+O build é realizado via BuildConfig com estratégia Docker:
+
+```yaml
+strategy:
+  type: Docker
+  dockerStrategy:
+    env:
+      - name: NEXT_PUBLIC_API_URL
+        value: "https://<route-da-api>"
+```
 
 Limpeza de recursos existentes:
 
@@ -88,11 +110,10 @@ oc new-build https://github.com/gauss-infinito/survey-app --name=survey-frontend
 oc set env bc/survey-frontend NEXT_PUBLIC_API_URL=https://survey-api-<project>.<apps-domain>.openshiftapps.com
 ```
 
-As imagens ficam disponíveis em **registry interno**:
+Executar build: 
 
-```
-image-registry.openshift-image-registry.svc:5000/<project>/survey-api
-image-registry.openshift-image-registry.svc:5000/<project>/survey-frontend
+```bash
+oc start-build survey-frontend --follow
 ```
 
 Após gerar novas imagens, reiniciamos os deployments para aplicar as mudanças:
@@ -104,10 +125,33 @@ oc rollout restart deployment survey-frontend
 
 ## Deploy
 
+Os serviços são implantados via `Deployment` e ficam disponíveis em **registry interno**::
+
+```yaml
+image-registry.openshift-image-registry.svc:5000/<project>/survey-api
+imagePullPolicy: Always
+
+image: image-registry.openshift-image-registry.svc:5000/<project>/survey-frontend:latest
+imagePullPolicy: Always
+```
+
+Atualizar aplicação: 
+
+```bash
+oc rollout restart deployment survey-api
+oc rollout restart deployment survey-frontend
+```
+
 Deploy inicial utilizando OpenShift CLI e Kustomize:
 
 ```bash
 oc apply -k https://github.com/gauss-infinito/survey-app/k8s/
+```
+
+A API é exposta via OpenShift Route:
+
+```bash
+https://survey-api-<projeto>.apps...
 ```
 
 Os manifests Kubernetes/OpenShift estão disponíveis no diretório `/k8s`.
