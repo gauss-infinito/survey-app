@@ -92,16 +92,6 @@ strategy:
         value: "https://<route-da-api>"
 ```
 
-Limpeza de recursos existentes:
-
-```bash
-oc delete bc survey-api
-oc delete is survey-api
-oc delete bc survey-frontend
-oc delete is survey-frontend
-oc delete builds --all
-```
-
 Criação de novos builds:
 
 ```bash
