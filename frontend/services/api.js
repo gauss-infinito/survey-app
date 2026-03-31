@@ -12,12 +12,25 @@ async function handleResponse(res) {
   }
 
   if (!res.ok) {
-    const message =
-      data?.error || data?.message || "Erro na requisição";
-    throw new Error(message);
+    throw new Error(data?.error || data?.message || "Erro na requisição");
   }
 
   return data;
+}
+
+export async function loginRequest({ email, code }) {
+  const res = await fetch(`${API_URL}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password: code, 
+    }),
+  });
+
+  return handleResponse(res);
 }
 
 export async function createSurvey(data) {
