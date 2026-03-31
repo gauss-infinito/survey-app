@@ -1,13 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { API_URL } from "@/services/api";
-
 import Link from "next/link";
-
-export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://survey-api-flaviacb-dev.apps.rm1.0a51.p1.openshiftapps.com";
+import { loginRequest } from "@/services/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,32 +18,15 @@ export default function Login() {
     try {
       setLoading(true);
 
-      const res = await fetch(`${API_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.error || "Erro no login");
-        return;
-      }
+      const data = await loginRequest({ email, code });
 
       localStorage.setItem("token", data.token);
 
-      // opcional: redirecionar
       // window.location.href = "/dashboard";
 
     } catch (err) {
       console.error(err);
-      alert("Erro de conexão");
+      alert(err.message || "Erro de conexão");
     } finally {
       setLoading(false);
     }
@@ -62,7 +40,6 @@ export default function Login() {
         <label htmlFor="email">E-mail:</label><br />
         <input
           id="email"
-          name="email"
           type="email"
           required
           placeholder="email"
@@ -76,7 +53,6 @@ export default function Login() {
         <label htmlFor="code">Código:</label><br />
         <input
           id="code"
-          name="code"
           required
           style={{ width: "100%" }}
           placeholder="código"
