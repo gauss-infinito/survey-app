@@ -103,6 +103,7 @@ oc set env bc/survey-frontend NEXT_PUBLIC_API_URL=https://survey-api-<project>.<
 Executar build: 
 
 ```bash
+oc start-build survey-api --follow
 oc start-build survey-frontend --follow
 ```
 
