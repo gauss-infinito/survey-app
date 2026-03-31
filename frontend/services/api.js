@@ -26,7 +26,7 @@ export async function loginRequest({ email, code }) {
     },
     body: JSON.stringify({
       email,
-      password: code, 
+      code,
     }),
   });
 
