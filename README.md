@@ -1,9 +1,13 @@
-# Survey App
+# Survey App — Next.js + Node.js on OpenShift
 
 > [!IMPORTANT]
 > **Repositório em construção.**
 
-Aplicação de pesquisa de opinião rápida e direta (enquete) desenvolvida para execução em ambientes Kubernetes/OpenShift, seguindo princípios cloud-native.
+Aplicação fullstack desenvolvida para validar práticas de build, deploy e integração em ambiente Kubernetes/OpenShift utilizando:
+
+- Frontend: Next.js
+- Backend: Node.js + Express
+- Plataforma: OpenShift
 
 ## Visão Geral
 
@@ -27,19 +31,20 @@ A aplicação é baseada em três perfis de usuário:
 
 A aplicação segue princípios de arquitetura cloud-native e é projetada para rodar em Kubernetes/OpenShift.
 
+``´
+Browser
+   ↓
+Route (OpenShift)
+   ↓
+Frontend (Next.js)
+   ↓
+Backend API (Express)
+```
+
 Componentes principais:
 * **Frontend**: Interface web (React / Next.js)
 * **Backend**: API responsável pelas regras de negócio
 * **Banco de Dados**: PostgreSQL
-  ```
-  users (role, active)
-     ↓
-  surveys (user_id)
-     ↓
-  questions (max 3)
-     ↓
-  items (2 a 5)
-  ```
 * **Infraestrutura OpenShift/K8s**:
 
   * Deployment
