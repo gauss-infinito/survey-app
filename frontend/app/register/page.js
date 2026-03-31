@@ -2,60 +2,110 @@
 
 import { useState } from "react";
 import { API_URL } from "@/services/api";
+import Link from "next/link";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  const [generatedCode, setGeneratedCode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [generatedCode, setGeneratedCode] = useState("");  
 
   async function register() {
-    const res = await fetch(`${API_URL}/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, age, gender }),
-    });
+    if (!email || !age || !gender) {
+      setError("Preencha todos os campos");
+      return;
+    }
 
-    const data = await res.json();
+    try {
+      setLoading(true);
+      setError("");
 
-    localStorage.setItem("token", data.token);
-    alert(`Guarde seu código: ${data.code}`);
-    setGeneratedCode(data.code);
+      const res = await fetch(`${API_URL}/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, age, gender }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Erro ao registrar");
+      }
+
+      const data = await res.json();
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
+
+      setGeneratedCode(data.code);
+
+    } catch (err) {
+      console.error(err);
+      setError("Erro de conexão");
+    } finally {
+      setLoading(false);
+    }
   }
- 
+
+  function copyCode() {
+    navigator.clipboard.writeText(generatedCode);
+    alert("Código copiado!");
+  }
+
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Registre-se</h2>
 
+      {error && (
+        <p style={{ color: "red" }}>{error}</p>
+      )}
+
       <div>
         <label htmlFor="email">E-mail:</label><br />
-        <input id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" style={{ width: "100%" }} />
+        <input
+          id="email"
+          type="email"
+          style={{ width: "100%" }}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
 
       <div style={{ marginTop: "10px" }}>
-        <label htmlFor="age">Idade:</label><br />
-        <input id="age1" name="age" type="radio" value="young" onChange={(e) => setAge(e.target.value)} /> Jovem: 18 a 20 anos<br />
-        <input id="age2" name="age" type="radio" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto(a): 21 a 59 anos<br />
-        <input id="age3" name="age" type="radio" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso(a): 60 anos ou mais<br />
+        <label>Idade:</label><br />
+        <input type="radio" name="age" value="young" onChange={(e) => setAge(e.target.value)} /> Jovem<br />
+        <input type="radio" name="age" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto<br />
+        <input type="radio" name="age" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso<br />
       </div>
 
       <div style={{ marginTop: "10px" }}>
-        <label htmlFor="gender">Gênero:</label><br />
-        <input id="gender1" name="gender" type="radio" value="cis-woman" onChange={(e) => setGender(e.target.value)} /> Mulher cis<br />
-        <input id="gender2" name="gender" type="radio" value="trans-woman" onChange={(e) => setGender(e.target.value)} /> Mulher trans<br />
-        <input id="gender3" name="gender" type="radio" value="cis-man" onChange={(e) => setGender(e.target.value)} /> Homem cis<br />
-        <input id="gender4" name="gender" type="radio" value="trans-man" onChange={(e) => setGender(e.target.value)} /> Homem trans<br />
-        <input id="gender5" name="gender" type="radio" value="non-binary" onChange={(e) => setGender(e.target.value)} /> Não-binário<br />
+        <label>Gênero:</label><br />
+        <input type="radio" name="gender" value="cis-woman" onChange={(e) => setGender(e.target.value)} /> Mulher cis<br />
+        <input type="radio" name="gender" value="trans-woman" onChange={(e) => setGender(e.target.value)} /> Mulher trans<br />
+        <input type="radio" name="gender" value="cis-man" onChange={(e) => setGender(e.target.value)} /> Homem cis<br />
+        <input type="radio" name="gender" value="trans-man" onChange={(e) => setGender(e.target.value)} /> Homem trans<br />
+        <input type="radio" name="gender" value="non-binary" onChange={(e) => setGender(e.target.value)} /> Não-binário<br />
       </div>
 
       <div style={{ textAlign: "center", marginTop: "28px" }}>
-        <button onClick={register}>Salvar</button>
+        <button onClick={register} disabled={loading}>
+          {loading ? "Registrando..." : "Registrar"}
+        </button>
+      </div>
+
+      {generatedCode && (
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
+          <strong>Seu código:</strong><br />
+          <span>{generatedCode}</span><br /><br />
+          <button onClick={copyCode}>Copiar</button>
+        </div>
+      )}
+
+      <div style={{ textAlign: "center", marginTop: "24px" }}>
+        <Link href="/login">Voltar ao login</Link>
       </div>
     </div>
   );
 }
-
-
-
