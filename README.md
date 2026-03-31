@@ -31,7 +31,7 @@ A aplicação é baseada em três perfis de usuário:
 
 A aplicação segue princípios de arquitetura cloud-native e é projetada para rodar em Kubernetes/OpenShift.
 
-``´
+```
 Browser
    ↓
 Route (OpenShift)
