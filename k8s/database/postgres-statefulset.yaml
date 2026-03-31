@@ -18,7 +18,7 @@ spec:
       containers:
       initContainers:
         - name: init-db
-          image: registry.redhat.io/rhel8/postgresql-16:latest
+          image: postgresql-16:latest
           command:
             - sh
             - -c
