@@ -151,6 +151,7 @@ oc apply -k https://github.com/gauss-infinito/survey-app/k8s/
 A API é exposta via OpenShift Route:
 
 ```bash
+https://survey-frontend-<projeto>.apps...
 https://survey-api-<projeto>.apps...
 ```
 
