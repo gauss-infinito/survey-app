@@ -69,9 +69,9 @@ export default function Recover() {
 
       <div style={{ marginTop: "10px" }}>
         <label>Idade:</label><br />
-        <input type="radio" name="age" value="young" onChange={(e) => setAge(e.target.value)} /> Jovem<br />
-        <input type="radio" name="age" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto<br />
-        <input type="radio" name="age" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso<br />
+        <input type="radio" name="age" value="young" onChange={(e) => setAge(e.target.value)} /> Jovem: 18 a 20 anos<br />
+        <input type="radio" name="age" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto(a): 21 a 59 anos<br />
+        <input type="radio" name="age" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso(a): 60 anos ou mais<br />
       </div>
 
       <div style={{ marginTop: "10px" }}>
