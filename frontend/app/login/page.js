@@ -9,8 +9,6 @@ import MessageForm from "@/components/MessageForm";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const {
     loading,
@@ -76,8 +74,8 @@ export default function Login() {
         <input
           id="code"
           required
-          style={{ width: "100%" }}
           placeholder="código"
+          style={{ width: "100%" }}
           onChange={(e) => setCode(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && login()}
         />
