@@ -11,7 +11,7 @@ Aplicação fullstack desenvolvida para validar práticas de build, deploy e int
 
 ## Visão Geral
 
-O [**Survey App**](requisitos.md) permite criar, publicar e analisar pesquisas de opinião de forma escalável e segura.
+O [**Survey App**](requisitos.md) permite criar, publicar e analisar pesquisas de opinião rápidas (enquetes).
 
 A aplicação é baseada em três perfis de usuário:
 
