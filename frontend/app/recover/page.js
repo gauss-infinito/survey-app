@@ -6,22 +6,22 @@ import { API_URL } from "@/services/api";
 import { useFormFeedback } from "@/components/hooks/useFormFeedback";
 import MessageForm from "@/components/MessageForm";
 
-const {
-  loading,
-  error,
-  success,
-  startLoading,
-  stopLoading,
-  showError,
-  showSuccess,
-} = useFormFeedback();
-
 export default function Recover() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [loading, setLoading] = useState(false);
   const [recoveredCode, setRecoveredCode] = useState("");
+
+  const {
+    loading,
+    error,
+    success,
+    startLoading,
+    stopLoading,
+    showError,
+    showSuccess,
+  } = useFormFeedback();
 
   async function recover() {
     if (!email || !age || !gender) {
