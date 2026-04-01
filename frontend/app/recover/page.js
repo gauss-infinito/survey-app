@@ -23,12 +23,16 @@ export default function Recover() {
   } = useFormFeedback();
 
   async function recover() {
+    if (loading) return;
+    
     if (!email || !age || !gender) {
       showError("Preencha todos os campos");
+      return;
     }
 
     try {
       startLoading();
+      clearMessages(); 
 
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/recover`, {
         method: "POST",
@@ -41,7 +45,7 @@ export default function Recover() {
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.error || "Erro na recuperação");
+        showError(data.error || "Erro na recuperação");
         return;
       }
 
@@ -49,7 +53,7 @@ export default function Recover() {
 
     } catch (err) {
       console.error(err);
-      alert("Erro de conexão");
+      showError("Erro de conexão");
     } finally {
       stopLoading();
     }
@@ -57,7 +61,8 @@ export default function Recover() {
 
   function copyCode() {
     navigator.clipboard.writeText(recoveredCode);
-    alert("Código copiado!");
+    showError("Código copiado!");
+    return;
   }
 
   return (
