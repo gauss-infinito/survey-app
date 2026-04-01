@@ -20,7 +20,7 @@
 .circle {
   width: 320px;
   height: 320px;
-  background-color: #fff200;
+  background-color: #f17f67;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@
 .title {
   font-size: 64px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: -1px;
   color: #fff200;
 }
 
