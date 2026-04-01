@@ -33,7 +33,7 @@ export default function Recover() {
     try {
       startLoading();
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recover`, {
+      const res = await fetch(`${API_URL}/auth//recover`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
