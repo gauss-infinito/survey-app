@@ -31,9 +31,10 @@ router.post("/recover", async (req, res) => {
     );
 
     const user = result.rows[0];
+    let newCode = null;
 
     if (user) {
-      const newCode = generateCode();
+      newCode = generateCode();
       const expiration = new Date(Date.now() + 15 * 60 * 1000);
 
       await pool.query(
