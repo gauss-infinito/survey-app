@@ -60,7 +60,7 @@ router.post("/:id/publish", auth(["administrator", "researcher"]), async (req, r
 });
 
 // Responder pesquisa (público)
-router.post("/public/:publicId/respond", async (req, res) => {
+router.post("/:id/reply", auth, async (req, res) => {
   try {
     const { answers, age, gender } = req.body;
 
@@ -69,15 +69,28 @@ router.post("/public/:publicId/respond", async (req, res) => {
     }
 
     await pool.query(
-      `INSERT INTO responses (survey_public_id, age, gender, answers)
+      `INSERT INTO responses (survey_id, age, gender, answers)
        VALUES ($1, $2, $3, $4)`,
-      [req.params.publicId, age, gender, answers]
+      [req.params.id, age, gender, answers]
     );
 
     res.json({ message: "Resposta enviada" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Erro ao enviar resposta" });
+  }
+});
+
+// listar pesquisa
+router.get("/", auth, async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT * FROM surveys ORDER BY id DESC"
+    );
+
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: "Erro ao listar surveys" });
   }
 });
 
