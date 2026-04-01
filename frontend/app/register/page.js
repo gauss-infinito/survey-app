@@ -29,8 +29,8 @@ export default function Register() {
     }
 
     try {
-      setLoading(true);
-      clearMessages(); // ou simplesmente remover
+      startLoading();
+      clearMessages();
 
       const res = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
@@ -56,7 +56,7 @@ export default function Register() {
       console.error(err);
       showError("Erro de conexão");
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   }
 
