@@ -154,8 +154,12 @@ Os manifests Kubernetes/OpenShift estão disponíveis no diretório `/k8s`.
 survey-app/
 ├── frontend/        # Aplicação Next.js
 ├── backend/         # API Node.js (Express)
-├── k8s/             # Manifests Kubernetes
-├── openshift/       # Configurações específicas do OpenShift
+└───k8s/             # Manifests Kubernetes
+    ├───backend
+    ├───base
+    ├───database
+    ├───frontend
+    └───openshift    # Configurações específicas do OpenShift
 ```
 
 ## Licença
