@@ -63,9 +63,8 @@ export default function Register() {
   }
 
   function copyCode() {
-    navigator.clipboard.writeText(generatedCode);
-    showError("Código copiado!");
-    return;
+    navigator.clipboard.writeText(recoveredCode);
+    showSuccess("Código copiado!");
   }
 
   return (
