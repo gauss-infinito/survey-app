@@ -94,14 +94,14 @@
 }
 
 .subtitle { 
-  font-size: 48px;
+  font-size: 36px;
   color: #ffffff;
-  margin-top: 10px;
+  top: -6px;
 }
 
 /* LINKS */
 .links {
-  margin-top: 16px;
+  top: -6px;
   display: flex;
   gap: 20px;
 }
