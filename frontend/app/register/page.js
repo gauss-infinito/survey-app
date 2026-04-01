@@ -42,8 +42,7 @@ export default function Register() {
       });
 
       if (!res.ok) {
-        showError("Erro ao registrar");
-        return;
+        console.error("Erro backend:", await res.text());
       }
 
       const data = await res.json();
@@ -54,6 +53,8 @@ export default function Register() {
 
       setGeneratedCode(data.code);
 
+      showSuccess("Se os dados estiverem corretos, você receberá um código");
+      
     } catch (err) {
       console.error(err);
       showError("Erro de conexão");
@@ -63,7 +64,7 @@ export default function Register() {
   }
 
   function copyCode() {
-    navigator.clipboard.writeText(recoveredCode);
+    navigator.clipboard.writeText(generatedCode);
     showSuccess("Código copiado!");
   }
 
