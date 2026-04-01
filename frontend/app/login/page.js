@@ -23,6 +23,8 @@ export default function Login() {
   const [error, setError] = useState("");
 
   async function login() {
+    if (loading) return;
+    
     if (!email || !code) {
       setError("Preencha e-mail e código");
       return;
@@ -54,21 +56,7 @@ export default function Login() {
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Login</h2>
 
-      {/* 🔴 mensagem de erro */}
-      {error && (
-        <div
-          style={{
-            background: "#ffe6e6",
-            color: "#b00020",
-            padding: "8px",
-            borderRadius: "4px",
-            marginBottom: "12px",
-            fontSize: "14px",
-          }}
-        >
-          {error}
-        </div>
-      )}
+      <MessageForm error={error} success={success} />
 
       <div>
         <label htmlFor="email">E-mail:</label><br />
