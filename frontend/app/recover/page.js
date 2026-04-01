@@ -24,7 +24,7 @@ export default function Recover() {
 
   async function recover() {
     if (loading) return;
-    
+
     if (!email || !age || !gender) {
       showError("Preencha todos os campos");
       return;
@@ -33,7 +33,7 @@ export default function Recover() {
     try {
       startLoading();
 
-      const res = await fetch(`${API_URL}/auth//recover`, {
+      const res = await fetch(`${API_URL}/recover`, { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,14 +41,17 @@ export default function Recover() {
         body: JSON.stringify({ email, age, gender }),
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
-        showError(data.error || "Erro na recuperação");
+        const text = await res.text(); 
+        console.error("Erro backend:", text);
+        showError("Erro na recuperação");
         return;
       }
 
+      const data = await res.json();
+
       setRecoveredCode(data.code);
+      showSuccess("Código recuperado com sucesso"); // UX melhor
 
     } catch (err) {
       console.error(err);
