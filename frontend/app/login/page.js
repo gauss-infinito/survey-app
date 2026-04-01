@@ -30,7 +30,6 @@ export default function Login() {
 
     try {
       startLoading();
-      clearMessages(); 
 
       const data = await loginRequest({ email, code });
 
