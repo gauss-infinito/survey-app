@@ -10,7 +10,6 @@ export default function Recover() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  const [recoveredCode, setRecoveredCode] = useState("");
 
   const {
     loading,
@@ -41,17 +40,13 @@ export default function Recover() {
         body: JSON.stringify({ email, age, gender }),
       });
 
+      // Mesmo se der erro, não revelar detalhes
       if (!res.ok) {
-        const text = await res.text(); 
-        console.error("Erro backend:", text);
-        showError("Erro na recuperação");
-        return;
+        console.error("Erro backend:", await res.text());
       }
 
-      const data = await res.json();
-
-      setRecoveredCode(data.code);
-      showSuccess("Código recuperado com sucesso"); // UX melhor
+      // 🔐 Mensagem genérica sempre
+      showSuccess("Se os dados estiverem corretos, você receberá um código");
 
     } catch (err) {
       console.error(err);
@@ -59,11 +54,6 @@ export default function Recover() {
     } finally {
       stopLoading();
     }
-  }
-
-  function copyCode() {
-    navigator.clipboard.writeText(recoveredCode);
-    showSuccess("Código copiado!");
   }
 
   return (
@@ -105,15 +95,6 @@ export default function Recover() {
           {loading ? "Recuperando..." : "Recuperar"}
         </button>
       </div>
-
-      {/* resultado */}
-      {recoveredCode && (
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <strong>Seu novo código:</strong><br />
-          <span>{recoveredCode}</span><br /><br />
-          <button onClick={copyCode}>Copiar</button>
-        </div>
-      )}
 
       <div style={{ textAlign: "center", marginTop: "24px" }}>
         <Link href="/login">Voltar ao login</Link>
