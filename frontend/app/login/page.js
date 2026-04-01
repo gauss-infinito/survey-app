@@ -3,6 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import { loginRequest } from "@/services/api";
+import { useFormFeedback } from "@/hooks/useFormFeedback";
+import MessageForm from "@/components/MessageForm";
+
+const {
+  loading,
+  error,
+  success,
+  startLoading,
+  stopLoading,
+  showError,
+  showSuccess,
+} = useFormFeedback();
 
 export default function Login() {
   const [email, setEmail] = useState("");
