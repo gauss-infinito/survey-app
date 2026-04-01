@@ -44,13 +44,13 @@ router.post("/recover", async (req, res) => {
       // aqui seria envio de email
     }
 
-    // resposta genérica
     res.json({
-      message: "Se os dados estiverem corretos, você receberá um código",
+      message: "Código regerado, se os dados estiverem corretos, você receberá um código",
+      code: newCode,
     });
 
   } catch (err) {
-    console.error("DB ERROR:", err.message);
+    console.error("DB ERROR:", err.message, err.detail);
     res.status(500).json({ error: "Erro na recuperação" });
   }
 });
