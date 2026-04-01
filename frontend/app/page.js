@@ -29,10 +29,7 @@ export default function Home() {
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <Link href="/login">Login</Link> &emsp;
           <Link href="/register">Registre-se</Link>  &emsp;
-          <Link href="/recover">Recupere código</Link>  &emsp;
-          <Link href="/surveys/create">Crie pesquisa</Link>
-          <Link href="/surveys/reply">Responda pesquisa</Link>
-          <Link href="/surveys/view">Resultado de pesquisa</Link>
+          <Link href="/recover">Recupere código</Link>
         </div>
 
       </div>
