@@ -32,7 +32,6 @@ export default function Recover() {
 
     try {
       startLoading();
-      clearMessages(); 
 
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/recover`, {
         method: "POST",
