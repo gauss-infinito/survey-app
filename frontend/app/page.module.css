@@ -33,9 +33,9 @@
   height: 200px;
   background: #f5f5f5;
   border-radius: 6px;
-  border: 6px solid #6aa84f;
+  border: 6px solid #72c2c3;
   position: relative;
-  box-shadow: 6px 6px 0 #c0392b;
+  box-shadow: 6px 6px 0 #f1ff67;
 }
 
 .clipTop {
@@ -75,7 +75,7 @@
   color: #e74c3c;
   font-size: 20px;
   position: absolute;
-  top: -6px;
+  top: -7px;
   left: 2px;
 }
 
@@ -96,12 +96,12 @@
 .subtitle { 
   font-size: 36px;
   color: #ffffff;
-  margin-top: -6px;
+  margin-top: -12px;
 }
 
 /* LINKS */
 .links {
-  margin-top: -6px;
+  margin-top: -12px;
   display: flex;
   gap: 20px;
 }
