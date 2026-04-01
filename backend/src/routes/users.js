@@ -31,6 +31,20 @@ router.post("/", auth(["administrator"]), async (req, res) => {
   }
 });
 
+// perfil do usuário
+router.get("/me", auth, async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT id, email, age, gender FROM users WHERE id = $1",
+      [req.user.id]
+    );
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: "Erro ao buscar usuário" });
+  }
+});
+
 // Listar usuários
 router.get("/", auth(["administrator"]), async (req, res) => {
   try {
