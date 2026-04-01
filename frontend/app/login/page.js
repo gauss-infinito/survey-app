@@ -24,13 +24,13 @@ export default function Login() {
     if (loading) return;
     
     if (!email || !code) {
-      setError("Preencha e-mail e código");
+      showError("Preencha e-mail e código");
       return;
     }
 
     try {
-      setLoading(true);
-      setError(""); // limpa erro anterior
+      startLoading();
+      clearMessages(); 
 
       const data = await loginRequest({ email, code });
 
@@ -44,9 +44,9 @@ export default function Login() {
 
     } catch (err) {
       console.error(err);
-      setError(err.message || "Erro de conexão");
+      showError(err.message || "Erro de conexão");
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   }
 
