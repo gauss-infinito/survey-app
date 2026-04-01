@@ -21,40 +21,36 @@ router.post("/recover", async (req, res) => {
   try {
     let { email, age, gender } = req.body;
 
-    console.log("BODY:", req.body);
-    
     if (!email || !age || !gender) {
       return res.status(400).json({ error: "Dados obrigatórios" });
     }
 
     const result = await pool.query(
-      "SELECT id, active FROM users WHERE email = $1 AND age = $2 AND gender = $3",
+      "SELECT id FROM users WHERE email = $1 AND age = $2 AND gender = $3 AND active = true",
       [email, age, gender]
     );
 
     const user = result.rows[0];
 
-    if (!user || user.active !== true) {
-      return res.status(404).json({ error: "Dados inválidos" });
+    if (user) {
+      const newCode = generateCode();
+      const expiration = new Date(Date.now() + 15 * 60 * 1000);
+
+      await pool.query(
+        "UPDATE users SET code = $1, code_expiration = $2 WHERE id = $3",
+        [newCode, expiration, user.id]
+      );
+
+      // aqui seria envio de email
     }
 
-    const newCode = generateCode();
-
-    await pool.query(
-      "UPDATE users SET code = $1 WHERE id = $2",
-      [newCode, user.id]
-    );
-
-    // pequeno delay (anti brute force)
-    await new Promise((r) => setTimeout(r, 500));
-
+    // resposta genérica
     res.json({
-      message: "Código regenerado",
-      code: newCode,
+      message: "Se os dados estiverem corretos, você receberá um código",
     });
 
   } catch (err) {
-    console.error("DB ERROR:", err.message, err.detail);
+    console.error("DB ERROR:", err.message);
     res.status(500).json({ error: "Erro na recuperação" });
   }
 });
