@@ -20,7 +20,7 @@
 .circle {
   width: 320px;
   height: 320px;
-  background-color: #f17f67;
+  background-color: #fff200;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@
   border-radius: 6px;
   border: 6px solid #72c2c3;
   position: relative;
-  box-shadow: 6px 6px 0 #f1ff67;
+  box-shadow: 6px 6px 0 #f17f67;
 }
 
 .clipTop {
