@@ -20,7 +20,7 @@
 .circle {
   width: 320px;
   height: 320px;
-  background-color: #f2c94c;
+  background-color: #fff200;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -90,18 +90,18 @@
   font-size: 64px;
   font-weight: 700;
   letter-spacing: 2px;
-  color: #f2c94c;
+  color: #fff200;
 }
 
 .subtitle { 
   font-size: 36px;
   color: #ffffff;
-  top: -6px;
+  margin-top: -6px;
 }
 
 /* LINKS */
 .links {
-  top: -6px;
+  margin-top: -6px;
   display: flex;
   gap: 20px;
 }
@@ -115,7 +115,7 @@
 }
 
 .link:hover {
-  border-bottom: 2px solid #f2c94c;
+  border-bottom: 2px solid #fff200;
 }
 
 /* RESPONSIVO */
