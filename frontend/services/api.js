@@ -44,3 +44,15 @@ export async function createSurvey(data) {
 
   return handleResponse(res);
 }
+
+export async function recoverRequest({ email, age, gender }) {
+  const res = await fetch(`${API_URL}/recover`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, age, gender }),
+  });
+
+  return handleResponse(res);
+}
