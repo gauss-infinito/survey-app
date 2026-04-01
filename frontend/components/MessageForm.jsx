@@ -1,3 +1,5 @@
+"use client";
+
 export default function FormMessage({ error, success }) {
   if (!error && !success) return null;
 
