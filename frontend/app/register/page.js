@@ -23,6 +23,8 @@ export default function Register() {
   } = useFormFeedback();
 
   async function register() {
+    if (loading) return;
+    
     if (!email || !age || !gender) {
       showError("Preencha todos os campos");
       return;
@@ -41,7 +43,8 @@ export default function Register() {
       });
 
       if (!res.ok) {
-        throw new Error("Erro ao registrar");
+        showError("Erro ao registrar");
+        return;
       }
 
       const data = await res.json();
@@ -62,7 +65,8 @@ export default function Register() {
 
   function copyCode() {
     navigator.clipboard.writeText(generatedCode);
-    alert("Código copiado!");
+    showError("Código copiado!");
+    return;
   }
 
   return (
