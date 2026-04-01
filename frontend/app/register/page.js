@@ -97,7 +97,7 @@ export default function Register() {
 
       {generatedCode && (
         <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <strong>Seu código:</strong><br />
+          <strong>Guarde seu código:</strong><br />
           <span>{generatedCode}</span><br /><br />
           <button onClick={copyCode}>Copiar</button>
         </div>
