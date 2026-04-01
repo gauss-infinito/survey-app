@@ -1,7 +1,7 @@
 .main {
   min-height: 100vh;
   font-family: system-ui;
-  background-color: #9441cd;
+  background-color: #f17f67;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@
 .checked::after {
   content: "✔";
   color: #e74c3c;
-  font-size: 18px;
+  font-size: 20px;
   position: absolute;
   top: -6px;
   left: 2px;
