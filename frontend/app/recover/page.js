@@ -60,8 +60,7 @@ export default function Recover() {
 
   function copyCode() {
     navigator.clipboard.writeText(recoveredCode);
-    showError("Código copiado!");
-    return;
+    showSuccess("Código copiado!");
   }
 
   return (
