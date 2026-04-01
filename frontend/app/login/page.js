@@ -6,21 +6,21 @@ import { loginRequest } from "@/services/api";
 import { useFormFeedback } from "@/components/hooks/useFormFeedback";
 import MessageForm from "@/components/MessageForm";
 
-const {
-  loading,
-  error,
-  success,
-  startLoading,
-  stopLoading,
-  showError,
-  showSuccess,
-} = useFormFeedback();
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const {
+    loading,
+    error,
+    success,
+    startLoading,
+    stopLoading,
+    showError,
+    showSuccess,
+  } = useFormFeedback();
 
   async function login() {
     if (loading) return;
