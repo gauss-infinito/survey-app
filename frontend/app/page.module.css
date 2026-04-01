@@ -96,12 +96,12 @@
 .subtitle { 
   font-size: 36px;
   color: #ffffff;
-  margin-top: -12px;
+  margin-top: -18px;
 }
 
 /* LINKS */
 .links {
-  margin-top: -12px;
+  margin-top: -18px;
   display: flex;
   gap: 20px;
 }
