@@ -110,14 +110,13 @@
 .link {
   color: white;
   text-decoration: none;
-  font-weight: 700;
+  font-size: 12px;
   border-bottom: 2px solid transparent;
   transition: 0.2s;
 }
 
 .link:hover {
   border-bottom: 2px solid #ffffff;
-  text-decoration: underline;
 }
 
 /* RESPONSIVO */
