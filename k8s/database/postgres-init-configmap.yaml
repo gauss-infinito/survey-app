@@ -24,7 +24,8 @@ data:
       gender gender_type,
       role role_type DEFAULT 'respondent',
       active BOOLEAN DEFAULT true,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP
     );
 
     CREATE TABLE IF NOT EXISTS surveys (
