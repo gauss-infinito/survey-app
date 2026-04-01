@@ -10,8 +10,6 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");  
 
   const {
