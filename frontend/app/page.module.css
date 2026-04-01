@@ -73,7 +73,7 @@
 .checked::after {
   content: "✔";
   color: #e74c3c;
-  font-size: 20px;
+  font-size: 22px;
   position: absolute;
   top: -7px;
   left: 2px;
