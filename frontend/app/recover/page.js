@@ -24,12 +24,11 @@ export default function Recover() {
 
   async function recover() {
     if (!email || !age || !gender) {
-      alert("Preencha todos os campos");
-      return;
+      showError("Preencha todos os campos");
     }
 
     try {
-      setLoading(true);
+      startLoading();
 
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/recover`, {
         method: "POST",
@@ -52,7 +51,7 @@ export default function Recover() {
       console.error(err);
       alert("Erro de conexão");
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   }
 
