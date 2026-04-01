@@ -1,16 +1,32 @@
-export default function Page() {
+"use client";
+
+import { useEffect, useState } from "react";
+import { API_URL } from "@/services/api";
+
+export default function ViewSurveys() {
+  const [surveys, setSurveys] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    fetch(`${API_URL}/surveys`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(setSurveys);
+  }, []);
+
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        fontFamily: "system-ui",
-        backgroundColor: "#f5f5f5",
-      }}
-    >
-      <h1 style={{ color: "#333" }}>🚧 Em construção 🚧</h1>
+    <div>
+      <h2>Surveys</h2>
+      {surveys.map((s) => (
+        <div key={s.id}>
+          <strong>{s.title}</strong>
+          <p>{s.description}</p>
+        </div>
+      ))}
     </div>
   );
 }
