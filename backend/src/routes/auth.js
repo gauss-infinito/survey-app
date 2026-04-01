@@ -38,10 +38,10 @@ router.post("/recover", async (req, res) => {
       const expiration = new Date(Date.now() + 15 * 60 * 1000);
 
       await pool.query(
-        "UPDATE users SET code = $1, code_expiration = $2 WHERE id = $3",
+        "UPDATE users SET code = $1, updated_at = $2 WHERE id = $3",
         [newCode, expiration, user.id]
       );
-
+     
       // aqui seria envio de email
     }
 
