@@ -32,7 +32,6 @@ export default function Register() {
 
     try {
       startLoading();
-      clearMessages();
 
       const res = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
