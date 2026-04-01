@@ -6,16 +6,6 @@ import { API_URL } from "@/services/api";
 import { useFormFeedback } from "@/components/hooks/useFormFeedback";
 import MessageForm from "@/components/MessageForm";
 
-const {
-  loading,
-  error,
-  success,
-  startLoading,
-  stopLoading,
-  showError,
-  showSuccess,
-} = useFormFeedback();
-
 export default function Register() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
@@ -23,6 +13,16 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");  
+
+  const {
+    loading,
+    error,
+    success,
+    startLoading,
+    stopLoading,
+    showError,
+    showSuccess,
+  } = useFormFeedback();
 
   async function register() {
     if (!email || !age || !gender) {
