@@ -24,13 +24,13 @@ export default function Register() {
 
   async function register() {
     if (!email || !age || !gender) {
-      setError("Preencha todos os campos");
+      showError("Preencha todos os campos");
       return;
     }
 
     try {
       setLoading(true);
-      setError("");
+      clearMessages(); // ou simplesmente remover
 
       const res = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
@@ -54,7 +54,7 @@ export default function Register() {
 
     } catch (err) {
       console.error(err);
-      setError("Erro de conexão");
+      showError("Erro de conexão");
     } finally {
       setLoading(false);
     }
