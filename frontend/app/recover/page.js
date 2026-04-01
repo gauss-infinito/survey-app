@@ -1,9 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { API_URL } from "@/services/api";
-
 import Link from "next/link";
+import { API_URL } from "@/services/api";
+import { useFormFeedback } from "@/hooks/useFormFeedback";
+import MessageForm from "@/components/MessageForm";
+
+const {
+  loading,
+  error,
+  success,
+  startLoading,
+  stopLoading,
+  showError,
+  showSuccess,
+} = useFormFeedback();
 
 export default function Recover() {
   const [email, setEmail] = useState("");
@@ -55,6 +66,8 @@ export default function Recover() {
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Recupere seu código</h2>
 
+      <MessageForm error={error} success={success} />
+  
       <div>
         <label htmlFor="email">E-mail:</label><br />
         <input
