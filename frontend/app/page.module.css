@@ -1,7 +1,7 @@
 .main {
   min-height: 100vh;
   font-family: system-ui;
-  background-color: #f17f67;
+  background-color: #d96c54;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
 .circle {
   width: 320px;
   height: 320px;
-  background-color: #fff200;
+  background-color: #ffc107;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -90,13 +90,13 @@
   font-size: 64px;
   font-weight: 700;
   letter-spacing: -1px;
-  color: #fff200;
+  color: #ffffff;
   margin-top: -18px;
 }
 
 .subtitle { 
   font-size: 36px;
-  color: #ffffff;
+  color: ffefea;
   margin-top: -18px;
 }
 
@@ -116,7 +116,7 @@
 }
 
 .link:hover {
-  border-bottom: 2px solid #fff200;
+  border-bottom: 2px solid #ffc107;
 }
 
 /* RESPONSIVO */
