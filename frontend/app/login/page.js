@@ -8,17 +8,23 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function login() {
     if (!email || !code) {
-      alert("Preencha e-mail e código");
+      setError("Preencha e-mail e código");
       return;
     }
 
     try {
       setLoading(true);
+      setError(""); // limpa erro anterior
 
       const data = await loginRequest({ email, code });
+
+      if (!data?.token) {
+        throw new Error("Credenciais inválidas");
+      }
 
       localStorage.setItem("token", data.token);
 
@@ -26,7 +32,7 @@ export default function Login() {
 
     } catch (err) {
       console.error(err);
-      alert(err.message || "Erro de conexão");
+      setError(err.message || "Erro de conexão");
     } finally {
       setLoading(false);
     }
@@ -35,6 +41,22 @@ export default function Login() {
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Login</h2>
+
+      {/* 🔴 mensagem de erro */}
+      {error && (
+        <div
+          style={{
+            background: "#ffe6e6",
+            color: "#b00020",
+            padding: "8px",
+            borderRadius: "4px",
+            marginBottom: "12px",
+            fontSize: "14px",
+          }}
+        >
+          {error}
+        </div>
+      )}
 
       <div>
         <label htmlFor="email">E-mail:</label><br />
