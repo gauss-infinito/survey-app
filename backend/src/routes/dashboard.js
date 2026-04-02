@@ -21,7 +21,10 @@ router.get("/", auth, async (req, res) => {
     );
 
     const my_responses = await pool.query(
-      "SELECT COUNT(*) FROM responses WHERE user_id = $1",
+      `SELECT COUNT(*) 
+       FROM responses r
+       JOIN surveys s ON r.survey_id = s.id
+       WHERE s.user_id = $1`,
       [userId]
     );
 
