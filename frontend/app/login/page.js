@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { loginRequest } from "@/services/api";
 import { useFormFeedback } from "@/components/hooks/useFormFeedback";
 import MessageForm from "@/components/MessageForm";
@@ -9,7 +10,8 @@ import MessageForm from "@/components/MessageForm";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
-
+  const router = useRouter();
+  
   const {
     loading,
     error,
@@ -39,7 +41,9 @@ export default function Login() {
 
       localStorage.setItem("token", data.token);
 
-      // window.location.href = "/dashboard";
+      showSuccess("Login realizado com sucesso"); 
+      
+      router.push("/dashboard");
 
     } catch (err) {
       console.error(err);
