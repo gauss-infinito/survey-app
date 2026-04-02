@@ -11,33 +11,49 @@ export default function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
-    if (!token) {
-      window.location.href = "/login";
+  
+    async function load() {
+      try {
+        // dashboard
+        const dashRes = await fetch(`${API_URL}/dashboard`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        const dashText = await dashRes.text();
+        const dashData = JSON.parse(dashText);
+  
+        // surveys
+        const surveyRes = await fetch(`${API_URL}/surveys`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        const surveyText = await surveyRes.text();
+        const surveyData = JSON.parse(surveyText);
+  
+        // user
+        const userRes = await fetch(`${API_URL}/users/me`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        const userText = await userRes.text();
+        const userData = JSON.parse(userText);
+  
+        setData(dashData);
+        setSurveys(surveyData);
+        setUser(userData);
+  
+      } catch (err) {
+        console.error("Erro no dashboard:", err);
+      }
     }
-    
-    // carregar dashboard
-    fetch(`${API_URL}/dashboard`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then(setData);
-
-    // carregar surveys
-    fetch(`${API_URL}/surveys`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then(setSurveys);
-
-    // carregar usuário
-    fetch(`${API_URL}/users/me`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then(setUser);
+  
+    load();
   }, []);
 
+  console.log("Dashboard:", dashText);
+  console.log("Surveys:", surveyText);
+  console.log("User:", userText);
+  
   if (!data) return <p>Carregando...</p>;
 
   return (
