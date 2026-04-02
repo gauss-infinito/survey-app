@@ -12,6 +12,10 @@ export default function Dashboard() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
+    if (!token) {
+      window.location.href = "/login";
+    }
+    
     // carregar dashboard
     fetch(`${API_URL}/dashboard`, {
       headers: { Authorization: `Bearer ${token}` },
