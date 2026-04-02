@@ -20,6 +20,8 @@ export default function Dashboard() {
         });
   
         const dashText = await dashRes.text();
+        console.log("Dashboard:", dashText);
+        
         const dashData = JSON.parse(dashText);
   
         // surveys
@@ -28,6 +30,8 @@ export default function Dashboard() {
         });
   
         const surveyText = await surveyRes.text();
+        console.log("Surveys:", surveyText);
+        
         const surveyData = JSON.parse(surveyText);
   
         // user
@@ -36,6 +40,8 @@ export default function Dashboard() {
         });
   
         const userText = await userRes.text();
+        console.log("User:", userText);
+        
         const userData = JSON.parse(userText);
   
         setData(dashData);
@@ -49,10 +55,6 @@ export default function Dashboard() {
   
     load();
   }, []);
-
-  console.log("Dashboard:", dashText);
-  console.log("Surveys:", surveyText);
-  console.log("User:", userText);
   
   if (!data) return <p>Carregando...</p>;
 
