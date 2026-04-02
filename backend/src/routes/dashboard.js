@@ -8,30 +8,30 @@ router.get("/", auth, async (req, res) => {
     const userId = req.user.id;
 
     const surveys = await pool.query(
-      "SELECT COUNT(*) FROM surveys WHERE user_id = $1",
+      "SELECT COUNT(*) FROM surveys",
       [userId]
     );
 
     const responses = await pool.query(
-      "SELECT COUNT(*) FROM responses WHERE user_id = $1",
+      "SELECT COUNT(*) FROM responses",
       [userId]
     );
     
-    const surveys = await pool.query(
+    const my_surveys = await pool.query(
       "SELECT COUNT(*) FROM surveys WHERE user_id = $1",
       [userId]
     );
 
-    const responses = await pool.query(
+    const my_responses = await pool.query(
       "SELECT COUNT(*) FROM responses WHERE user_id = $1",
       [userId]
     );
 
     res.json({
-      myTotalSurveys: Number(surveys.rows[0].count),
-      myTotalResponses: Number(responses.rows[0].count),
       totalSurveys: Number(surveys.rows[0].count),
       totalResponses: Number(responses.rows[0].count),
+      myTotalSurveys: Number(my_surveys.rows[0].count),
+      myTotalResponses: Number(my_responses.rows[0].count),
     });
 
   } catch (err) {
