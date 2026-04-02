@@ -8,13 +8,11 @@ router.get("/", auth, async (req, res) => {
     const userId = req.user.id;
 
     const surveys = await pool.query(
-      "SELECT COUNT(*) FROM surveys",
-      [userId]
+      "SELECT COUNT(*) FROM surveys"
     );
 
     const responses = await pool.query(
-      "SELECT COUNT(*) FROM responses",
-      [userId]
+      "SELECT COUNT(*) FROM responses"
     );
     
     const my_surveys = await pool.query(
