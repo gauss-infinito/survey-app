@@ -91,8 +91,8 @@ export default function Login() {
       </div>
 
       <div style={{ textAlign: "center", marginTop: "24px" }}>
-        <Link href="/recover">Recuperar código</Link><br />
-        <Link href="/register">Registrar-se</Link>
+        <Link href="/recover">Recupere o seu código</Link><br />
+        <Link href="/register">Registre-se agora mesmo</Link>
       </div>
     </div>
   );
