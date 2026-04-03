@@ -79,9 +79,22 @@ export default function Dashboard() {
             {user.age}
           </span>
           
-          <span style={{ lineHeight: "40px" }}>
+          <span
+            style={{
+              margin: "0 12px 0 0",
+              padding: "0 15px 0 0",
+              lineHeight: "40px",
+              borderRightColor: "rgba(0, 0, 0, 0.3)",
+              borderRightStyle: "solid",
+              borderRightWidth: "1px"
+            }}
+          >
             {user.gender}
           </span>
+
+          <span style={{ lineHeight: "40px" }}>
+            {user.role}
+          </span>            
         </div>
       )}
 
