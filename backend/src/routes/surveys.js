@@ -7,6 +7,7 @@ const { v4: uuid } = require("uuid");
 router.post("/", auth(["administrator", "researcher"]), async (req, res) => {
   try {
     const { title, description } = req.body;
+    console.log(req.body)
 
     if (!title) {
       return res.status(400).json({ error: "Título é obrigatório" });
