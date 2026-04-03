@@ -45,7 +45,7 @@ data:
       id SERIAL PRIMARY KEY,
       survey_id INTEGER NOT NULL REFERENCES surveys(id) ON DELETE CASCADE,
       text TEXT NOT NULL,
-      type TEXT NOT NULL CHECK (type IN ('single', 'multiple'))
+      single BOOLEAN DEFAULT true
     );
     
     CREATE TABLE IF NOT EXISTS items (
