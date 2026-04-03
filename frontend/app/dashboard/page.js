@@ -128,7 +128,7 @@ export default function Dashboard() {
       </div>
 
       {/* lista */}
-      <div style={{ gap: "20px" }}>
+      <div style={{ gap: "30px" }}>
         <h3>Minhas pesquisas ({data.myTotalSurveys})</h3>
 
         {surveys.map((s) => (
