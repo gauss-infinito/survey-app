@@ -70,7 +70,7 @@ export default function Register() {
 
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
-      <h2>Registre-se</h2>
+      <h2>Tenha acesso gratuito.</h2>
 
       <MessageForm error={error} success={success} />
 
@@ -112,14 +112,14 @@ export default function Register() {
 
       {generatedCode && (
         <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <strong>Guarde seu código:</strong><br />
+          <strong>Guarde o seu código:</strong><br />
           <span>{generatedCode}</span><br /><br />
           <button onClick={copyCode}>Copiar</button>
         </div>
       )}
 
       <div style={{ textAlign: "center", marginTop: "24px" }}>
-        <Link href="/login">Voltar ao login</Link>
+        <Link href="/login">Volte ao login</Link>
       </div>
     </div>
   );
