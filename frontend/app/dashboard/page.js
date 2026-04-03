@@ -65,8 +65,22 @@ export default function Dashboard() {
       {/* usuário */}
       {user && (
         <div style={{ marginBottom: "20px" }}>
-          <strong>{user.email}</strong>
-          <p>{user.age} | {user.gender}</p>
+          <strong>{user.email}</strong><br />
+          <span
+            style={{
+              margin: "0 20px 0 0",
+              lineHeight: "49px",
+              borderRightColor: "rgba(0, 0, 0, 0.3)",
+              borderRightStyle: "solid",
+              borderRightWidth: "1px"
+            }}
+          >
+            {user.age}
+          </span>
+          
+          <span style={{ lineHeight: "49px" }}>
+            {user.gender}
+          </span>
         </div>
       )}
 
@@ -88,9 +102,9 @@ export default function Dashboard() {
 
       {/* ações */}
       <div style={{ marginTop: "20px" }}>
-        <Link href="/surveys/create">Criar Survey</Link><br />
-        <Link href="/surveys/view">Ver Surveys</Link><br />
-        <Link href="/surveys/reply">Responder Survey</Link>
+        <Link href="/surveys/create">Criar nova pesquisa</Link><br />
+        <Link href="/surveys/view">Visualizar pesquisas</Link><br />
+        <Link href="/surveys/reply">Responder pesquisas</Link>
       </div>
 
       {/* lista */}
