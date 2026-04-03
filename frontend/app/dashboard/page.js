@@ -56,7 +56,7 @@ export default function Dashboard() {
     load();
   }, []);
   
-  if (!data) return <p>Carregando...</p>;
+  if (!data) return <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>Carregando...</div>;
 
   return (
     <div style={{ padding: "20px", fontFamily: "system-ui" }}>
