@@ -19,8 +19,8 @@ export default function ViewSurveys() {
   }, []);
 
   return (
-    <div>
-      <h2>Surveys</h2>
+    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
+      <h2>Pesquisas</h2>
       {surveys.map((s) => (
         <div key={s.id}>
           <strong>{s.title}</strong>
