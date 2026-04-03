@@ -26,6 +26,7 @@ export default function QuestionForm({ question, onChange, onRemove }) {
       <label>Perguntas:</label><br />
       <div style={{ border: "1px solid #ccc", width: "100%", padding: 10, marginBottom: 10 }}>
         <div>
+          <input id="multiple" name="multiple" type="checkebox">Múltipla seleção</input><br />
           <label htmlFor="question">Pergunta:</label><br />
           <input type="text" id="question" name="question" style={{ width: "98%" }} placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
         </div>   
