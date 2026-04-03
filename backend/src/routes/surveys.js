@@ -60,7 +60,7 @@ router.post("/:id/publish", auth(["administrator", "researcher"]), async (req, r
 });
 
 // Responder pesquisa (público)
-router.post("/:id/reply", auth, async (req, res) => {
+router.post("/:id/reply", auth(), async (req, res) => {
   try {
     const { answers, age, gender } = req.body;
 
@@ -82,7 +82,7 @@ router.post("/:id/reply", auth, async (req, res) => {
 });
 
 // listar pesquisa
-router.get("/", auth, async (req, res) => {
+router.get("/", auth(), async (req, res) => {
   try {
     const result = await pool.query(
       "SELECT * FROM surveys ORDER BY id DESC"
