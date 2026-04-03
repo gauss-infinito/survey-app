@@ -34,6 +34,8 @@ export async function loginRequest({ email, code }) {
 }
 
 export async function createSurvey(data) {
+  const token = localStorage.getItem("token");
+  
   const res = await fetch(`${API_URL}/surveys`, {
     method: "POST",
     headers: {
