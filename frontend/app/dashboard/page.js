@@ -89,21 +89,21 @@ export default function Dashboard() {
       <div style={{ display: "flex", gap: "20px" }}>
         <div>
           <h3 style={{ marginBottom: "0" }}>Pesquisas</h3>
-          <span style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
+          <p style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
             {data.totalSurveys}
-          </span>
+          </p>
         </div>
         <div>
           <h3 style={{ marginBottom: "0" }}>Respostas</h3>
-          <span style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
+          <p style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
             {data.totalResponses}
-          </span>
+          </p>
         </div>
         <div>
           <h3 style={{ marginBottom: "0" }}>Participação</h3>
-          <span style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
+          <p style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
             {data.myTotalResponses}
-          </span>
+          </p>
         </div>
       </div>
 
