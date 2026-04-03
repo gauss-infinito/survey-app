@@ -18,8 +18,8 @@ export default function Home() {
 
         {/* LADO DIREITO (TEXTO) */}
         <div className={styles.text}>
-          <h1 className={styles.title}>ENQUETE</h1>
-          <p className={styles.subtitle}>Participe agora!</p>
+          <h1 className={styles.title}>ENQUETES</h1>
+          <p className={styles.subtitle}>Indivíduo. Coletivo. Tendências.</p>
 
           <div className={styles.links}>
             <Link href="/login" className={styles.link}>Login</Link>
