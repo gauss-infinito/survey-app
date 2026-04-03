@@ -124,7 +124,7 @@ data:
     CREATE OR REPLACE FUNCTION check_user_role_for_survey()
     RETURNS TRIGGER AS $$
     DECLARE
-      user_role role_type;  -- ✅ corrigido
+      user_role role_type; 
       user_active BOOLEAN;
     BEGIN
       SELECT role, active INTO user_role, user_active
