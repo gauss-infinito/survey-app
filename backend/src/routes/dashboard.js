@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require("../db");
 const auth = require("../middleware/auth");
 
-router.get("/", auth, async (req, res) => {
+router.get("/", auth(), async (req, res) => {
   try {
     const userId = req.user.id;
 
