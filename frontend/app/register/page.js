@@ -70,7 +70,7 @@ export default function Register() {
 
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
-      <h2>Tenha acesso gratuito.</h2>
+      <h2>Crie a sua conta</h2>
 
       <MessageForm error={error} success={success} />
 
