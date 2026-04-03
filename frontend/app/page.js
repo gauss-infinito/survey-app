@@ -23,7 +23,7 @@ export default function Home() {
 
           <div className={styles.links}>
             <Link href="/login" className={styles.link}>Faça o login</Link>
-            <Link href="/register" className={styles.link}>Registre-se</Link>
+            <Link href="/register" className={styles.link}>Registre-se agora mesmo</Link>
           </div>
         </div>
 
