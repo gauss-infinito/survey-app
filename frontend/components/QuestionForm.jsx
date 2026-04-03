@@ -23,6 +23,7 @@ export default function QuestionForm({ question, onChange, onRemove }) {
 
   return (
     <div style={{ width: "285px" }}>
+      <label>Perguntas:</label><br />
       <div style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
         <div>
           <label htmlFor="question">Pergunta:</label><br />
