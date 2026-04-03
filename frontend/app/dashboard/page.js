@@ -116,7 +116,7 @@ export default function Dashboard() {
 
       {/* lista */}
       <div style={{ marginTop: "30px" }}>
-        <h3>Minhas pesquisas ({data.mytotalSurveys})</h3>
+        <h3>Minhas pesquisas ({data.myTotalSurveys})</h3>
 
         {surveys.map((s) => (
           <div key={s.id} style={{ marginBottom: "10px" }}>
