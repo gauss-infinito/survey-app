@@ -22,9 +22,8 @@ export default function Home() {
           <p className={styles.subtitle}>Indivíduo. Coletivo. Tendências.</p>
 
           <div className={styles.links}>
-            <Link href="/login" className={styles.link}>Login</Link>
+            <Link href="/login" className={styles.link}>Faça o login</Link>
             <Link href="/register" className={styles.link}>Registre-se</Link>
-            <Link href="/recover" className={styles.link}>Recupere código</Link>
           </div>
         </div>
 
