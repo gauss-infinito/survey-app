@@ -55,7 +55,7 @@ export default function Login() {
 
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
-      <h2>Ola, de novo!</h2>
+      <h2>Olá, de novo!</h2>
 
       <MessageForm error={error} success={success} />
 
