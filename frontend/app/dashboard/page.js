@@ -60,7 +60,7 @@ export default function Dashboard() {
 
   return (
     <div style={{ padding: "20px", fontFamily: "system-ui" }}>
-      <h1>Dashboard</h1>
+      <h2>Painel de controle</h2>
 
       {/* usuário */}
       {user && (
@@ -73,12 +73,16 @@ export default function Dashboard() {
       {/* métricas */}
       <div style={{ display: "flex", gap: "20px" }}>
         <div>
-          <h3>Surveys</h3>
-          <p>{data.totalSurveys}</p>
+          <h3>Pesquisas</h3>
+          <p {{ textAlign: "center", font-size:"24px", font-weight:"500" }}>{data.totalSurveys}</p>
         </div>
         <div>
           <h3>Respostas</h3>
-          <p>{data.totalResponses}</p>
+          <p {{ textAlign: "center", font-size:"24px", font-weight:"500" }}>{data.totalResponses}</p>
+        </div>
+        <div>
+          <h3>Participação</h3>
+          <p {{ textAlign: "center", font-size:"24px", font-weight:"500" }}>{data.myTotalResponses}</p>
         </div>
       </div>
 
@@ -91,7 +95,7 @@ export default function Dashboard() {
 
       {/* lista */}
       <div style={{ marginTop: "30px" }}>
-        <h2>Seus Surveys</h2>
+        <h3>Minhas pesquisas ({data.mytotalSurveys})</h3>
 
         {surveys.map((s) => (
           <div key={s.id} style={{ marginBottom: "10px" }}>
