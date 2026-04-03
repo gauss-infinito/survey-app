@@ -35,7 +35,7 @@ router.post("/", auth(["administrator"]), async (req, res) => {
 router.get("/me", auth(), async (req, res) => {
   try {
     const result = await pool.query(
-      "SELECT id, email, age, gender FROM users WHERE id = $1",
+      "SELECT id, email, age, gender, role FROM users WHERE id = $1",
       [req.user.id]
     );
 
