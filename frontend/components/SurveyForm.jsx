@@ -6,6 +6,16 @@ import { createSurvey } from "../services/api";
 import Link from "next/link";
 
 export default function SurveyForm() {
+  const {
+    loading,
+    error,
+    success,
+    startLoading,
+    stopLoading,
+    showError,
+    showSuccess,
+  } = useFormFeedback();  
+  
   const [survey, setSurvey] = useState({
     title: "",
     description: "",
@@ -34,16 +44,21 @@ export default function SurveyForm() {
 
   const handleSubmit = async () => {
     try {
+      startLoading();      
       await createSurvey(survey);
-      alert("Pesquisa criada!");
+      showSuccess("("Pesquisa criada!");
     } catch (err) {
-      alert(err.message);
+      showError(err.message);
+    } finally {
+      stopLoading();
     }
   };
-
+  
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
       <h2>Crie nova pesquisa</h2>
+
+      <MessageForm error={error} success={success} />
 
       <label htmlFor="title">Título:</label><br />
       <input id="title" name="title" style={{ width: "100%" }} placeholder="Título" value={survey.title} onChange={(e) => setSurvey({ ...survey, title: e.target.value })} /><br />
