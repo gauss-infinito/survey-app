@@ -70,7 +70,7 @@ export default function Recover() {
   
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
-      <h2>Recupere seu código</h2>
+      <h2>Recupere o seu código</h2>
 
       <MessageForm error={error} success={success} />
   
