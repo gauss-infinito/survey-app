@@ -6,6 +6,8 @@ import { createSurvey } from "../services/api";
 import Link from "next/link";
 
 export default function SurveyForm() {
+  const token = localStorage.getItem("token");
+  
   const [survey, setSurvey] = useState({
     title: "",
     description: "",
