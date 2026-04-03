@@ -69,6 +69,7 @@ export default function Dashboard() {
           <span
             style={{
               margin: "0 20px 0 0",
+              padding: "0 23px 0 0",
               lineHeight: "36px",
               borderRightColor: "rgba(0, 0, 0, 0.3)",
               borderRightStyle: "solid",
