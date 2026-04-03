@@ -32,7 +32,7 @@ router.post("/", auth(["administrator"]), async (req, res) => {
 });
 
 // perfil do usuário
-router.get("/me", auth, async (req, res) => {
+router.get("/me", auth(), async (req, res) => {
   try {
     const result = await pool.query(
       "SELECT id, email, age, gender FROM users WHERE id = $1",
