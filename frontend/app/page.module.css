@@ -95,7 +95,8 @@
 }
 
 .subtitle { 
-  font-size: 36px;
+  font-size: 32px;
+  letter-spacing: -1px;  
   color: ffefea;
   margin-top: -18px;
 }
