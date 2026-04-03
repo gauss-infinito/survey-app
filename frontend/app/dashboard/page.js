@@ -64,13 +64,13 @@ export default function Dashboard() {
 
       {/* usuário */}
       {user && (
-        <div style={{ marginBottom: "20px" }}>
+        <div>
           <strong>{user.email}</strong><br />
           <span
             style={{
-              margin: "0 17px 0 0",
-              padding: "0 20px 0 0",
-              lineHeight: "45px",
+              margin: "0 12px 0 0",
+              padding: "0 15px 0 0",
+              lineHeight: "40px",
               borderRightColor: "rgba(0, 0, 0, 0.3)",
               borderRightStyle: "solid",
               borderRightWidth: "1px"
@@ -79,7 +79,7 @@ export default function Dashboard() {
             {user.age}
           </span>
           
-          <span style={{ lineHeight: "45px" }}>
+          <span style={{ lineHeight: "40px" }}>
             {user.gender}
           </span>
         </div>
@@ -88,19 +88,19 @@ export default function Dashboard() {
       {/* métricas */}
       <div style={{ display: "flex", gap: "20px" }}>
         <div>
-          <h3>Pesquisas</h3>
+          <h3 style={{ marginBottom: "0" }}>Pesquisas</h3>
           <span style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
             {data.totalSurveys}
           </span>
         </div>
         <div>
-          <h3>Respostas</h3>
+          <h3 style={{ marginBottom: "0" }}>Respostas</h3>
           <span style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
             {data.totalResponses}
           </span>
         </div>
         <div>
-          <h3>Participação</h3>
+          <h3 style={{ marginBottom: "0" }}>Participação</h3>
           <span style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
             {data.myTotalResponses}
           </span>
