@@ -49,7 +49,7 @@ export default function SurveyForm() {
       <input id="title" name="title" style={{ width: "100%" }} placeholder="Título" value={survey.title} onChange={(e) => setSurvey({ ...survey, title: e.target.value })} /><br />
 
       <label htmlFor="description">Descrição:</label><br />
-      <textarea id="description" name="description" placeholder="Descrição" rows="4" style={{ width: "100%" }} value={survey.description} onChange={(e) => setSurvey({ ...survey, description: e.target.value })} /><br />
+      <textarea id="description" name="description" placeholder="Descrição" rows="6" style={{ width: "100%" }} value={survey.description} onChange={(e) => setSurvey({ ...survey, description: e.target.value })} /><br />
 
       {survey.questions.map((q, i) => (
         <QuestionForm
