@@ -121,14 +121,14 @@ export default function Dashboard() {
       </div>
 
       {/* ações */}
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ display: "flex", gap: "20px" }}>
         <Link href="/surveys/create">Criar nova pesquisa</Link><br />
         <Link href="/surveys/view">Visualizar pesquisas</Link><br />
         <Link href="/surveys/reply">Responder pesquisas</Link>
       </div>
 
       {/* lista */}
-      <div style={{ marginTop: "30px" }}>
+      <div style={{ display: "flex", gap: "20px" }}>
         <h3>Minhas pesquisas ({data.myTotalSurveys})</h3>
 
         {surveys.map((s) => (
