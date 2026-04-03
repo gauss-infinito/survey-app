@@ -43,7 +43,7 @@ export default function SurveyForm() {
 
   return (
     <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
-      <h2>Crie Pesquisa</h2>
+      <h2>Crie nova pesquisa</h2>
 
       <label htmlFor="title">Título:</label><br />
       <input id="title" name="title" style={{ width: "100%" }} placeholder="Título" value={survey.title} onChange={(e) => setSurvey({ ...survey, title: e.target.value })} /><br />
