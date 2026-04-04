@@ -6,4 +6,4 @@ resources:
   - vault-statefulset.yaml
   - vault-service.yaml
   - vaul-route.yaml
-  - vault-init-configmap.yaml
+  - vault-configmap.yaml
