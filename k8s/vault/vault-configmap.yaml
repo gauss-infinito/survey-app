@@ -4,8 +4,8 @@ metadata:
   name: vault-config
 data:
   vault.hcl: |
-    storage "file" {
-      path = "/vault/file"
+    storage "raft" {
+      path = "/vault/data"
     }
 
     listener "tcp" {
