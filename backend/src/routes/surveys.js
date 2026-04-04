@@ -5,25 +5,68 @@ const { v4: uuid } = require("uuid");
 
 // Criar pesquisa
 router.post("/", auth(["administrator", "researcher"]), async (req, res) => {
+  const client = await pool.connect();
+
   try {
-    const { title, description } = req.body;
-    console.log(req.body)
+    const { title, description, questions } = req.body;
+
+    console.log("BODY:", req.body);
 
     if (!title) {
       return res.status(400).json({ error: "Título é obrigatório" });
     }
 
-    const result = await pool.query(
+    await client.query("BEGIN");
+
+    // 1. Criar survey
+    const surveyResult = await client.query(
       `INSERT INTO surveys (title, description, status, user_id)
        VALUES ($1, $2, 'draft', $3)
-       RETURNING *`,
+       RETURNING id`,
       [title, description, req.user.id]
     );
 
-    res.status(201).json(result.rows[0]);
+    const surveyId = surveyResult.rows[0].id;
+
+    // 2. Criar perguntas
+    if (questions && questions.length > 0) {
+      for (const q of questions) {
+        const questionResult = await client.query(
+          `INSERT INTO questions (survey_id, text, multiple)
+           VALUES ($1, $2, $3)
+           RETURNING id`,
+          [
+            surveyId,
+            q.text,
+            q.multiple ?? false // 👈 importante
+          ]
+        );
+
+        const questionId = questionResult.rows[0].id;
+
+        // 3. Criar opções
+        if (q.options && q.options.length > 0) {
+          for (const opt of q.options) {
+            await client.query(
+              `INSERT INTO items (question_id, text)
+               VALUES ($1, $2)`,
+              [questionId, opt.text]
+            );
+          }
+        }
+      }
+    }
+
+    await client.query("COMMIT");
+
+    res.status(201).json({ message: "Pesquisa criada com sucesso", id: surveyId });
+
   } catch (err) {
+    await client.query("ROLLBACK");
     console.error(err);
     res.status(500).json({ error: "Erro ao criar pesquisa" });
+  } finally {
+    client.release();
   }
 });
 
