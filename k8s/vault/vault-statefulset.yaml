@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: vault
-          image: registry.redhat.io/hashicorp/vault:latest
+          image: registry.connect.redhat.com/hashicorp/vault:2.0.0-rc1-ubi
           securityContext:
             allowPrivilegeEscalation: false          
           args:
