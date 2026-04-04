@@ -88,7 +88,7 @@ export default function SurveyForm() {
         </button>
       </div>
      
-      <div style={{ textAlign: "center", marginTop: "24px" }}>
+      <div style={{ textAlign: "center", marginTop: "24px", marginBottom: "24px" }}>
         <Link href="/dashboard">Voltar ao painel</Link>
       </div>
       
