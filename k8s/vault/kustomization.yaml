@@ -7,6 +7,3 @@ resources:
   - vault-route.yaml
   - vault-configmap.yaml
   - vault-serviceaccount.yaml
-
-commonLabels:
-  app: vault
