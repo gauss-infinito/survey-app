@@ -15,9 +15,10 @@ spec:
     spec:
       containers:
         - name: vault
-          image: registry.connect.redhat.com/hashicorp/vault:2.0.0-rc1-ubi
+          image: registry.connect.redhat.com/hashicorp/vault:2.0.0-rc1-ubi    
           securityContext:
-            allowPrivilegeEscalation: false          
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
           args:
             - "server"
             - "-config=/vault/config/vault.hcl"
