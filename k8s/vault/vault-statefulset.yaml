@@ -21,10 +21,6 @@ spec:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:latest
      
-          args:
-            - "server"
-            - "-config=/vault/config/vault.hcl"
-
           ports:
             - containerPort: 8200
 
@@ -34,32 +30,18 @@ spec:
             - name: SKIP_SETCAP
               value: "true"
 
-          livenessProbe:
-            httpGet:
-              path: /v1/sys/health
-              port: 8200
-            initialDelaySeconds: 60
-            periodSeconds: 10
-
-          readinessProbe:
-            httpGet:
-              path: /v1/sys/health?standbyok=true
-              port: 8200
-            initialDelaySeconds: 30
-            periodSeconds: 10
-
           volumeMounts:
-            - name: vault-config
-              mountPath: /vault/config
-
             - name: vault-data
               mountPath: /vault/data
+
+            - name: vault-config
+              mountPath: /vault/config
 
       volumes:
         - name: vault-config
           configMap:
             name: vault-config
-
+            
   volumeClaimTemplates:
     - metadata:
         name: vault-data
@@ -67,4 +49,4 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 10Gi
+            storage: 1Gi
