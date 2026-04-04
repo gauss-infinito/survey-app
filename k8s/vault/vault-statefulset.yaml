@@ -25,7 +25,6 @@ spec:
             allowPrivilegeEscalation: false
             capabilities:
               add:
-                - IPC_LOCK
                 - CHOWN
                 - SETPCAP
               drop:
