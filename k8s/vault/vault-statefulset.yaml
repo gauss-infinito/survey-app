@@ -8,37 +8,36 @@ spec:
   selector:
     matchLabels:
       app: vault
+
   template:
     metadata:
       labels:
         app: vault
     spec:
       serviceAccountName: vault
-      
-      securityContext:
-        runAsUser: 1007550000
-        fsGroup: 1007550000
 
       containers:
         - name: vault
-          image: registry.connect.redhat.com/hashicorp/vault:latest
-      
+          image: hashicorp/vault:1.15.6
+
           securityContext:
             runAsNonRoot: true
             allowPrivilegeEscalation: false
-      
-          env:
-            - name: SKIP_CHOWN
-              value: "true"
-            - name: SKIP_SETCAP
-              value: "true"
-      
+            capabilities:
+              drop:
+                - ALL
+
           args:
             - "server"
             - "-config=/vault/config/vault.hcl"
 
           ports:
             - containerPort: 8200
+              name: http
+
+          env:
+            - name: VAULT_ADDR
+              value: "http://127.0.0.1:8200"
 
           livenessProbe:
             httpGet:
@@ -57,6 +56,10 @@ spec:
           volumeMounts:
             - name: vault-config
               mountPath: /vault/config
+              readOnly: true
+
+            - name: vault-data
+              mountPath: /vault/data
 
       volumes:
         - name: vault-config
@@ -67,7 +70,8 @@ spec:
     - metadata:
         name: vault-data
       spec:
-        accessModes: ["ReadWriteOnce"]
+        accessModes:
+          - ReadWriteOnce
         resources:
           requests:
             storage: 10Gi
