@@ -3,4 +3,6 @@ kind: Kustomization
 
 resources:
   - configmap.yaml
-  - secret.yaml
+  - vault-statefulset.yaml
+  - vault-service.yaml
+  - vault-init-configmap.yaml
