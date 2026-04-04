@@ -17,7 +17,7 @@ spec:
     spec:
       containers:     
         - name: postgres
-          image: registry.redhat.io/rhel8/postgresql-16:latest
+          image: registry.redhat.io/rhel9/postgresql-16:latest
           ports:
             - containerPort: 5432
 
