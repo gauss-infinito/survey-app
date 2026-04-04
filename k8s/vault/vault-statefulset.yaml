@@ -21,9 +21,6 @@ spec:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:latest
      
-          ports:
-            - containerPort: 8200
-
           env:
             - name: SKIP_CHOWN
               value: "true"
