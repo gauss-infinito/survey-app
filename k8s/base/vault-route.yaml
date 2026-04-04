@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: vault
+spec:
+  to:
+    kind: Service
+    name: vault
+  port:
+    targetPort: 8200
