@@ -38,22 +38,10 @@ data:
       status TEXT,
       user_id INTEGER NOT NULL REFERENCES users(id),
       public_id UUID NOT NULL DEFAULT gen_random_uuid(),
-      UNIQUE (public_id)
+      UNIQUE (public_id),
+      questions JSONB
     );
-    
-    CREATE TABLE IF NOT EXISTS questions (
-      id SERIAL PRIMARY KEY,
-      survey_id INTEGER NOT NULL REFERENCES surveys(id) ON DELETE CASCADE,
-      text TEXT NOT NULL,
-      multiple BOOLEAN DEFAULT false
-    );
-    
-    CREATE TABLE IF NOT EXISTS items (
-      id SERIAL PRIMARY KEY,
-      question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE,
-      text TEXT NOT NULL
-    );
-    
+         
     CREATE TABLE IF NOT EXISTS responses (
       id SERIAL PRIMARY KEY,
       survey_id INTEGER NOT NULL REFERENCES surveys(id) ON DELETE CASCADE,
