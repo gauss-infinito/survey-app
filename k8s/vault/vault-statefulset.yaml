@@ -16,6 +16,7 @@ spec:
       serviceAccountName: vault
 
       securityContext:
+        runAsUser: 1001
         fsGroup: 1001
 
       initContainers:
