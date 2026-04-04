@@ -7,7 +7,7 @@ data:
     disable_mlock = true
 
     storage "file" {
-      path = "/vault/data"
+      path = "/vault/config"
     }
 
     listener "tcp" {
