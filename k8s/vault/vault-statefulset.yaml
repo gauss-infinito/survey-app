@@ -21,10 +21,6 @@ spec:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:latest
 
-          args:
-            - "server"
-            - "-config=/vault/config/vault.hcl"
-
           ports:
             - containerPort: 8200
 
