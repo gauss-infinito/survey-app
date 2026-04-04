@@ -19,21 +19,6 @@ spec:
         runAsUser: 1007550000
         fsGroup: 1007550000
 
-      initContainers:
-        - name: copy-config
-          image: registry.access.redhat.com/ubi8/ubi-minimal
-          command:
-            - sh
-            - -c
-            - |
-              mkdir -p /vault/config && \
-              cp /config/vault.hcl /vault/config/vault.hcl
-          volumeMounts:
-            - name: vault-config
-              mountPath: /config
-            - name: vault-config-writable
-              mountPath: /vault/config
-
       containers:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:1.15.6-ubi
@@ -68,19 +53,13 @@ spec:
             periodSeconds: 10
 
           volumeMounts:
-            - name: vault-config-writable
+            - name: vault-config
               mountPath: /vault/config
-
-            - name: vault-data
-              mountPath: /vault/data
 
       volumes:
         - name: vault-config
           configMap:
             name: vault-config
-
-        - name: vault-config-writable
-          emptyDir: {}
 
   volumeClaimTemplates:
     - metadata:
