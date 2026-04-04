@@ -14,7 +14,7 @@ spec:
         app: vault
     spec:
       serviceAccountName: vault
-
+      
       securityContext: {
         runAsUser: 1007550000
         fsGroup: 1007550000    
