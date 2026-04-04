@@ -27,7 +27,7 @@ export default function SurveyForm() {
   const addQuestion = () => {
     setSurvey({
       ...survey,
-      questions: [...survey.questions, { text: "", options: [] }],
+      questions: [...survey.questions, { text: "", options: [], multiple: false }],
     });
   };
 
