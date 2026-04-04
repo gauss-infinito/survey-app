@@ -3,8 +3,6 @@ kind: Kustomization
 
 resources:
   - vault-statefulset.yaml
-  - vault-scc.yaml
-  - vault-scc-binding.yaml
   - vault-service.yaml
   - vault-route.yaml
   - vault-configmap.yaml
