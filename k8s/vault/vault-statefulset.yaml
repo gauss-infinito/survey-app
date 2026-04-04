@@ -34,7 +34,7 @@ spec:
 
       containers:
         - name: vault
-          image: registry.redhat.io/hashicorp/vault:1.15
+          image: registry.connect.redhat.com/hashicorp/vault:1.21.4-ubi
       
           securityContext:
             runAsNonRoot: true
