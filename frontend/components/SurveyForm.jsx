@@ -49,6 +49,7 @@ export default function SurveyForm() {
       startLoading();      
       await createSurvey(survey);
       showSuccess("Pesquisa criada!");
+      console.log(survey)
     } catch (err) {
       showError(err.message);
     } finally {
