@@ -20,12 +20,7 @@ spec:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:latest
 
-          securityContext:
-            runAsNonRoot: true
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
+          securityContext: {}
 
           env:
             - name: SKIP_CHOWN
