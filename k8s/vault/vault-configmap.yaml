@@ -4,7 +4,9 @@ metadata:
   name: vault-config
 data:
   vault.hcl: |
-    storage "raft" {
+    disable_mlock = true
+
+    storage "file" {
       path = "/vault/data"
     }
 
