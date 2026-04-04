@@ -99,7 +99,7 @@ export default function Dashboard() {
       )}
 
       {/* métricas */}
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "10px" }}>
         <div>
           <h3 style={{ marginBottom: "0" }}>Pesquisas</h3>
           <p style={{ textAlign: "center", fontSize: "24px", fontWeight: "350" }}>
