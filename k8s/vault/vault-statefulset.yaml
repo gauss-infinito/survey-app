@@ -15,10 +15,9 @@ spec:
     spec:
       serviceAccountName: vault
       
-      securityContext: {
+      securityContext:
         runAsUser: 1007550000
-        fsGroup: 1007550000    
-      }
+        fsGroup: 1007550000
 
       initContainers:
         - name: copy-config
