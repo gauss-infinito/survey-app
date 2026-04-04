@@ -35,11 +35,15 @@ spec:
       containers:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:2.0.0-rc1-ubi
-
+      
           securityContext:
             runAsNonRoot: true
             allowPrivilegeEscalation: false
-
+      
+          env:
+            - name: VAULT_SKIP_CHOWN
+              value: "true"
+      
           args:
             - "server"
             - "-config=/vault/config/vault.hcl"
