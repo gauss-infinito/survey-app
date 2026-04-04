@@ -16,11 +16,28 @@ spec:
       containers:
         - name: vault
           image: registry.redhat.io/hashicorp/vault:latest
+          securityContext:
+            allowPrivilegeEscalation: false          
           args:
             - "server"
             - "-config=/vault/config/vault.hcl"
           ports:
             - containerPort: 8200
+
+          livenessProbe:
+            httpGet:
+              path: /v1/sys/health
+              port: 8200
+            initialDelaySeconds: 60
+            periodSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /v1/sys/health?standbyok=true
+              port: 8200
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            
           volumeMounts:
             - name: vault-config
               mountPath: /vault/config
