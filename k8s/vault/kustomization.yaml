@@ -6,3 +6,4 @@ resources:
   - vault-service.yaml
   - vault-route.yaml
   - vault-configmap.yaml
+  - vault-serviceaccount.yaml
