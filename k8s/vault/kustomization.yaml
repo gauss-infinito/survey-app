@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - vault-statefulset.yaml
   - vault-service.yaml
+  - vault-route.yaml
   - vault-configmap.yaml
