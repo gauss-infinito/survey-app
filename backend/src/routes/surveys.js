@@ -6,17 +6,21 @@ const { v4: uuid } = require("uuid");
 // Criar pesquisa
 router.post("/", auth(["administrator", "researcher"]), async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, questions } = req.body;
 
     if (!title) {
       return res.status(400).json({ error: "Título é obrigatório" });
     }
 
+    if (!questions || !Array.isArray(questions)) {
+      return res.status(400).json({ error: "Questions inválido" });
+    }
+
     const result = await pool.query(
-      `INSERT INTO surveys (title, description, status, user_id)
-       VALUES ($1, $2, 'draft', $3)
+      `INSERT INTO surveys (title, description, status, user_id, questions)
+       VALUES ($1, $2, 'draft', $3, $4)
        RETURNING *`,
-      [title, description, req.user.id]
+      [title, description, req.user.id, JSON.stringify(questions)]
     );
 
     res.status(201).json(result.rows[0]);
