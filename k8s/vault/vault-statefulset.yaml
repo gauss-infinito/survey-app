@@ -48,6 +48,9 @@ spec:
         - name: vault-config
           configMap:
             name: vault-config
+        - name: vault-config-writable
+          emptyDir: {}
+            
   volumeClaimTemplates:
     - metadata:
         name: vault-data
