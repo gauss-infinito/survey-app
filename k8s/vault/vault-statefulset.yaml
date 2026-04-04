@@ -27,6 +27,12 @@ spec:
               drop:
                 - ALL
 
+          env:
+            - name: SKIP_CHOWN
+              value: "true"
+            - name: SKIP_SETCAP
+              value: "true"
+
           args:
             - "server"
             - "-config=/vault/config/vault.hcl"
