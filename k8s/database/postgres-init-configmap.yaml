@@ -50,6 +50,29 @@ data:
       answers JSONB
     );
        
+    -- ROLE + ACTIVE CHECK (corrigido)
+    CREATE OR REPLACE FUNCTION check_user_role_for_survey()
+    RETURNS TRIGGER AS $$
+    DECLARE
+      user_role role_type; 
+      user_active BOOLEAN;
+    BEGIN
+      SELECT role, active INTO user_role, user_active
+      FROM users
+      WHERE id = NEW.user_id;
+    
+      IF user_active IS NOT TRUE THEN
+        RAISE EXCEPTION 'Usuário inativo não pode criar pesquisa';
+      END IF;
+    
+      IF user_role NOT IN ('administrator', 'researcher') THEN
+        RAISE EXCEPTION 'Usuário não autorizado (role deve ser administrator ou researcher)';
+      END IF;
+    
+      RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
+    
     CREATE TRIGGER trg_check_user_role
     BEFORE INSERT ON surveys
     FOR EACH ROW
