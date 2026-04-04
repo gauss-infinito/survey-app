@@ -15,7 +15,10 @@ spec:
     spec:
       serviceAccountName: vault
 
-      securityContext: {}
+      securityContext: {
+        runAsUser: 1007550000
+        fsGroup: 1007550000    
+      }
 
       initContainers:
         - name: copy-config
@@ -41,7 +44,7 @@ spec:
             allowPrivilegeEscalation: false
       
           env:
-            - name: VAULT_SKIP_CHOWN
+            - name: SKIP_CHOWN
               value: "true"
       
           args:
