@@ -50,7 +50,13 @@ Componentes principais:
   * Deployment
   * Service
   * Route (OpenShift)
-  * ConfigMap e Secret
+  * ConfigMap (configurações não sensíveis)
+  * Secret (gerado dinamicamente via Vault)
+
+* **Gerenciamento de Segredos:
+
+  * HashiCorp Vault (fonte de verdade dos secrets)
+  * argocd-vault-plugin (injeção dinâmica nos manifests)
 
 ## Tecnologias Utilizadas
 
