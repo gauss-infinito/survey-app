@@ -22,6 +22,12 @@ spec:
               containerPort: 8200
             - name: https
               containerPort: 8201
+
+          command: ["/bin/sh", "-c"]
+          args:
+            - |         
+              echo "Iniciando Vault..."
+              vault server -config=/vault/config -dev-root-token-id= -dev-listen-address=0.0.0.0:8200 -dev
               
           env:
             - name: SKIP_CHOWN
