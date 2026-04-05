@@ -22,6 +22,11 @@ spec:
               containerPort: 8200
             - name: https
               containerPort: 8201
+
+          command: ["vault"]
+          args:
+            - "server"
+            - "-config=/vault/config"
               
           env:
             - name: SKIP_CHOWN
@@ -44,10 +49,6 @@ spec:
           volumeMounts:
             - name: vault-data
               mountPath: /vault/data
-
-          command: ["vault"]
-          args:
-            - "server -config=/vault/config"
 
   volumeClaimTemplates:
     - metadata:
