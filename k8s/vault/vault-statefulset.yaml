@@ -18,15 +18,11 @@ spec:
           image: registry.connect.redhat.com/hashicorp/vault:latest
 
           ports:
-            - containerPort: 8200
-              http
-            - containerPort: 8201
-              https
-
-          command: ["vault"]
-          args:
-            - "server"
-
+            - name: http
+              containerPort: 8200
+            - name: https
+              containerPort: 8201
+              
           env:
             - name: SKIP_CHOWN
               value: "true"
