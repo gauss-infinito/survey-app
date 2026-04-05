@@ -66,6 +66,8 @@ Componentes principais:
 * PostgreSQL
 * OpenShift (BuildConfig, ImageStream, Route)
 * Kubernetes (Deployment, Service)
+* argocd-vault-plugin
+* Kustomize
 
 ## Segurança
 
