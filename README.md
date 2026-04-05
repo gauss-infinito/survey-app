@@ -53,7 +53,7 @@ Componentes principais:
   * ConfigMap (configurações não sensíveis)
   * Secret (gerado dinamicamente via Vault)
 
-* **Gerenciamento de Segredos:
+* **Gerenciamento de Segredos**:
 
   * HashiCorp Vault (fonte de verdade dos secrets)
   * argocd-vault-plugin (injeção dinâmica nos manifests)
