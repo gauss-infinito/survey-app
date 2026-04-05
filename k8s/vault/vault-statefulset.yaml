@@ -43,11 +43,6 @@ spec:
                   "ui": true
                 }
 
-          securityContext:
-            capabilities:
-              add:
-                - IPC_LOCK
-
           volumeMounts:
             - name: vault-data
               mountPath: /vault/data
