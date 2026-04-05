@@ -19,6 +19,9 @@ spec:
 
           ports:
             - containerPort: 8200
+              http
+            - containerPort: 8201
+              https
 
           command: ["vault"]
           args:
