@@ -23,9 +23,11 @@ spec:
             - name: https
               containerPort: 8201
 
-          command: ["vault"]
+          command: ["/bin/sh", "-c"]
           args:
-            - "server"
+            - |         
+              echo "Iniciando Vault..."
+              vault server
               
           env:
             - name: SKIP_CHOWN
