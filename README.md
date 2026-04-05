@@ -73,7 +73,9 @@ Componentes principais:
 
 * Controle de acesso baseado em perfis (RBAC)
 * Execução de containers como usuário não-root
-* Uso de **ConfigMaps** e **Secrets** para configuração
+* Uso de **ConfigMaps** para configurações não sensíveis
+* Uso de **Secrets** gerados dinamicamente via Vault (sem armazenamento de segredos no repositório)
+* Integração com HashiCorp Vault para gerenciamento centralizado de credenciais
 * Compatível com políticas de segurança do OpenShift (SCC)
 
 ## Configuração de Ambiente
