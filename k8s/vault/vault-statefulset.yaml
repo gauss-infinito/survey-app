@@ -27,7 +27,7 @@ spec:
             - name: SKIP_SETCAP
               value: "true"
             - name: VAULT_API_ADDR
-              value: "http://0.0.0.0:8200"
+              value: "http://127.0.0.1:8200"
               
           volumeMounts:
             - name: vault-data
