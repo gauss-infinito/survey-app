@@ -27,7 +27,7 @@ spec:
           args:
             - |         
               echo "Iniciando Vault..."
-              vault server
+              vault server -config=/vault/config/vault.hcl
               
           env:
             - name: SKIP_CHOWN
