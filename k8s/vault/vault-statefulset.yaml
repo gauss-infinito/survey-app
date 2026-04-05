@@ -27,7 +27,7 @@ spec:
           args:
             - |         
               echo "Iniciando Vault..."
-              vault server -config=/vault/config -dev-root-token-id= -dev-listen-address=0.0.0.0:8200 -dev
+              vault server -config=/vault/config
               
           env:
             - name: SKIP_CHOWN
