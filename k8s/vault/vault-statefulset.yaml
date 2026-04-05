@@ -26,7 +26,7 @@ spec:
           command: ["vault"]
           args:
             - "server"
-            - "-config=/vault/config"
+            - "-config=/vault/config/local.json"
               
           env:
             - name: SKIP_CHOWN
