@@ -4,10 +4,15 @@ metadata:
   name: vault-config
 data:
   vault.hcl: |
-    disable_mlock = true
+    ui = true
 
     storage "file" {
-      path = "/vault/config"
+      path = "/tmp/vault-data"
     }
 
-    ui = true
+    listener "tcp" {
+      address     = "0.0.0.0:8200"
+      tls_disable = 1
+    }
+
+    disable_mlock = true
