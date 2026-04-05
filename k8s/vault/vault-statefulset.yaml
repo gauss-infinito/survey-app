@@ -30,6 +30,13 @@ spec:
           volumeMounts:
             - name: vault-data
               mountPath: /vault/data 
+            - name: vault-config
+              mountPath: /vault/config         
+
+      volumes:
+        - name: vault-config
+          configMap:
+            name: vault-config
            
   volumeClaimTemplates:
     - metadata:
