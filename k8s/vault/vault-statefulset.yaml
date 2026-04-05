@@ -22,6 +22,10 @@ spec:
               containerPort: 8200
             - name: https
               containerPort: 8201
+
+          command: ["vault"]
+          args:
+            - "server"
               
           env:
             - name: SKIP_CHOWN
