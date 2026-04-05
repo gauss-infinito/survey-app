@@ -147,6 +147,7 @@ Deploy inicial utilizando OpenShift CLI e Kustomize:
 
 ```bash
 oc apply -k https://github.com/gauss-infinito/survey-app/k8s/
+argocd-vault-plugin generate https://raw.githubusercontent.com/gauss-infinito/survey-app/refs/heads/main/k8s/base/secret.yaml | oc apply -f -
 ```
 
 A API é exposta via OpenShift Route:
