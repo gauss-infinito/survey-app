@@ -5,45 +5,48 @@ metadata:
 spec:
   serviceName: vault
   replicas: 1
-
   selector:
     matchLabels:
       app: vault
-
   template:
     metadata:
       labels:
         app: vault
     spec:
-      serviceAccountName: vault
-
+      serviceAccountName: default
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:latest
-     
+          args:
+            - "server"
+            - "-config=/vault/config/vault.hcl"
+          ports:
+            - containerPort: 8200
+              name: http
           env:
-            - name: SKIP_CHOWN
-              value: "true"
-            - name: SKIP_SETCAP
-              value: "true"
-
+            - name: VAULT_ADDR
+              value: "http://0.0.0.0:8200"
           volumeMounts:
-            - name: vault-data
-              mountPath: /vault/data
-
-            - name: vault-config
+            # Config (read-only)
+            - name: config
               mountPath: /vault/config
+              readOnly: true
+
+            # Storage gravável
+            - name: tmp
+              mountPath: /tmp
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
 
       volumes:
-        - name: vault-config
+        - name: config
           configMap:
             name: vault-config
-            
-  volumeClaimTemplates:
-    - metadata:
-        name: vault-data
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
+
+        - name: tmp
+          emptyDir: {}
