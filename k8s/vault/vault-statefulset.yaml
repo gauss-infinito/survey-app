@@ -19,29 +19,22 @@ spec:
       containers:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:latest
-          args:
-            - "server"
-            - "-config=/vault/config/vault.hcl"
+
           ports:
             - containerPort: 8200
               name: http
+              
           env:
             - name: VAULT_ADDR
               value: "http://0.0.0.0:8200"
+              
           volumeMounts:
-            # Config (read-only)
             - name: config
               mountPath: /vault/config
               readOnly: true
 
-            # Storage gravável
             - name: tmp
               mountPath: /tmp
-
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop: ["ALL"]
 
       volumes:
         - name: config
