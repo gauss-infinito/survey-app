@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - base/
+  - vault/ 
   - database/
   - backend/
   - frontend/
