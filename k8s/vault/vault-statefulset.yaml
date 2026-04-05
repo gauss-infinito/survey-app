@@ -26,11 +26,34 @@ spec:
               value: "true"
             - name: SKIP_SETCAP
               value: "true"
-              
+            - name: VAULT_DATA_PATH
+              value: /vault/data
+
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "Gerando configuração do Vault..."
+
+              cat <<EOF > /tmp/vault.hcl
+              storage "file" {
+                path = "${VAULT_DATA_PATH}"
+              }
+
+              listener "tcp" {
+                address     = "0.0.0.0:8200"
+                tls_disable = 1
+              }
+
+              ui = true
+              EOF
+
+              echo "Iniciando Vault..."
+              vault server -config=/tmp/vault.hcl
+
           volumeMounts:
             - name: vault-data
-              mountPath: /vault/data 
-           
+              mountPath: /vault/data
+
   volumeClaimTemplates:
     - metadata:
         name: vault-data
