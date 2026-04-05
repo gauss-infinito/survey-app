@@ -22,12 +22,7 @@ spec:
               containerPort: 8200
             - name: https
               containerPort: 8201
-
-          command: ["vault"]
-          args:
-            - "server"
-            - "-config=/vault/config/local.json"
-              
+             
           env:
             - name: SKIP_CHOWN
               value: "true"
