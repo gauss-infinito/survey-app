@@ -13,9 +13,6 @@ spec:
       labels:
         app: vault
     spec:
-      serviceAccountName: default
-      securityContext:
-        fsGroup: 1000
       containers:
         - name: vault
           image: registry.connect.redhat.com/hashicorp/vault:latest
@@ -23,16 +20,17 @@ spec:
           ports:
             - containerPort: 8200
               name: http
+
+          env:
+            - name: SKIP_CHOWN
+              value: "true"
+            - name: SKIP_SETCAP
+              value: "true"
               
           volumeMounts:
             - name: vault-data
-              mountPath: /vault/data      
-
-      volumes:
-        - name: vault-config
-          configMap:
-            name: vault-config
-            
+              mountPath: /vault/data 
+           
   volumeClaimTemplates:
     - metadata:
         name: vault-data
