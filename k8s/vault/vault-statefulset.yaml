@@ -45,11 +45,9 @@ spec:
             - name: vault-data
               mountPath: /vault/data
 
-          command: ["/bin/sh", "-c"]
+          command: ["vault"]
           args:
-            - |         
-              echo "Iniciando Vault..."
-              vault server -config=/vault/config
+            - "server -config=/vault/config"
 
   volumeClaimTemplates:
     - metadata:
