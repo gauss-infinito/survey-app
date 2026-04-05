@@ -26,29 +26,27 @@ spec:
               value: "true"
             - name: SKIP_SETCAP
               value: "true"
-            - name: VAULT_DATA_PATH
-              value: /vault/data
+            - name: VAULT_LOCAL_CONFIG
+              value: |
+                {
+                  "storage": {
+                    "file": {
+                      "path": "/vault/data"
+                    }
+                  },
+                  "listener": [{
+                    "tcp": {
+                      "address": "0.0.0.0:8200",
+                      "tls_disable": true
+                    }
+                  }],
+                  "ui": true
+                }
 
-          command: ["/bin/sh", "-c"]
-          args:
-            - |
-              echo "Gerando configuração do Vault..."
-
-              cat <<EOF > /tmp/vault.hcl
-              storage "file" {
-                path = "${VAULT_DATA_PATH}"
-              }
-
-              listener "tcp" {
-                address     = "0.0.0.0:8200"
-                tls_disable = 1
-              }
-
-              ui = true
-              EOF
-
-              echo "Iniciando Vault..."
-              vault server -config=/tmp/vault.hcl
+          securityContext:
+            capabilities:
+              add:
+                - IPC_LOCK
 
           volumeMounts:
             - name: vault-data
