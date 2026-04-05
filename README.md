@@ -147,6 +147,24 @@ Deploy inicial utilizando OpenShift CLI e Kustomize:
 
 ```bash
 oc apply -k https://github.com/gauss-infinito/survey-app/k8s/
+```
+
+Dentro do pod do HashiCorp Vault, criar segredo no Vault:
+
+```bash
+vault kv put secret/survey \
+  DB_USER=SEU_USUARIO \
+  DB_PASSWORD=SUA_SENHA \
+  JWT_SECRET=SEU_SEGREDO_JWT
+```
+
+Ajustar autenticação:
+
+```
+export AVP_TYPE=vault
+export AVP_AUTH_TYPE=token
+export VAULT_ADDR=http://SEU-VAULT:8200
+export VAULT_TOKEN=SEU_TOKEN
 argocd-vault-plugin generate ...secret.yaml | oc apply -f -
 oc rollout restart deployment survey-api
 ```
