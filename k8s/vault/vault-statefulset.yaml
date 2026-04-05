@@ -24,16 +24,9 @@ spec:
             - containerPort: 8200
               name: http
               
-          env:
-            - name: VAULT_ADDR
-              value: "http://0.0.0.0:8200"
-              
           volumeMounts:
             - name: vault-data
-              mountPath: /vault/data
-
-            - name: init-db
-              mountPath: /opt/app-root/src/initdb.d              
+              mountPath: /vault/data      
 
       volumes:
         - name: vault-config
