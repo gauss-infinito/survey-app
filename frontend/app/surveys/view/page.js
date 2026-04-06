@@ -19,7 +19,7 @@ export default function ViewSurveys() {
   }, []);
 
   return (
-    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
+    <div className="w-285 ml-lg font-system">
       <h2>Pesquisas</h2>
       {surveys.map((s) => (
         <div key={s.id}>
