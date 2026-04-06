@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #f9f9f9;
   color: #333;
 }
@@ -34,11 +34,44 @@ body {
   flex-direction: column;
 }
 
-.gap {
-  gap: 16px;
+.gap-sm { 
+  gap: 10px; 
+}
+
+.gap-md { 
+  gap: 20px; 
+}
+
+.gap-lg { 
+  gap: 30px;
+}
+
+.w-full { 
+  width: 100%; 
+}
+
+.w-98 { 
+  width: 98%; 
+}
+
+.w-72 { 
+  width: 72%; 
+}
+
+.w-271 { 
+  width: 271px; 
+}
+
+.w-285 { 
+  width: 285px; 
 }
 
 /* Tipografia */
+
+.font-system {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .title {
   font-size: 24px;
   font-weight: bold;
@@ -59,6 +92,10 @@ body {
   font-weight: 500;
 }
 
+.text-red {
+  color: red;
+}
+
 /* Inputs e forms */
 .input {
   padding: 10px;
@@ -70,6 +107,23 @@ body {
 .label {
   margin-bottom: 4px;
   font-weight: 500;
+}
+
+/* Feedback */
+.alert {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.alert-error {
+  background: #ffe6e6;
+  color: #b00020;
+}
+
+.alert-success {
+  background: #e6ffed;
+  color: #056b3b;
 }
 
 /* Botões */
@@ -109,12 +163,70 @@ body {
 }
 
 /* Espaçamentos */
-.mt {
-  margin-top: 16px;
+.mb-0 { 
+  margin-top: 0; 
 }
 
-.mb {
-  margin-bottom: 16px;
+.mt-sm { 
+  margin-top: 10px; 
+}
+
+.mt-md { 
+  margin-top: 20px; 
+}
+
+.mt-lg { 
+  margin-top: 24px; 
+}
+
+.mt-xl { 
+  margin-top: 28px; 
+}
+
+.mb-0 { 
+  margin-bottom: 0; 
+}
+
+.mb-sm { 
+  margin-bottom: 10px; 
+}
+
+.mb-md { 
+  margin-bottom: 12px; 
+}
+
+.mb-lg { 
+  margin-bottom: 14px; 
+}
+
+.mb-xl { 
+  margin-bottom: 16px; 
+}
+
+.p-sm { 
+  padding: 8px; 
+}
+
+.p-md { 
+  padding: 20px; 
+}
+
+
+/* border right */
+.border-right {
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.pr {
+  padding-right: 15px;
+}
+
+.mr {
+  margin-right: 12px;
+}
+
+.line-40 {
+  line-height: 40px;
 }
 
 /* Dashboard métricas */
