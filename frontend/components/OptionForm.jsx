@@ -2,12 +2,12 @@
 
 export default function OptionForm({ option, onChange, onRemove }) {
   return (
-    <div style={{ display: "flex", gap: "8px", marginBottom: "5px" }}>
+    <div className="flex gap-xs mb-xs">
       <input
         type="text"
         placeholder="Texto da opção"
         value={option.text}
-        style={{ width: "72%" }}
+        className="w-72"
         onChange={(e) => onChange({ ...option, text: e.target.value })}
       />
       <button onClick={onRemove}>Remover</button>
