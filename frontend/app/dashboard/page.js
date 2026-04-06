@@ -74,28 +74,28 @@ export default function Dashboard() {
             {user.gender}
           </span>
 
-          <span style={{ lineHeight: "40px" }}>
+          <span className="line-40">
             {user.role}
           </span>            
         </div>
       )}
 
       {/* métricas */}
-      <div style={{ display: "flex", gap: "10px" }}>
+      <div className="center gap-sm">
         <div>
-          <h3 style={{ marginBottom: "0" }}>Pesquisas</h3>
+          <h3 className="mb-0">Pesquisas</h3>
           <p className="metric-value">
             {data.totalSurveys}
           </p>
         </div>
         <div>
-          <h3 style={{ marginBottom: "0" }}>Respostas</h3>
+          <h3 className="mb-0">Respostas</h3>
           <p className="metric-value">
             {data.totalResponses}
           </p>
         </div>
         <div>
-          <h3 style={{ marginBottom: "0" }}>Participação</h3>
+          <h3 className="mb-0">Participação</h3>
           <p className="metric-value">
             {data.myTotalResponses}
           </p>
@@ -103,18 +103,18 @@ export default function Dashboard() {
       </div>
 
       {/* ações */}
-      <div style={{ gap: "20px" }}>
+      <div className="gap-md">
         <Link href="/surveys/create">Criar nova pesquisa</Link><br />
         <Link href="/surveys/view">Visualizar pesquisas</Link><br />
         <Link href="/surveys/reply">Responder pesquisas</Link>
       </div>
 
       {/* lista */}
-      <div style={{ gap: "30px" }}>
+      <div className="gap-lg">
         <h3>Minhas pesquisas ({data.myTotalSurveys})</h3>
 
         {surveys.map((s) => (
-          <div key={s.id} style={{ marginBottom: "10px" }}>
+          <div key={s.id} className="mb-sm">
             <strong>{s.title}</strong>
             <p>{s.description}</p>
           </div>
