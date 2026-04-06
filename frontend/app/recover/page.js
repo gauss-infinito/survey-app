@@ -69,7 +69,7 @@ export default function Recover() {
   }
   
   return (
-    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
+    <div className="w-285 ml-lg font-system">
       <h2>Recupere o seu código</h2>
 
       <MessageForm error={error} success={success} />
@@ -81,19 +81,19 @@ export default function Recover() {
           name="email"
           type="email"
           placeholder="email"
-          style={{ width: "100%" }}
+          className="w-full"
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
-      <div style={{ marginTop: "10px" }}>
+      <div className="mt-sm">
         <label>Idade:</label><br />
         <input type="radio" name="age" value="young" onChange={(e) => setAge(e.target.value)} /> Jovem: 18 a 20 anos<br />
         <input type="radio" name="age" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto(a): 21 a 59 anos<br />
         <input type="radio" name="age" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso(a): 60 anos ou mais<br />
       </div>
 
-      <div style={{ marginTop: "10px" }}>
+      <div className="mt-sm">
         <label>Gênero:</label><br />
         <input type="radio" name="gender" value="cis-woman" onChange={(e) => setGender(e.target.value)} /> Mulher cis<br />
         <input type="radio" name="gender" value="trans-woman" onChange={(e) => setGender(e.target.value)} /> Mulher trans<br />
@@ -102,7 +102,7 @@ export default function Recover() {
         <input type="radio" name="gender" value="non-binary" onChange={(e) => setGender(e.target.value)} /> Não-binário<br />
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "28px" }}>
+      <div className="text-center mt-xl">
         <button onClick={recover} disabled={loading}>
           {loading ? "Recuperando..." : "Recuperar"}
         </button>
@@ -110,14 +110,14 @@ export default function Recover() {
 
       {/* resultado */}
       {recoveredCode && (
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
+        <div className="mt-md text-center">
           <strong>Seu novo código:</strong><br />
           <span>{recoveredCode}</span><br /><br />
           <button onClick={copyCode}>Copiar</button>
         </div>
       )}
           
-      <div style={{ textAlign: "center", marginTop: "24px" }}>
+      <div className="text-center mt-lg">
         <Link href="/login">Voltar ao login</Link>
       </div>
     </div>
