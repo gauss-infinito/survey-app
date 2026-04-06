@@ -9,6 +9,13 @@ Aplicação fullstack desenvolvida para validar práticas de build, deploy e int
 * Backend: Node.js + Express
 * Plataforma: OpenShift
 
+## Pré-requisitos
+
+* Cluster OpenShift ou Kubernetes ([Try Red Hat OpenShift on Developer Sandbox](https://www.redhat.com/en/technologies/cloud-computing/openshift/openshift-developer-sandbox-trial))
+* Vault configurado com secrets necessários
+* argocd-vault-plugin instalado
+* oc CLI configurado
+
 ## Visão Geral
 
 O [**Survey App**](requisitos.md) permite criar, publicar e analisar pesquisas de opinião rápidas (enquetes).
@@ -57,13 +64,6 @@ Componentes principais:
 
   * HashiCorp Vault (fonte de verdade dos secrets)
   * argocd-vault-plugin (injeção dinâmica nos manifests)
-
-## Pré-requisitos
-
-* Cluster OpenShift ou Kubernetes
-* Vault configurado com secrets necessários
-* argocd-vault-plugin instalado
-* oc CLI configurado
 
 ## Tecnologias Utilizadas
 
