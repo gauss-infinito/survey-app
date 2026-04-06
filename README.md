@@ -225,6 +225,7 @@ Problemas comuns:
 * Variáveis não atualizadas → executar rollout restart
 * Falha de conexão com DB → verificar DB_HOST e Service
 * Secrets não substituídos → validar execução do plugin
+* Invalid character '<' (argocd-vault-plugin) → VAULT_ADDR e/ou VAULT_TOKEN incorreto
 
 ## Estrutura do Projeto
 
