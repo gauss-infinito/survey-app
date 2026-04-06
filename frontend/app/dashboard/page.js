@@ -56,39 +56,21 @@ export default function Dashboard() {
     load();
   }, []);
   
-  if (!data) return <div style={{ width: "285px", marginLeft: "28px", marginTop: "36px", fontFamily: "system-ui" }}>Carregando...</div>;
+  if (!data) return <div className="w-285 ml-lg mt-xxl font-system">Carregando...</div>;
 
   return (
-    <div style={{ padding: "20px", fontFamily: "system-ui" }}>
+    <div className="p-md font-system">
       <h2>Painel de controle</h2>
 
       {/* usuário */}
       {user && (
         <div>
           <strong>{user.email}</strong><br />
-          <span
-            style={{
-              margin: "0 12px 0 0",
-              padding: "0 15px 0 0",
-              lineHeight: "40px",
-              borderRightColor: "rgba(0, 0, 0, 0.3)",
-              borderRightStyle: "solid",
-              borderRightWidth: "1px"
-            }}
-          >
+          <span className="mr pr line-40 border-right">
             {user.age}
           </span>
           
-          <span
-            style={{
-              margin: "0 12px 0 0",
-              padding: "0 15px 0 0",
-              lineHeight: "40px",
-              borderRightColor: "rgba(0, 0, 0, 0.3)",
-              borderRightStyle: "solid",
-              borderRightWidth: "1px"
-            }}
-          >
+          <span className="mr pr line-40 border-right">
             {user.gender}
           </span>
 
