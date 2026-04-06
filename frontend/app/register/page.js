@@ -114,7 +114,7 @@ export default function Register() {
         </div>
       )}
 
-      <div style={{ textAlign: "center", marginTop: "24px" }}>
+      <div className="text-center mt-lg">
         <Link href="/login">Volte ao login</Link>
       </div>
     </div>
