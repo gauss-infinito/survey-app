@@ -1,13 +1,5 @@
-import UserManagement from "./pages/UserManagement";
+import UserManagement from "@/components/UserManagement";
 
-function App() {
+export default function UsersPage() {
   return <UserManagement />;
-}
-
-import SurveyForm from "../../../components/SurveyForm";
-
-export default function CreateSurveyPage() {
-  return (
-    <SurveyForm />
-  );
 }
