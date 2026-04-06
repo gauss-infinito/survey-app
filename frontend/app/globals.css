@@ -38,6 +38,10 @@ body {
   display: flex; 
 }
 
+.gap-xs {
+  gap: 8px;
+}
+
 .gap-sm { 
   gap: 10px; 
 }
@@ -193,6 +197,10 @@ body {
 
 .mb-0 { 
   margin-bottom: 0; 
+}
+
+.mb-xs {
+  margin-bottom: 5px;
 }
 
 .mb-sm { 
