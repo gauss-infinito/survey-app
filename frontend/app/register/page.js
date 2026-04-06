@@ -69,33 +69,29 @@ export default function Register() {
   }
 
   return (
-    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
+    <div className="w-285 ml-lg font-system">
       <h2>Crie a sua conta</h2>
 
       <MessageForm error={error} success={success} />
-
-      {error && (
-        <p style={{ color: "red" }}>{error}</p>
-      )}
 
       <div>
         <label htmlFor="email">E-mail:</label><br />
         <input
           id="email"
           type="email"
-          style={{ width: "100%" }}
+          className="w-full"
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
-      <div style={{ marginTop: "10px" }}>
+      <div className="mt-sm">
         <label>Idade:</label><br />
         <input type="radio" name="age" value="young" onChange={(e) => setAge(e.target.value)} /> Jovem: 18 a 20 anos<br />
         <input type="radio" name="age" value="adult" onChange={(e) => setAge(e.target.value)} /> Adulto(a): 21 a 59 anos<br />
         <input type="radio" name="age" value="elderly" onChange={(e) => setAge(e.target.value)} /> Idoso(a): 60 anos ou mais<br />
       </div>
          
-      <div style={{ marginTop: "10px" }}>
+      <div className="mt-sm">
         <label>Gênero:</label><br />
         <input type="radio" name="gender" value="cis-woman" onChange={(e) => setGender(e.target.value)} /> Mulher cis<br />
         <input type="radio" name="gender" value="trans-woman" onChange={(e) => setGender(e.target.value)} /> Mulher trans<br />
@@ -104,14 +100,14 @@ export default function Register() {
         <input type="radio" name="gender" value="non-binary" onChange={(e) => setGender(e.target.value)} /> Não-binário<br />
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "28px" }}>
+      <div className="text-center mt-xl">
         <button onClick={register} disabled={loading}>
           {loading ? "Registrando..." : "Registrar"}
         </button>
       </div>
 
       {generatedCode && (
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
+        <div className="mt-md text-center">
           <strong>Guarde o seu código:</strong><br />
           <span>{generatedCode}</span><br /><br />
           <button onClick={copyCode}>Copiar</button>
