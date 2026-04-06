@@ -58,6 +58,13 @@ Componentes principais:
   * HashiCorp Vault (fonte de verdade dos secrets)
   * argocd-vault-plugin (injeção dinâmica nos manifests)
 
+## Pré-requisitos
+
+* Cluster OpenShift ou Kubernetes
+* Vault configurado com secrets necessários
+* argocd-vault-plugin instalado
+* oc CLI configurado
+
 ## Tecnologias Utilizadas
 
 * Next.js (App Router)
@@ -126,6 +133,28 @@ oc rollout restart deployment survey-frontend
 
 ## Deploy
 
+Variáveis de Ambiente:
+
+* DB_HOST
+* DB_PORT
+* DB_USER
+* DB_PASSWORD
+* DB_NAME
+* JWT_SECRET
+
+Fluxo de Deploy:
+
+```
+1. Aplicar infraestrutura:
+   oc apply -k k8s/
+
+2. Gerar secrets via Vault:
+   argocd-vault-plugin generate k8s/base/secret.yaml | oc apply -f -
+
+3. Reiniciar aplicação:
+   oc rollout restart deployment survey-api
+```
+
 Os serviços são implantados via `Deployment` e ficam disponíveis em **registry interno**::
 
 ```yaml
@@ -156,6 +185,17 @@ vault kv put secret/survey \
   DB_USER=SEU_USUARIO \
   DB_PASSWORD=SUA_SENHA \
   JWT_SECRET=SEU_SEGREDO_JWT
+```
+
+Estrutura de Segredos no Vault:
+
+```
+Path: secret/data/survey
+
+Campos esperados:
+- DB_USER
+- DB_PASSWORD
+- JWT_SECRET
 ```
 
 Ajustar autenticação:
