@@ -218,6 +218,14 @@ https://survey-api-<projeto>.apps...
 
 Os manifests Kubernetes/OpenShift estão disponíveis no diretório `/k8s`.
 
+## Troubleshooting
+
+Problemas comuns:
+
+* Variáveis não atualizadas → executar rollout restart
+* Falha de conexão com DB → verificar DB_HOST e Service
+* Secrets não substituídos → validar execução do plugin
+
 ## Estrutura do Projeto
 
 ```
