@@ -4,7 +4,11 @@ import { useState } from "react";
 import { useFormFeedback } from "@/components/hooks/useFormFeedback";
 import MessageForm from "@/components/MessageForm";
 
-const API_URL = "http://localhost:3000/users";
+import {
+  getUsers,
+  updateUserRequest,
+  updateUserStatus,
+} from "@/services/api";
 
 export default function UserManagement() {
   const {
@@ -24,73 +28,46 @@ export default function UserManagement() {
 
   const [users, setUsers] = useState([]);
 
-  const token = localStorage.getItem("token");
-
-  const fetchUsers = async () => {
+  const handleSearch = async () => {
     try {
       startLoading();
 
-      const query = new URLSearchParams();
-
-      if (filters.role) query.append("role", filters.role);
-      if (filters.active !== "") query.append("active", filters.active);
-
-      const res = await fetch(`${API_URL}?${query.toString()}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await res.json();
+      const data = await getUsers(filters);
       setUsers(data);
 
       showSuccess("Usuários carregados");
     } catch (err) {
-      showError("Erro ao buscar usuários");
+      showError(err.message);
     } finally {
       stopLoading();
     }
   };
 
-  const updateUser = async (id, payload) => {
+  const handleUpdateUser = async (id, payload) => {
     try {
       startLoading();
 
-      await fetch(`${API_URL}/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      });
+      await updateUserRequest(id, payload);
 
       showSuccess("Usuário atualizado");
-      await fetchUsers();
+      await handleSearch();
     } catch (err) {
-      showError("Erro ao atualizar usuário");
+      showError(err.message);
     } finally {
       stopLoading();
     }
   };
 
-  const toggleStatus = async (id, active) => {
+  const handleToggleStatus = async (id, active) => {
     try {
       startLoading();
 
-      await fetch(`${API_URL}/${id}/status`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ active: !active }),
-      });
+      await updateUserStatus(id, !active);
 
       showSuccess("Status atualizado");
-      await fetchUsers();
+      await handleSearch();
     } catch (err) {
-      showError("Erro ao atualizar status");
+      showError(err.message);
     } finally {
       stopLoading();
     }
@@ -132,7 +109,7 @@ export default function UserManagement() {
 
       <br /><br />
 
-      <button onClick={fetchUsers} disabled={loading}>
+      <button onClick={handleSearch} disabled={loading}>
         {loading ? "Buscando..." : "Buscar"}
       </button>
 
@@ -147,7 +124,7 @@ export default function UserManagement() {
           <select
             value={user.role}
             onChange={(e) =>
-              updateUser(user.id, { role: e.target.value })
+              handleUpdateUser(user.id, { role: e.target.value })
             }
           >
             <option value="administrator">Administrador</option>
@@ -158,7 +135,9 @@ export default function UserManagement() {
           <p>Status: {user.active ? "Ativo" : "Inativo"}</p>
 
           <button
-            onClick={() => toggleStatus(user.id, user.active)}
+            onClick={() =>
+              handleToggleStatus(user.id, user.active)
+            }
           >
             {user.active ? "Desativar" : "Ativar"}
           </button>
