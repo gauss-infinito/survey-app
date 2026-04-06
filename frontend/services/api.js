@@ -59,3 +59,47 @@ export async function recoverRequest({ email, age, gender }) {
 
   return handleResponse(res);
 }
+
+export async function getUsers(filters = {}) {
+  const token = localStorage.getItem("token");
+
+  const query = new URLSearchParams(filters);
+
+  const res = await fetch(`${API_URL}/users?${query.toString()}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return handleResponse(res);
+}
+
+export async function updateUserRequest(id, data) {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(`${API_URL}/users/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  return handleResponse(res);
+}
+
+export async function updateUserStatus(id, active) {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(`${API_URL}/users/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ active }),
+  });
+
+  return handleResponse(res);
+}
