@@ -1,146 +1,171 @@
-import { useEffect, useState } from "react";
+"use client";
 
-const API_URL = "http://localhost:3000/users"; // ajuste se necessário
+import { useState } from "react";
+import { useFormFeedback } from "@/components/hooks/useFormFeedback";
+import MessageForm from "@/components/MessageForm";
+
+const API_URL = "http://localhost:3000/users";
 
 export default function UserManagement() {
-  const [users, setUsers] = useState([]);
+  const {
+    loading,
+    error,
+    success,
+    startLoading,
+    stopLoading,
+    showError,
+    showSuccess,
+  } = useFormFeedback();
+
   const [filters, setFilters] = useState({
     role: "",
-    active: ""
+    active: "",
   });
-  const [loading, setLoading] = useState(false);
+
+  const [users, setUsers] = useState([]);
 
   const token = localStorage.getItem("token");
 
-  async function fetchUsers() {
-    setLoading(true);
+  const fetchUsers = async () => {
+    try {
+      startLoading();
 
-    const query = new URLSearchParams();
+      const query = new URLSearchParams();
 
-    if (filters.role) query.append("role", filters.role);
-    if (filters.active !== "") query.append("active", filters.active);
+      if (filters.role) query.append("role", filters.role);
+      if (filters.active !== "") query.append("active", filters.active);
 
-    const res = await fetch(`${API_URL}?${query.toString()}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+      const res = await fetch(`${API_URL}?${query.toString()}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    const data = await res.json();
-    setUsers(data);
-    setLoading(false);
-  }
+      const data = await res.json();
+      setUsers(data);
 
-  useEffect(() => {
-    fetchUsers();
-  }, [filters]);
+      showSuccess("Usuários carregados");
+    } catch (err) {
+      showError("Erro ao buscar usuários");
+    } finally {
+      stopLoading();
+    }
+  };
 
-  async function updateUser(id, payload) {
-    await fetch(`${API_URL}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(payload)
-    });
+  const updateUser = async (id, payload) => {
+    try {
+      startLoading();
 
-    fetchUsers();
-  }
+      await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
 
-  async function toggleStatus(id, active) {
-    await fetch(`${API_URL}/${id}/status`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({ active: !active })
-    });
+      showSuccess("Usuário atualizado");
+      await fetchUsers();
+    } catch (err) {
+      showError("Erro ao atualizar usuário");
+    } finally {
+      stopLoading();
+    }
+  };
 
-    fetchUsers();
-  }
+  const toggleStatus = async (id, active) => {
+    try {
+      startLoading();
+
+      await fetch(`${API_URL}/${id}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ active: !active }),
+      });
+
+      showSuccess("Status atualizado");
+      await fetchUsers();
+    } catch (err) {
+      showError("Erro ao atualizar status");
+    } finally {
+      stopLoading();
+    }
+  };
 
   return (
-    <div className="container">
-      <h2>Gerenciar Usuários</h2>
+    <div className="w-285 ml-lg font-system">
+      <h2>Gerenciar usuários</h2>
+
+      <MessageForm error={error} success={success} />
 
       {/* Filtros */}
-      <div className="filters">
-        <select
-          value={filters.role}
-          onChange={(e) =>
-            setFilters({ ...filters, role: e.target.value })
-          }
-        >
-          <option value="">Todos os perfis</option>
-          <option value="administrator">Administrador</option>
-          <option value="researcher">Pesquisador</option>
-          <option value="respondent">Respondente</option>
-        </select>
+      <label>Perfil:</label><br />
+      <select
+        value={filters.role}
+        onChange={(e) =>
+          setFilters({ ...filters, role: e.target.value })
+        }
+      >
+        <option value="">Todos</option>
+        <option value="administrator">Administrador</option>
+        <option value="researcher">Pesquisador</option>
+        <option value="respondent">Respondente</option>
+      </select>
 
-        <select
-          value={filters.active}
-          onChange={(e) =>
-            setFilters({ ...filters, active: e.target.value })
-          }
-        >
-          <option value="">Todos</option>
-          <option value="true">Ativos</option>
-          <option value="false">Inativos</option>
-        </select>
-      </div>
+      <br /><br />
 
-      {/* Tabela */}
-      {loading ? (
-        <p>Carregando...</p>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Perfil</th>
-              <th>Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
+      <label>Status:</label><br />
+      <select
+        value={filters.active}
+        onChange={(e) =>
+          setFilters({ ...filters, active: e.target.value })
+        }
+      >
+        <option value="">Todos</option>
+        <option value="true">Ativos</option>
+        <option value="false">Inativos</option>
+      </select>
 
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.email}</td>
+      <br /><br />
 
-                <td>
-                  <select
-                    value={user.role}
-                    onChange={(e) =>
-                      updateUser(user.id, { role: e.target.value })
-                    }
-                  >
-                    <option value="administrator">Administrador</option>
-                    <option value="researcher">Pesquisador</option>
-                    <option value="respondent">Respondente</option>
-                  </select>
-                </td>
+      <button onClick={fetchUsers} disabled={loading}>
+        {loading ? "Buscando..." : "Buscar"}
+      </button>
 
-                <td>
-                  {user.active ? "Ativo" : "Inativo"}
-                </td>
+      <hr />
 
-                <td>
-                  <button
-                    onClick={() =>
-                      toggleStatus(user.id, user.active)
-                    }
-                  >
-                    {user.active ? "Desativar" : "Ativar"}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      {/* Lista */}
+      {users.map((user) => (
+        <div key={user.id} className="mb-lg">
+          <p><strong>{user.email}</strong></p>
+
+          <label>Perfil:</label><br />
+          <select
+            value={user.role}
+            onChange={(e) =>
+              updateUser(user.id, { role: e.target.value })
+            }
+          >
+            <option value="administrator">Administrador</option>
+            <option value="researcher">Pesquisador</option>
+            <option value="respondent">Respondente</option>
+          </select>
+
+          <p>Status: {user.active ? "Ativo" : "Inativo"}</p>
+
+          <button
+            onClick={() => toggleStatus(user.id, user.active)}
+          >
+            {user.active ? "Desativar" : "Ativar"}
+          </button>
+
+          <hr />
+        </div>
+      ))}
     </div>
   );
 }
