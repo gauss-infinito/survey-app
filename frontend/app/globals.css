@@ -118,6 +118,10 @@ body {
 }
 
 /* Botões */
+button {
+  cursor: pointer;
+}
+
 .button {
   padding: 10px 16px;
   border: none;
@@ -242,6 +246,24 @@ body {
 
 .line-40 {
   line-height: 40px;
+}
+
+/* Gerenciar usuários */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
 }
 
 /* Dashboard métricas */
