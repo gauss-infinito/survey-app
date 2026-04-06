@@ -34,6 +34,10 @@ body {
   flex-direction: column;
 }
 
+.flex { 
+  display: flex; 
+}
+
 .gap-sm { 
   gap: 10px; 
 }
