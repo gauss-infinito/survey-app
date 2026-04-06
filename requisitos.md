@@ -10,34 +10,15 @@
 
 ### Gestão de usuários
 
-**US-ADM-01 — Criar usuário administrador**
+**US-ADM-01 — Gerenciar usuários**
 
-> Como admin, quero cadastrar novos administradores para compartilhar a gestão do sistema.
-
-**Critérios de aceitação:**
-
-* Deve informar e-mail e código
-* Não permitir e-mail duplicado
-* Usuário criado já pode acessar o sistema
-
-**US-ADM-02 — Criar usuário pesquisador**
-
-> Como admin, quero cadastrar pesquisadores para que possam criar pesquisas.
-
-**Critérios:**
-
-* Definir perfil como "pesquisador"
-* Enviar credenciais ou convite por e-mail
-
-**US-ADM-03 — Gerenciar usuários**
-
-> Como admin, quero listar, editar e desativar usuários.
+> Como admin, quero listar, editar perfil e desativar usuários.
 
 **Critérios:**
 
 * Listagem com filtros (perfil, status)
+* Definir perfil como "administrador" (administrator), "pesquisador" (researcher) e "respondente" (respondent')
 * Permitir ativar/desativar
-* Permitir recuperação de código
 
 ## 2. Histórias do **Pesquisador**
 
