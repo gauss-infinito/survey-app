@@ -158,6 +158,10 @@ body {
   margin-top: 0; 
 }
 
+.mt-xxs {
+  margin-top: 2px;
+}
+
 .mt-xs {
   margin-top: 5px;
 }
@@ -184,6 +188,10 @@ body {
 
 .mb-0 { 
   margin-bottom: 0; 
+}
+
+.mb-xxs {
+  margin-bottom: 2px;
 }
 
 .mb-xs {
