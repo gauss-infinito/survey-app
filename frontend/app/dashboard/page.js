@@ -81,7 +81,7 @@ export default function Dashboard() {
       )}
 
       {/* métricas */}
-      <div className="center gap-sm">
+      <div className="gap-sm">
         <div>
           <h3 className="mb-0">Pesquisas</h3>
           <p className="metric-value">
