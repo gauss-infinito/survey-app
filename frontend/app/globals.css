@@ -2,3 +2,145 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Layout */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap {
+  gap: 16px;
+}
+
+/* Tipografia */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-big {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Inputs e forms */
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.label {
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* Botões */
+.button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.button-primary {
+  background-color: #0070f3;
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: #0059c1;
+}
+
+.button-danger {
+  background-color: #e53935;
+  color: white;
+}
+
+.button-danger:hover {
+  background-color: #c62828;
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Espaçamentos */
+.mt {
+  margin-top: 16px;
+}
+
+.mb {
+  margin-bottom: 16px;
+}
+
+/* Dashboard métricas */
+.metric {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Lista */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Links */
+.link {
+  color: #0070f3;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
