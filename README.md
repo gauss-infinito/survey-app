@@ -145,14 +145,14 @@ Variáveis de Ambiente:
 Fluxo de Deploy:
 
 ```
-1. Aplicar infraestrutura:
-   oc apply -k k8s/
+# 1. Aplicar infraestrutura
+oc apply -k k8s/
 
-2. Gerar secrets via Vault:
-   argocd-vault-plugin generate k8s/base/secret.yaml | oc apply -f -
+# 2. Gerar Secret via Vault
+argocd-vault-plugin generate k8s/base/secret.yaml | oc apply -f -
 
-3. Reiniciar aplicação:
-   oc rollout restart deployment survey-api
+# 3. Reiniciar aplicação
+oc rollout restart deployment survey-api
 ```
 
 Os serviços são implantados via `Deployment` e ficam disponíveis em **registry interno**::
