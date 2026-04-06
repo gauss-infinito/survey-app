@@ -29,10 +29,10 @@ export default function QuestionForm({ question, onChange, onRemove }) {
           <input id="multiple" name="multiple" type="checkbox" checked={question.multiple || false} onChange={(e) => onChange({ ...question, multiple: e.target.checked })} />
           <label htmlFor="multiple">Múltipla seleção</label><br />
           <label htmlFor="question">Pergunta:</label><br />
-          <input type="text" id="question" name="question" style={{ width: "98%" }} placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
+          <input type="text" id="question" name="question" className="w-98" placeholder="Pergunta" value={question.text} onChange={(e) => onChange({ ...question, text: e.target.value })} />
         </div>   
       
-        <div style={{ marginTop: "10px" }}>
+        <div className="mt-sm">
           {question.options.map((opt, i) => (
             <OptionForm
               key={i}
@@ -43,7 +43,7 @@ export default function QuestionForm({ question, onChange, onRemove }) {
           ))}
         </div>          
 
-        <div style={{ textAlign: "center", marginTop: "28px" }}>
+        <div className="text-center mt-xl">
           <button onClick={addOption}>+ Opção</button> &ensp;
           <button onClick={onRemove}>Remover questão</button>
         </div>
