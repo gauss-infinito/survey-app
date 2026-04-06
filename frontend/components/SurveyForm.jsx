@@ -82,13 +82,13 @@ export default function SurveyForm() {
         + Questão
       </button>
 
-      <div style={{ textAlign: "center", marginTop: "28px" }}>
+      <div className="text-center mt-xl">
         <button onClick={handleSubmit} disabled={loading}>
           {loading ? "Salvando..." : "Salvar"}
         </button>
       </div>
      
-      <div style={{ textAlign: "center", marginTop: "24px", marginBottom: "24px" }}>
+      <div className="text-center mt-lg mb-xl">
         <Link href="/dashboard">Voltar ao painel</Link>
       </div>
       
