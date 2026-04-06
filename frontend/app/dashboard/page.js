@@ -85,8 +85,8 @@ export default function Dashboard() {
         <div className="column">
           <h3 className="mb-0">Pesquisas</h3>
           <p className="metric-value">{data.totalSurveys}</p>
-        </div className="column">
-        <div>
+        </div>
+        <div className="column">
           <h3 className="mb-0">Respostas</h3>
           <p className="metric-value">{data.totalResponses}</p>
         </div>
