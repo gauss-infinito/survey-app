@@ -81,24 +81,18 @@ export default function Dashboard() {
       )}
 
       {/* métricas */}
-      <div className="gap-sm">
-        <div>
+      <div className="flex gap-sm">
+        <div className="column">
           <h3 className="mb-0">Pesquisas</h3>
-          <p className="metric-value">
-            {data.totalSurveys}
-          </p>
-        </div>
+          <p className="metric-value">{data.totalSurveys}</p>
+        </div className="column">
         <div>
           <h3 className="mb-0">Respostas</h3>
-          <p className="metric-value">
-            {data.totalResponses}
-          </p>
+          <p className="metric-value">{data.totalResponses}</p>
         </div>
-        <div>
+        <div className="column">
           <h3 className="mb-0">Participação</h3>
-          <p className="metric-value">
-            {data.myTotalResponses}
-          </p>
+          <p className="metric-value">{data.myTotalResponses}</p>
         </div>
       </div>
 
