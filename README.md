@@ -189,7 +189,8 @@ survey-app/
     ├── base/ 
     ├── database/ 
     ├── frontend/ 
-    └───openshift/   # Configurações específicas do OpenShift
+    ├── openshift/   # Configurações específicas do OpenShift
+    └───vault/
 ```
 
 ## Licença
