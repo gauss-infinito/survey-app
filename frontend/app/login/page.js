@@ -54,7 +54,7 @@ export default function Login() {
   }
 
   return (
-    <div style={{ width: "285px", marginLeft: "28px", fontFamily: "system-ui" }}>
+    <div className="w-285 ml-lg font-system">
       <h2>Acesse a sua conta</h2>
 
       <MessageForm error={error} success={success} />
@@ -66,31 +66,31 @@ export default function Login() {
           type="email"
           required
           placeholder="email"
-          style={{ width: "100%" }}
+          className="w-full"
           onChange={(e) => setEmail(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && login()}
         />
       </div>
 
-      <div style={{ marginTop: "10px" }}>
+      <div className="mt-sm">
         <label htmlFor="code">Código:</label><br />
         <input
           id="code"
           required
           placeholder="código"
-          style={{ width: "100%" }}
+          className="w-full"
           onChange={(e) => setCode(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && login()}
         />
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "28px" }}>
+      <div className="text-center mt-xl">
         <button onClick={login} disabled={loading}>
           {loading ? "Entrando..." : "Entrar"}
         </button>
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "24px" }}>
+      <div className="text-center mt-lg">
         <Link href="/recover">Recupere o seu código</Link><br />
         <Link href="/register">Registre-se agora mesmo</Link>
       </div>
