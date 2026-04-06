@@ -22,9 +22,9 @@ export default function QuestionForm({ question, onChange, onRemove }) {
   };
 
   return (
-    <div style={{ width: "271px" }}>
+    <div className="w-271">
       <label>Perguntas:</label><br />
-      <div style={{ border: "1px solid #ccc", width: "100%", padding: 10, marginBottom: 10 }}>
+      <div className="input w-full mb-sm">
         <div>
           <input id="multiple" name="multiple" type="checkbox" checked={question.multiple || false} onChange={(e) => onChange({ ...question, multiple: e.target.checked })} />
           <label htmlFor="multiple">Múltipla seleção</label><br />
