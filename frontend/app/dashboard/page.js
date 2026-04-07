@@ -98,7 +98,7 @@ export default function Dashboard() {
 
       {/* ações */}
       <div className="gap-sm">
-        <h3 className="mt-xxs">Ações</h3>
+        <h3 className="mt-xxs mb-0">Ações</h3>
         <Link href="/users">Gerenciar usuários</Link><br />        
         <Link href="/surveys/create">Criar nova pesquisa</Link><br />
         <Link href="/surveys/view">Visualizar pesquisas</Link><br />
@@ -107,7 +107,7 @@ export default function Dashboard() {
 
       {/* lista */}
       <div className="gap-sm">
-        <h3 className="mt-xxs">Minhas pesquisas ({data.myTotalSurveys})</h3>
+        <h3 className="mt-sm">Minhas pesquisas ({data.myTotalSurveys})</h3>
 
         {surveys.map((s) => (
           <div key={s.id} className="mb-sm">
