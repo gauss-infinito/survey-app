@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useFormFeedback } from "@/components/hooks/useFormFeedback";
 import MessageForm from "@/components/MessageForm";
+import UserItem from "@/components/UserItem";
 
 import {
   getUsers,
@@ -117,33 +118,12 @@ export default function UserManagement() {
 
       {/* Lista */}
       {users.map((user) => (
-        <div key={user.id} className="mb-lg">
-          <p><strong>{user.email}</strong></p>
-
-          <label>Perfil:</label><br />
-          <select
-            value={user.role}
-            onChange={(e) =>
-              handleUpdateUser(user.id, { role: e.target.value })
-            }
-          >
-            <option value="administrator">Administrador</option>
-            <option value="researcher">Pesquisador</option>
-            <option value="respondent">Respondente</option>
-          </select>
-
-          <p>Status: {user.active ? "Ativo" : "Inativo"}</p>
-
-          <button
-            onClick={() =>
-              handleToggleStatus(user.id, user.active)
-            }
-          >
-            {user.active ? "Desativar" : "Ativar"}
-          </button>
-
-          <hr />
-        </div>
+        <UserItem
+          key={user.id}
+          user={user}
+          onUpdate={handleUpdateUser}
+          onToggleStatus={handleToggleStatus}
+        />
       ))}
     </div>
   );
