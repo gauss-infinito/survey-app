@@ -39,13 +39,10 @@ export default function UserItem({ user, onUpdate, onToggleStatus }) {
 
       {/* Botões */}
       <div className="flex gap-sm">
-        <button
-          onClick={handleSave}
-          disabled={!dirty}
-        >
-          Salvar
+        <button onClick={handleSave} disabled={!dirty}>
+          {dirty ? "Salvar alterações" : "Salvo"}
         </button>
-
+        
         <button
           onClick={() => onToggleStatus(user.id, user.active)}
         >
